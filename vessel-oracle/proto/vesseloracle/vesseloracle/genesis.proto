@@ -1,0 +1,17 @@
+syntax = "proto3";
+package vesseloracle.vesseloracle;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "vesseloracle/vesseloracle/params.proto";
+
+option go_package = "vessel-oracle/x/vesseloracle/types";
+
+// GenesisState defines the vesseloracle module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
