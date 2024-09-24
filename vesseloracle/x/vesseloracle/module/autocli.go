@@ -17,6 +17,17 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					Use:       "params",
 					Short:     "Shows the parameters of the module",
 				},
+				{
+					RpcMethod: "VesselAll",
+					Use:       "list-vessel",
+					Short:     "List all vessel",
+				},
+				{
+					RpcMethod:      "Vessel",
+					Use:            "show-vessel [id]",
+					Short:          "Shows a vessel",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "imo"}, {ProtoField: "ts"}},
+				},
 				// this line is used by ignite scaffolding # autocli/query
 			},
 		},
@@ -27,6 +38,24 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 				{
 					RpcMethod: "UpdateParams",
 					Skip:      true, // skipped because authority gated
+				},
+				{
+					RpcMethod:      "CreateVessel",
+					Use:            "create-vessel [imo] [ts] [lat] [lon] [speed] [course] [heading] [adt] [eta] [name] [destport] [depport] [mmsi]",
+					Short:          "Create a new vessel",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "imo"}, {ProtoField: "ts"}, {ProtoField: "lat"}, {ProtoField: "lon"}, {ProtoField: "speed"}, {ProtoField: "course"}, {ProtoField: "heading"}, {ProtoField: "adt"}, {ProtoField: "eta"}, {ProtoField: "name"}, {ProtoField: "destport"}, {ProtoField: "depport"}, {ProtoField: "mmsi"}},
+				},
+				{
+					RpcMethod:      "UpdateVessel",
+					Use:            "update-vessel [imo] [ts] [lat] [lon] [speed] [course] [heading] [adt] [eta] [name] [destport] [depport] [mmsi]",
+					Short:          "Update vessel",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "imo"}, {ProtoField: "ts"}, {ProtoField: "lat"}, {ProtoField: "lon"}, {ProtoField: "speed"}, {ProtoField: "course"}, {ProtoField: "heading"}, {ProtoField: "adt"}, {ProtoField: "eta"}, {ProtoField: "name"}, {ProtoField: "destport"}, {ProtoField: "depport"}, {ProtoField: "mmsi"}},
+				},
+				{
+					RpcMethod:      "DeleteVessel",
+					Use:            "delete-vessel [imo] [ts]",
+					Short:          "Delete vessel",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "imo"}, {ProtoField: "ts"}},
 				},
 				// this line is used by ignite scaffolding # autocli/tx
 			},

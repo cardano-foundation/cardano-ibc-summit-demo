@@ -6,11 +6,7 @@ package types
 import (
 	context "context"
 	fmt "fmt"
-	io "io"
-	math "math"
-	math_bits "math/bits"
-
-	_ "github.com/cosmos/cosmos-sdk/types/query"
+	query "github.com/cosmos/cosmos-sdk/types/query"
 	_ "github.com/cosmos/cosmos-sdk/types/tx/amino"
 	_ "github.com/cosmos/gogoproto/gogoproto"
 	grpc1 "github.com/cosmos/gogoproto/grpc"
@@ -19,6 +15,9 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	io "io"
+	math "math"
+	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -115,9 +114,213 @@ func (m *QueryParamsResponse) GetParams() Params {
 	return Params{}
 }
 
+type QueryGetVesselRequest struct {
+	Imo    string `protobuf:"bytes,1,opt,name=imo,proto3" json:"imo,omitempty"`
+	Ts     uint64 `protobuf:"varint,2,opt,name=ts,proto3" json:"ts,omitempty"`
+	Source string `protobuf:"bytes,3,opt,name=source,proto3" json:"source,omitempty"`
+}
+
+func (m *QueryGetVesselRequest) Reset()         { *m = QueryGetVesselRequest{} }
+func (m *QueryGetVesselRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetVesselRequest) ProtoMessage()    {}
+func (*QueryGetVesselRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c0d797381a18ae3b, []int{2}
+}
+func (m *QueryGetVesselRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetVesselRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetVesselRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetVesselRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetVesselRequest.Merge(m, src)
+}
+func (m *QueryGetVesselRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetVesselRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetVesselRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetVesselRequest proto.InternalMessageInfo
+
+func (m *QueryGetVesselRequest) GetImo() string {
+	if m != nil {
+		return m.Imo
+	}
+	return ""
+}
+
+func (m *QueryGetVesselRequest) GetTs() uint64 {
+	if m != nil {
+		return m.Ts
+	}
+	return 0
+}
+
+func (m *QueryGetVesselRequest) GetSource() string {
+	if m != nil {
+		return m.Source
+	}
+	return ""
+}
+
+type QueryGetVesselResponse struct {
+	Vessel Vessel `protobuf:"bytes,1,opt,name=vessel,proto3" json:"vessel"`
+}
+
+func (m *QueryGetVesselResponse) Reset()         { *m = QueryGetVesselResponse{} }
+func (m *QueryGetVesselResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetVesselResponse) ProtoMessage()    {}
+func (*QueryGetVesselResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c0d797381a18ae3b, []int{3}
+}
+func (m *QueryGetVesselResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetVesselResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetVesselResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetVesselResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetVesselResponse.Merge(m, src)
+}
+func (m *QueryGetVesselResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetVesselResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetVesselResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetVesselResponse proto.InternalMessageInfo
+
+func (m *QueryGetVesselResponse) GetVessel() Vessel {
+	if m != nil {
+		return m.Vessel
+	}
+	return Vessel{}
+}
+
+type QueryAllVesselRequest struct {
+	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllVesselRequest) Reset()         { *m = QueryAllVesselRequest{} }
+func (m *QueryAllVesselRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllVesselRequest) ProtoMessage()    {}
+func (*QueryAllVesselRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c0d797381a18ae3b, []int{4}
+}
+func (m *QueryAllVesselRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllVesselRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllVesselRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllVesselRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllVesselRequest.Merge(m, src)
+}
+func (m *QueryAllVesselRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllVesselRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllVesselRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllVesselRequest proto.InternalMessageInfo
+
+func (m *QueryAllVesselRequest) GetPagination() *query.PageRequest {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+type QueryAllVesselResponse struct {
+	Vessel     []Vessel            `protobuf:"bytes,1,rep,name=vessel,proto3" json:"vessel"`
+	Pagination *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllVesselResponse) Reset()         { *m = QueryAllVesselResponse{} }
+func (m *QueryAllVesselResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllVesselResponse) ProtoMessage()    {}
+func (*QueryAllVesselResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c0d797381a18ae3b, []int{5}
+}
+func (m *QueryAllVesselResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllVesselResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllVesselResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllVesselResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllVesselResponse.Merge(m, src)
+}
+func (m *QueryAllVesselResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllVesselResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllVesselResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllVesselResponse proto.InternalMessageInfo
+
+func (m *QueryAllVesselResponse) GetVessel() []Vessel {
+	if m != nil {
+		return m.Vessel
+	}
+	return nil
+}
+
+func (m *QueryAllVesselResponse) GetPagination() *query.PageResponse {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*QueryParamsRequest)(nil), "vesseloracle.vesseloracle.QueryParamsRequest")
 	proto.RegisterType((*QueryParamsResponse)(nil), "vesseloracle.vesseloracle.QueryParamsResponse")
+	proto.RegisterType((*QueryGetVesselRequest)(nil), "vesseloracle.vesseloracle.QueryGetVesselRequest")
+	proto.RegisterType((*QueryGetVesselResponse)(nil), "vesseloracle.vesseloracle.QueryGetVesselResponse")
+	proto.RegisterType((*QueryAllVesselRequest)(nil), "vesseloracle.vesseloracle.QueryAllVesselRequest")
+	proto.RegisterType((*QueryAllVesselResponse)(nil), "vesseloracle.vesseloracle.QueryAllVesselResponse")
 }
 
 func init() {
@@ -125,26 +328,40 @@ func init() {
 }
 
 var fileDescriptor_c0d797381a18ae3b = []byte{
-	// 300 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x52, 0x2d, 0x4b, 0x2d, 0x2e,
-	0x4e, 0xcd, 0xc9, 0x2f, 0x4a, 0x4c, 0xce, 0x49, 0xd5, 0x47, 0xe1, 0x14, 0x96, 0xa6, 0x16, 0x55,
-	0xea, 0x15, 0x14, 0xe5, 0x97, 0xe4, 0x0b, 0x49, 0x22, 0xcb, 0xe8, 0x21, 0x73, 0xa4, 0x04, 0x13,
-	0x73, 0x33, 0xf3, 0xf2, 0xf5, 0xc1, 0x24, 0x44, 0xb5, 0x94, 0x48, 0x7a, 0x7e, 0x7a, 0x3e, 0x98,
-	0xa9, 0x0f, 0x62, 0x41, 0x45, 0x65, 0xd2, 0xf3, 0xf3, 0xd3, 0x73, 0x52, 0xf5, 0x13, 0x0b, 0x32,
-	0xf5, 0x13, 0xf3, 0xf2, 0xf2, 0x4b, 0x12, 0x4b, 0x32, 0xf3, 0xf3, 0x8a, 0xa1, 0xb2, 0x5a, 0xc9,
-	0xf9, 0xc5, 0xb9, 0xf9, 0xc5, 0xfa, 0x49, 0x89, 0xc5, 0x50, 0xab, 0xf5, 0xcb, 0x0c, 0x93, 0x52,
-	0x4b, 0x12, 0x0d, 0xf5, 0x0b, 0x12, 0xd3, 0x33, 0xf3, 0xc0, 0x8a, 0xa1, 0x6a, 0xd5, 0x70, 0x3b,
-	0xba, 0x20, 0xb1, 0x28, 0x31, 0x17, 0x6a, 0xa6, 0x92, 0x08, 0x97, 0x50, 0x20, 0xc8, 0xa4, 0x00,
-	0xb0, 0x60, 0x50, 0x6a, 0x61, 0x69, 0x6a, 0x71, 0x89, 0x52, 0x34, 0x97, 0x30, 0x8a, 0x68, 0x71,
-	0x41, 0x7e, 0x5e, 0x71, 0xaa, 0x90, 0x0b, 0x17, 0x1b, 0x44, 0xb3, 0x04, 0xa3, 0x02, 0xa3, 0x06,
-	0xb7, 0x91, 0xa2, 0x1e, 0x4e, 0x3f, 0xeb, 0x41, 0xb4, 0x3a, 0x71, 0x9e, 0xb8, 0x27, 0xcf, 0xb0,
-	0xe2, 0xf9, 0x06, 0x2d, 0xc6, 0x20, 0xa8, 0x5e, 0xa3, 0x39, 0x8c, 0x5c, 0xac, 0x60, 0xd3, 0x85,
-	0x26, 0x31, 0x72, 0xb1, 0x41, 0xd4, 0x09, 0xe9, 0xe2, 0x31, 0x0a, 0xd3, 0x81, 0x52, 0x7a, 0xc4,
-	0x2a, 0x87, 0xb8, 0x5c, 0x49, 0xb3, 0xe9, 0xf2, 0x93, 0xc9, 0x4c, 0xca, 0x42, 0x8a, 0xfa, 0x84,
-	0xc2, 0xc5, 0xc9, 0xfa, 0xc4, 0x23, 0x39, 0xc6, 0x0b, 0x8f, 0xe4, 0x18, 0x1f, 0x3c, 0x92, 0x63,
-	0x9c, 0xf0, 0x58, 0x8e, 0xe1, 0xc2, 0x63, 0x39, 0x86, 0x1b, 0x8f, 0xe5, 0x18, 0xa2, 0x14, 0x51,
-	0x94, 0x57, 0xa0, 0xea, 0x2e, 0xa9, 0x2c, 0x48, 0x2d, 0x4e, 0x62, 0x03, 0x87, 0xaa, 0x31, 0x20,
-	0x00, 0x00, 0xff, 0xff, 0x61, 0x11, 0xc7, 0xc5, 0x34, 0x02, 0x00, 0x00,
+	// 521 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x94, 0x41, 0x8b, 0xd3, 0x40,
+	0x14, 0xc7, 0x3b, 0xe9, 0x1a, 0xe8, 0x08, 0xa2, 0xe3, 0xba, 0xd4, 0x22, 0x71, 0x1b, 0x71, 0x5d,
+	0x17, 0x9c, 0xb1, 0x2b, 0xe2, 0x41, 0x44, 0xb6, 0x88, 0x7b, 0xdd, 0xcd, 0x41, 0x50, 0x0f, 0x32,
+	0x2d, 0x43, 0x08, 0x24, 0x99, 0x6c, 0x66, 0xba, 0xb8, 0x94, 0x5e, 0xfc, 0x04, 0xa2, 0x47, 0x6f,
+	0x9e, 0x3c, 0x78, 0xf0, 0x63, 0xec, 0x71, 0xc1, 0x8b, 0x27, 0x91, 0x56, 0x10, 0xbf, 0x85, 0x64,
+	0xde, 0x80, 0x49, 0xd7, 0x9a, 0xea, 0xa5, 0xcc, 0x4b, 0xfe, 0xff, 0xf7, 0xff, 0x31, 0xef, 0x35,
+	0xf8, 0xfa, 0xa1, 0x50, 0x4a, 0xc4, 0x32, 0xe7, 0xc3, 0x58, 0xb0, 0x4a, 0x71, 0x30, 0x12, 0xf9,
+	0x11, 0xcd, 0x72, 0xa9, 0x25, 0xb9, 0x5c, 0x7e, 0x43, 0xcb, 0x45, 0xe7, 0x02, 0x4f, 0xa2, 0x54,
+	0x32, 0xf3, 0x0b, 0xea, 0xce, 0x6a, 0x28, 0x43, 0x69, 0x8e, 0xac, 0x38, 0xd9, 0xa7, 0x57, 0x42,
+	0x29, 0xc3, 0x58, 0x30, 0x9e, 0x45, 0x8c, 0xa7, 0xa9, 0xd4, 0x5c, 0x47, 0x32, 0x55, 0xf6, 0xed,
+	0xd6, 0x50, 0xaa, 0x44, 0x2a, 0x36, 0xe0, 0xca, 0x46, 0xb3, 0xc3, 0xde, 0x40, 0x68, 0xde, 0x63,
+	0x19, 0x0f, 0xa3, 0xd4, 0x88, 0xad, 0x76, 0x63, 0x31, 0x74, 0xc6, 0x73, 0x9e, 0xa8, 0x7a, 0x1d,
+	0x14, 0xa0, 0xf3, 0x57, 0x31, 0xd9, 0x2f, 0x12, 0xf7, 0x8c, 0x39, 0x10, 0x07, 0x23, 0xa1, 0xb4,
+	0xff, 0x1c, 0x5f, 0xac, 0x3c, 0x55, 0x99, 0x4c, 0x95, 0x20, 0x8f, 0xb0, 0x0b, 0x21, 0x6d, 0xb4,
+	0x8e, 0x36, 0xcf, 0x6e, 0x77, 0xe9, 0xc2, 0xbb, 0xa1, 0x60, 0xed, 0xb7, 0x8e, 0xbf, 0x5e, 0x6d,
+	0x7c, 0xf8, 0xf1, 0x69, 0x0b, 0x05, 0xd6, 0xeb, 0xef, 0xe3, 0x4b, 0xa6, 0xf9, 0xae, 0xd0, 0x4f,
+	0x8c, 0xc3, 0xa6, 0x92, 0xf3, 0xb8, 0x19, 0x25, 0xd2, 0xf4, 0x6e, 0x05, 0xc5, 0x91, 0x9c, 0xc3,
+	0x8e, 0x56, 0x6d, 0x67, 0x1d, 0x6d, 0xae, 0x04, 0x8e, 0x56, 0x64, 0x0d, 0xbb, 0x4a, 0x8e, 0xf2,
+	0xa1, 0x68, 0x37, 0x8d, 0xc8, 0x56, 0xfe, 0x53, 0xbc, 0x36, 0xdf, 0xd2, 0x22, 0x3f, 0xc4, 0x2e,
+	0x60, 0x2d, 0x81, 0x0c, 0xd6, 0xfe, 0x4a, 0x81, 0x1c, 0x58, 0x9b, 0xff, 0xc2, 0xd2, 0xee, 0xc4,
+	0x71, 0x95, 0xf6, 0x31, 0xc6, 0xbf, 0xa7, 0x63, 0xbb, 0x6f, 0x50, 0x18, 0x25, 0x2d, 0x46, 0x49,
+	0x61, 0x8b, 0xec, 0x28, 0xe9, 0x1e, 0x0f, 0x85, 0xf5, 0x06, 0x25, 0xa7, 0xff, 0x1e, 0x59, 0xf8,
+	0x52, 0xc2, 0x1f, 0xe0, 0x9b, 0xff, 0x01, 0x4f, 0x76, 0x2b, 0x8c, 0x8e, 0x61, 0xbc, 0x51, 0xcb,
+	0x08, 0xe9, 0x65, 0xc8, 0xed, 0x9f, 0x4d, 0x7c, 0xc6, 0x40, 0x92, 0x37, 0x08, 0xbb, 0x30, 0x5b,
+	0x72, 0xeb, 0x2f, 0x38, 0xa7, 0x97, 0xaa, 0x43, 0x97, 0x95, 0x43, 0xbe, 0x7f, 0xf3, 0xd5, 0xe7,
+	0xef, 0x6f, 0x9d, 0x6b, 0xa4, 0xcb, 0xea, 0x76, 0x9e, 0x7c, 0x44, 0xd8, 0x85, 0x0b, 0x20, 0xb7,
+	0xeb, 0x52, 0xe6, 0xd7, 0xae, 0xd3, 0xfb, 0x07, 0x87, 0x45, 0x7b, 0x60, 0xd0, 0xee, 0x91, 0xbb,
+	0xac, 0xee, 0x6f, 0xc6, 0xc6, 0x51, 0x22, 0x27, 0x6c, 0xac, 0xd5, 0x84, 0x8d, 0x61, 0x5b, 0x27,
+	0xe4, 0x1d, 0xc2, 0x2d, 0xe8, 0xb8, 0x13, 0x2f, 0x41, 0x3c, 0xbf, 0x7a, 0xf5, 0xc4, 0xa7, 0x56,
+	0x69, 0xa9, 0xcb, 0x84, 0xa2, 0x7f, 0xff, 0x78, 0xea, 0xa1, 0x93, 0xa9, 0x87, 0xbe, 0x4d, 0x3d,
+	0xf4, 0x7a, 0xe6, 0x35, 0x4e, 0x66, 0x5e, 0xe3, 0xcb, 0xcc, 0x6b, 0x3c, 0xeb, 0x56, 0xe4, 0x2f,
+	0xab, 0x6e, 0x7d, 0x94, 0x09, 0x35, 0x70, 0xcd, 0x67, 0xe5, 0xce, 0xaf, 0x00, 0x00, 0x00, 0xff,
+	0xff, 0xb9, 0x93, 0x4f, 0xca, 0x5d, 0x05, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -161,6 +378,9 @@ const _ = grpc.SupportPackageIsVersion4
 type QueryClient interface {
 	// Parameters queries the parameters of the module.
 	Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error)
+	// Queries a list of Vessel items.
+	Vessel(ctx context.Context, in *QueryGetVesselRequest, opts ...grpc.CallOption) (*QueryGetVesselResponse, error)
+	VesselAll(ctx context.Context, in *QueryAllVesselRequest, opts ...grpc.CallOption) (*QueryAllVesselResponse, error)
 }
 
 type queryClient struct {
@@ -180,10 +400,31 @@ func (c *queryClient) Params(ctx context.Context, in *QueryParamsRequest, opts .
 	return out, nil
 }
 
+func (c *queryClient) Vessel(ctx context.Context, in *QueryGetVesselRequest, opts ...grpc.CallOption) (*QueryGetVesselResponse, error) {
+	out := new(QueryGetVesselResponse)
+	err := c.cc.Invoke(ctx, "/vesseloracle.vesseloracle.Query/Vessel", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) VesselAll(ctx context.Context, in *QueryAllVesselRequest, opts ...grpc.CallOption) (*QueryAllVesselResponse, error) {
+	out := new(QueryAllVesselResponse)
+	err := c.cc.Invoke(ctx, "/vesseloracle.vesseloracle.Query/VesselAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 type QueryServer interface {
 	// Parameters queries the parameters of the module.
 	Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error)
+	// Queries a list of Vessel items.
+	Vessel(context.Context, *QueryGetVesselRequest) (*QueryGetVesselResponse, error)
+	VesselAll(context.Context, *QueryAllVesselRequest) (*QueryAllVesselResponse, error)
 }
 
 // UnimplementedQueryServer can be embedded to have forward compatible implementations.
@@ -192,6 +433,12 @@ type UnimplementedQueryServer struct {
 
 func (*UnimplementedQueryServer) Params(ctx context.Context, req *QueryParamsRequest) (*QueryParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Params not implemented")
+}
+func (*UnimplementedQueryServer) Vessel(ctx context.Context, req *QueryGetVesselRequest) (*QueryGetVesselResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Vessel not implemented")
+}
+func (*UnimplementedQueryServer) VesselAll(ctx context.Context, req *QueryAllVesselRequest) (*QueryAllVesselResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method VesselAll not implemented")
 }
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
@@ -216,6 +463,42 @@ func _Query_Params_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_Vessel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetVesselRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).Vessel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/vesseloracle.vesseloracle.Query/Vessel",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).Vessel(ctx, req.(*QueryGetVesselRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_VesselAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllVesselRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).VesselAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/vesseloracle.vesseloracle.Query/VesselAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).VesselAll(ctx, req.(*QueryAllVesselRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Query_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "vesseloracle.vesseloracle.Query",
 	HandlerType: (*QueryServer)(nil),
@@ -223,6 +506,14 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Params",
 			Handler:    _Query_Params_Handler,
+		},
+		{
+			MethodName: "Vessel",
+			Handler:    _Query_Vessel_Handler,
+		},
+		{
+			MethodName: "VesselAll",
+			Handler:    _Query_VesselAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -285,6 +576,165 @@ func (m *QueryParamsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *QueryGetVesselRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetVesselRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetVesselRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Source) > 0 {
+		i -= len(m.Source)
+		copy(dAtA[i:], m.Source)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.Source)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if m.Ts != 0 {
+		i = encodeVarintQuery(dAtA, i, uint64(m.Ts))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Imo) > 0 {
+		i -= len(m.Imo)
+		copy(dAtA[i:], m.Imo)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.Imo)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryGetVesselResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetVesselResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetVesselResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	{
+		size, err := m.Vessel.MarshalToSizedBuffer(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+		i = encodeVarintQuery(dAtA, i, uint64(size))
+	}
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllVesselRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllVesselRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllVesselRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllVesselResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllVesselResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllVesselResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Vessel) > 0 {
+		for iNdEx := len(m.Vessel) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Vessel[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintQuery(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
 	offset -= sovQuery(v)
 	base := offset
@@ -313,6 +763,69 @@ func (m *QueryParamsResponse) Size() (n int) {
 	_ = l
 	l = m.Params.Size()
 	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryGetVesselRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Imo)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	if m.Ts != 0 {
+		n += 1 + sovQuery(uint64(m.Ts))
+	}
+	l = len(m.Source)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryGetVesselResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = m.Vessel.Size()
+	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryAllVesselRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllVesselResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.Vessel) > 0 {
+		for _, e := range m.Vessel {
+			l = e.Size()
+			n += 1 + l + sovQuery(uint64(l))
+		}
+	}
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
 	return n
 }
 
@@ -431,6 +944,428 @@ func (m *QueryParamsResponse) Unmarshal(dAtA []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			if err := m.Params.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetVesselRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetVesselRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetVesselRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Imo", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Imo = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Ts", wireType)
+			}
+			m.Ts = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Ts |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Source", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Source = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetVesselResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetVesselResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetVesselResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Vessel", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if err := m.Vessel.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllVesselRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllVesselRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllVesselRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageRequest{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllVesselResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllVesselResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllVesselResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Vessel", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Vessel = append(m.Vessel, Vessel{})
+			if err := m.Vessel[len(m.Vessel)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageResponse{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex

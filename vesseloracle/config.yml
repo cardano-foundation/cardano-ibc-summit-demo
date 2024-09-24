@@ -9,6 +9,38 @@ accounts:
   coins:
   - 10000token
   - 100000000stake
+- name: ds0
+  coins:
+  - 10000token
+  - 100000000stake
+- name: ds1
+  coins:
+  - 10000token
+  - 100000000stake
+- name: ds2
+  coins:
+  - 10000token
+  - 100000000stake
+- name: ds3
+  coins:
+  - 10000token
+  - 100000000stake
+- name: ds4
+  coins:
+  - 10000token
+  - 100000000stake
+- name: ds5
+  coins:
+  - 10000token
+  - 100000000stake
+- name: ds6
+  coins:
+  - 10000token
+  - 100000000stake
+- name: ds7
+  coins:
+  - 10000token
+  - 100000000stake
 client:
   openapi:
     path: docs/static/openapi.yml

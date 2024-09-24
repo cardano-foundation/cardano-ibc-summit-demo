@@ -1,4 +1,5 @@
 syntax = "proto3";
+
 package vesseloracle.vesseloracle;
 
 import "amino/amino.proto";
@@ -6,25 +7,55 @@ import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "vesseloracle/vesseloracle/params.proto";
+import "vesseloracle/vesseloracle/vessel.proto";
 
 option go_package = "vesseloracle/x/vesseloracle/types";
 
 // Query defines the gRPC querier service.
 service Query {
+  
   // Parameters queries the parameters of the module.
-  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+  rpc Params (QueryParamsRequest) returns (QueryParamsResponse) {
     option (google.api.http).get = "/vesseloracle/vesseloracle/params";
+  
+  }
+  
+  // Queries a list of Vessel items.
+  rpc Vessel    (QueryGetVesselRequest) returns (QueryGetVesselResponse) {
+    option (google.api.http).get = "/vesseloracle/vesseloracle/vessel/{imo}/{ts}/{source}";
+  
+  }
+  rpc VesselAll (QueryAllVesselRequest) returns (QueryAllVesselResponse) {
+    option (google.api.http).get = "/vesseloracle/vesseloracle/vessel";
+  
   }
 }
-
 // QueryParamsRequest is request type for the Query/Params RPC method.
 message QueryParamsRequest {}
 
 // QueryParamsResponse is response type for the Query/Params RPC method.
 message QueryParamsResponse {
+  
   // params holds all the parameters of this module.
-  Params params = 1 [
-    (gogoproto.nullable) = false,
-    (amino.dont_omitempty) = true
-  ];
+  Params params = 1 [(gogoproto.nullable) = false, (amino.dont_omitempty) = true];
 }
+
+message QueryGetVesselRequest {
+  string imo    = 1;
+  uint64 ts     = 2;
+  string source = 3;
+}
+
+message QueryGetVesselResponse {
+  Vessel vessel = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllVesselRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllVesselResponse {
+  repeated Vessel                                 vessel     = 1 [(gogoproto.nullable) = false];
+           cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+

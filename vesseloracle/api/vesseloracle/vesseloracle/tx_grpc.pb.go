@@ -8,7 +8,6 @@ package vesseloracle
 
 import (
 	context "context"
-
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -21,6 +20,9 @@ const _ = grpc.SupportPackageIsVersion7
 
 const (
 	Msg_UpdateParams_FullMethodName = "/vesseloracle.vesseloracle.Msg/UpdateParams"
+	Msg_CreateVessel_FullMethodName = "/vesseloracle.vesseloracle.Msg/CreateVessel"
+	Msg_UpdateVessel_FullMethodName = "/vesseloracle.vesseloracle.Msg/UpdateVessel"
+	Msg_DeleteVessel_FullMethodName = "/vesseloracle.vesseloracle.Msg/DeleteVessel"
 )
 
 // MsgClient is the client API for Msg service.
@@ -30,6 +32,9 @@ type MsgClient interface {
 	// UpdateParams defines a (governance) operation for updating the module
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(ctx context.Context, in *MsgUpdateParams, opts ...grpc.CallOption) (*MsgUpdateParamsResponse, error)
+	CreateVessel(ctx context.Context, in *MsgCreateVessel, opts ...grpc.CallOption) (*MsgCreateVesselResponse, error)
+	UpdateVessel(ctx context.Context, in *MsgUpdateVessel, opts ...grpc.CallOption) (*MsgUpdateVesselResponse, error)
+	DeleteVessel(ctx context.Context, in *MsgDeleteVessel, opts ...grpc.CallOption) (*MsgDeleteVesselResponse, error)
 }
 
 type msgClient struct {
@@ -49,6 +54,33 @@ func (c *msgClient) UpdateParams(ctx context.Context, in *MsgUpdateParams, opts 
 	return out, nil
 }
 
+func (c *msgClient) CreateVessel(ctx context.Context, in *MsgCreateVessel, opts ...grpc.CallOption) (*MsgCreateVesselResponse, error) {
+	out := new(MsgCreateVesselResponse)
+	err := c.cc.Invoke(ctx, Msg_CreateVessel_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) UpdateVessel(ctx context.Context, in *MsgUpdateVessel, opts ...grpc.CallOption) (*MsgUpdateVesselResponse, error) {
+	out := new(MsgUpdateVesselResponse)
+	err := c.cc.Invoke(ctx, Msg_UpdateVessel_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) DeleteVessel(ctx context.Context, in *MsgDeleteVessel, opts ...grpc.CallOption) (*MsgDeleteVesselResponse, error) {
+	out := new(MsgDeleteVesselResponse)
+	err := c.cc.Invoke(ctx, Msg_DeleteVessel_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 // All implementations must embed UnimplementedMsgServer
 // for forward compatibility
@@ -56,6 +88,9 @@ type MsgServer interface {
 	// UpdateParams defines a (governance) operation for updating the module
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error)
+	CreateVessel(context.Context, *MsgCreateVessel) (*MsgCreateVesselResponse, error)
+	UpdateVessel(context.Context, *MsgUpdateVessel) (*MsgUpdateVesselResponse, error)
+	DeleteVessel(context.Context, *MsgDeleteVessel) (*MsgDeleteVesselResponse, error)
 	mustEmbedUnimplementedMsgServer()
 }
 
@@ -65,6 +100,15 @@ type UnimplementedMsgServer struct {
 
 func (UnimplementedMsgServer) UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateParams not implemented")
+}
+func (UnimplementedMsgServer) CreateVessel(context.Context, *MsgCreateVessel) (*MsgCreateVesselResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateVessel not implemented")
+}
+func (UnimplementedMsgServer) UpdateVessel(context.Context, *MsgUpdateVessel) (*MsgUpdateVesselResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVessel not implemented")
+}
+func (UnimplementedMsgServer) DeleteVessel(context.Context, *MsgDeleteVessel) (*MsgDeleteVesselResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteVessel not implemented")
 }
 func (UnimplementedMsgServer) mustEmbedUnimplementedMsgServer() {}
 
@@ -97,6 +141,60 @@ func _Msg_UpdateParams_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_CreateVessel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCreateVessel)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).CreateVessel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_CreateVessel_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).CreateVessel(ctx, req.(*MsgCreateVessel))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_UpdateVessel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgUpdateVessel)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).UpdateVessel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_UpdateVessel_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).UpdateVessel(ctx, req.(*MsgUpdateVessel))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_DeleteVessel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgDeleteVessel)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).DeleteVessel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_DeleteVessel_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).DeleteVessel(ctx, req.(*MsgDeleteVessel))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Msg_ServiceDesc is the grpc.ServiceDesc for Msg service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -107,6 +205,18 @@ var Msg_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateParams",
 			Handler:    _Msg_UpdateParams_Handler,
+		},
+		{
+			MethodName: "CreateVessel",
+			Handler:    _Msg_CreateVessel_Handler,
+		},
+		{
+			MethodName: "UpdateVessel",
+			Handler:    _Msg_UpdateVessel_Handler,
+		},
+		{
+			MethodName: "DeleteVessel",
+			Handler:    _Msg_DeleteVessel_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -20,12 +20,38 @@ func TestGenesisState_Validate(t *testing.T) {
 			valid:    true,
 		},
 		{
-			desc:     "valid genesis state",
+			desc: "valid genesis state",
 			genState: &types.GenesisState{
 
+				VesselList: []types.Vessel{
+					{
+						Imo: "0",
+						Ts:  0,
+					},
+					{
+						Imo: "1",
+						Ts:  1,
+					},
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
+		},
+		{
+			desc: "duplicated vessel",
+			genState: &types.GenesisState{
+				VesselList: []types.Vessel{
+					{
+						Imo: "0",
+						Ts:  0,
+					},
+					{
+						Imo: "0",
+						Ts:  0,
+					},
+				},
+			},
+			valid: false,
 		},
 		// this line is used by starport scaffolding # types/genesis/testcase
 	}
