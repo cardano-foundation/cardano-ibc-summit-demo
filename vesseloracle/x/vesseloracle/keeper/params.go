@@ -31,3 +31,18 @@ func (k Keeper) SetParams(ctx context.Context, params types.Params) error {
 
 	return nil
 }
+
+func (k Keeper) GetConsolidationWindowMinItemCount(ctx context.Context) int32 {
+	params := k.GetParams(ctx)
+	return params.ConsolidationWindowMinItemCount
+}
+
+func (k Keeper) GetConsolidationWindowMaxItemCount(ctx context.Context) int32 {
+	params := k.GetParams(ctx)
+	return params.ConsolidationWindowMaxItemCount
+}
+
+func (k Keeper) GetConsolidationWindowIntervalWidth(ctx context.Context) uint64 {
+	params := k.GetParams(ctx)
+	return params.ConsolidationWindowIntervalWidth
+}

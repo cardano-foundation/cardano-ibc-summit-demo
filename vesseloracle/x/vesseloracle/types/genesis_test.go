@@ -33,6 +33,16 @@ func TestGenesisState_Validate(t *testing.T) {
 						Ts:  1,
 					},
 				},
+				ConsolidatedDataReportList: []types.ConsolidatedDataReport{
+					{
+						Imo: "0",
+						Ts:  0,
+					},
+					{
+						Imo: "1",
+						Ts:  1,
+					},
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
@@ -41,6 +51,22 @@ func TestGenesisState_Validate(t *testing.T) {
 			desc: "duplicated vessel",
 			genState: &types.GenesisState{
 				VesselList: []types.Vessel{
+					{
+						Imo: "0",
+						Ts:  0,
+					},
+					{
+						Imo: "0",
+						Ts:  0,
+					},
+				},
+			},
+			valid: false,
+		},
+		{
+			desc: "duplicated consolidatedDataReport",
+			genState: &types.GenesisState{
+				ConsolidatedDataReportList: []types.ConsolidatedDataReport{
 					{
 						Imo: "0",
 						Ts:  0,

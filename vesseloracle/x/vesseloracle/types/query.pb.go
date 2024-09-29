@@ -314,6 +314,202 @@ func (m *QueryAllVesselResponse) GetPagination() *query.PageResponse {
 	return nil
 }
 
+type QueryGetConsolidatedDataReportRequest struct {
+	Imo string `protobuf:"bytes,1,opt,name=imo,proto3" json:"imo,omitempty"`
+	Ts  uint64 `protobuf:"varint,2,opt,name=ts,proto3" json:"ts,omitempty"`
+}
+
+func (m *QueryGetConsolidatedDataReportRequest) Reset()         { *m = QueryGetConsolidatedDataReportRequest{} }
+func (m *QueryGetConsolidatedDataReportRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetConsolidatedDataReportRequest) ProtoMessage()    {}
+func (*QueryGetConsolidatedDataReportRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c0d797381a18ae3b, []int{6}
+}
+func (m *QueryGetConsolidatedDataReportRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetConsolidatedDataReportRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetConsolidatedDataReportRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetConsolidatedDataReportRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetConsolidatedDataReportRequest.Merge(m, src)
+}
+func (m *QueryGetConsolidatedDataReportRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetConsolidatedDataReportRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetConsolidatedDataReportRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetConsolidatedDataReportRequest proto.InternalMessageInfo
+
+func (m *QueryGetConsolidatedDataReportRequest) GetImo() string {
+	if m != nil {
+		return m.Imo
+	}
+	return ""
+}
+
+func (m *QueryGetConsolidatedDataReportRequest) GetTs() uint64 {
+	if m != nil {
+		return m.Ts
+	}
+	return 0
+}
+
+type QueryGetConsolidatedDataReportResponse struct {
+	ConsolidatedDataReport ConsolidatedDataReport `protobuf:"bytes,1,opt,name=consolidatedDataReport,proto3" json:"consolidatedDataReport"`
+}
+
+func (m *QueryGetConsolidatedDataReportResponse) Reset() {
+	*m = QueryGetConsolidatedDataReportResponse{}
+}
+func (m *QueryGetConsolidatedDataReportResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetConsolidatedDataReportResponse) ProtoMessage()    {}
+func (*QueryGetConsolidatedDataReportResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c0d797381a18ae3b, []int{7}
+}
+func (m *QueryGetConsolidatedDataReportResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetConsolidatedDataReportResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetConsolidatedDataReportResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetConsolidatedDataReportResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetConsolidatedDataReportResponse.Merge(m, src)
+}
+func (m *QueryGetConsolidatedDataReportResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetConsolidatedDataReportResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetConsolidatedDataReportResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetConsolidatedDataReportResponse proto.InternalMessageInfo
+
+func (m *QueryGetConsolidatedDataReportResponse) GetConsolidatedDataReport() ConsolidatedDataReport {
+	if m != nil {
+		return m.ConsolidatedDataReport
+	}
+	return ConsolidatedDataReport{}
+}
+
+type QueryAllConsolidatedDataReportRequest struct {
+	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllConsolidatedDataReportRequest) Reset()         { *m = QueryAllConsolidatedDataReportRequest{} }
+func (m *QueryAllConsolidatedDataReportRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllConsolidatedDataReportRequest) ProtoMessage()    {}
+func (*QueryAllConsolidatedDataReportRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c0d797381a18ae3b, []int{8}
+}
+func (m *QueryAllConsolidatedDataReportRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllConsolidatedDataReportRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllConsolidatedDataReportRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllConsolidatedDataReportRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllConsolidatedDataReportRequest.Merge(m, src)
+}
+func (m *QueryAllConsolidatedDataReportRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllConsolidatedDataReportRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllConsolidatedDataReportRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllConsolidatedDataReportRequest proto.InternalMessageInfo
+
+func (m *QueryAllConsolidatedDataReportRequest) GetPagination() *query.PageRequest {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+type QueryAllConsolidatedDataReportResponse struct {
+	ConsolidatedDataReport []ConsolidatedDataReport `protobuf:"bytes,1,rep,name=consolidatedDataReport,proto3" json:"consolidatedDataReport"`
+	Pagination             *query.PageResponse      `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllConsolidatedDataReportResponse) Reset() {
+	*m = QueryAllConsolidatedDataReportResponse{}
+}
+func (m *QueryAllConsolidatedDataReportResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllConsolidatedDataReportResponse) ProtoMessage()    {}
+func (*QueryAllConsolidatedDataReportResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c0d797381a18ae3b, []int{9}
+}
+func (m *QueryAllConsolidatedDataReportResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllConsolidatedDataReportResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllConsolidatedDataReportResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllConsolidatedDataReportResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllConsolidatedDataReportResponse.Merge(m, src)
+}
+func (m *QueryAllConsolidatedDataReportResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllConsolidatedDataReportResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllConsolidatedDataReportResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllConsolidatedDataReportResponse proto.InternalMessageInfo
+
+func (m *QueryAllConsolidatedDataReportResponse) GetConsolidatedDataReport() []ConsolidatedDataReport {
+	if m != nil {
+		return m.ConsolidatedDataReport
+	}
+	return nil
+}
+
+func (m *QueryAllConsolidatedDataReportResponse) GetPagination() *query.PageResponse {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*QueryParamsRequest)(nil), "vesseloracle.vesseloracle.QueryParamsRequest")
 	proto.RegisterType((*QueryParamsResponse)(nil), "vesseloracle.vesseloracle.QueryParamsResponse")
@@ -321,6 +517,10 @@ func init() {
 	proto.RegisterType((*QueryGetVesselResponse)(nil), "vesseloracle.vesseloracle.QueryGetVesselResponse")
 	proto.RegisterType((*QueryAllVesselRequest)(nil), "vesseloracle.vesseloracle.QueryAllVesselRequest")
 	proto.RegisterType((*QueryAllVesselResponse)(nil), "vesseloracle.vesseloracle.QueryAllVesselResponse")
+	proto.RegisterType((*QueryGetConsolidatedDataReportRequest)(nil), "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest")
+	proto.RegisterType((*QueryGetConsolidatedDataReportResponse)(nil), "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse")
+	proto.RegisterType((*QueryAllConsolidatedDataReportRequest)(nil), "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest")
+	proto.RegisterType((*QueryAllConsolidatedDataReportResponse)(nil), "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse")
 }
 
 func init() {
@@ -328,40 +528,50 @@ func init() {
 }
 
 var fileDescriptor_c0d797381a18ae3b = []byte{
-	// 521 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x94, 0x41, 0x8b, 0xd3, 0x40,
-	0x14, 0xc7, 0x3b, 0xe9, 0x1a, 0xe8, 0x08, 0xa2, 0xe3, 0xba, 0xd4, 0x22, 0x71, 0x1b, 0x71, 0x5d,
-	0x17, 0x9c, 0xb1, 0x2b, 0xe2, 0x41, 0x44, 0xb6, 0x88, 0x7b, 0xdd, 0xcd, 0x41, 0x50, 0x0f, 0x32,
-	0x2d, 0x43, 0x08, 0x24, 0x99, 0x6c, 0x66, 0xba, 0xb8, 0x94, 0x5e, 0xfc, 0x04, 0xa2, 0x47, 0x6f,
-	0x9e, 0x3c, 0x78, 0xf0, 0x63, 0xec, 0x71, 0xc1, 0x8b, 0x27, 0x91, 0x56, 0x10, 0xbf, 0x85, 0x64,
-	0xde, 0x80, 0x49, 0xd7, 0x9a, 0xea, 0xa5, 0xcc, 0x4b, 0xfe, 0xff, 0xf7, 0xff, 0x31, 0xef, 0x35,
-	0xf8, 0xfa, 0xa1, 0x50, 0x4a, 0xc4, 0x32, 0xe7, 0xc3, 0x58, 0xb0, 0x4a, 0x71, 0x30, 0x12, 0xf9,
-	0x11, 0xcd, 0x72, 0xa9, 0x25, 0xb9, 0x5c, 0x7e, 0x43, 0xcb, 0x45, 0xe7, 0x02, 0x4f, 0xa2, 0x54,
-	0x32, 0xf3, 0x0b, 0xea, 0xce, 0x6a, 0x28, 0x43, 0x69, 0x8e, 0xac, 0x38, 0xd9, 0xa7, 0x57, 0x42,
-	0x29, 0xc3, 0x58, 0x30, 0x9e, 0x45, 0x8c, 0xa7, 0xa9, 0xd4, 0x5c, 0x47, 0x32, 0x55, 0xf6, 0xed,
-	0xd6, 0x50, 0xaa, 0x44, 0x2a, 0x36, 0xe0, 0xca, 0x46, 0xb3, 0xc3, 0xde, 0x40, 0x68, 0xde, 0x63,
-	0x19, 0x0f, 0xa3, 0xd4, 0x88, 0xad, 0x76, 0x63, 0x31, 0x74, 0xc6, 0x73, 0x9e, 0xa8, 0x7a, 0x1d,
-	0x14, 0xa0, 0xf3, 0x57, 0x31, 0xd9, 0x2f, 0x12, 0xf7, 0x8c, 0x39, 0x10, 0x07, 0x23, 0xa1, 0xb4,
-	0xff, 0x1c, 0x5f, 0xac, 0x3c, 0x55, 0x99, 0x4c, 0x95, 0x20, 0x8f, 0xb0, 0x0b, 0x21, 0x6d, 0xb4,
-	0x8e, 0x36, 0xcf, 0x6e, 0x77, 0xe9, 0xc2, 0xbb, 0xa1, 0x60, 0xed, 0xb7, 0x8e, 0xbf, 0x5e, 0x6d,
-	0x7c, 0xf8, 0xf1, 0x69, 0x0b, 0x05, 0xd6, 0xeb, 0xef, 0xe3, 0x4b, 0xa6, 0xf9, 0xae, 0xd0, 0x4f,
-	0x8c, 0xc3, 0xa6, 0x92, 0xf3, 0xb8, 0x19, 0x25, 0xd2, 0xf4, 0x6e, 0x05, 0xc5, 0x91, 0x9c, 0xc3,
-	0x8e, 0x56, 0x6d, 0x67, 0x1d, 0x6d, 0xae, 0x04, 0x8e, 0x56, 0x64, 0x0d, 0xbb, 0x4a, 0x8e, 0xf2,
-	0xa1, 0x68, 0x37, 0x8d, 0xc8, 0x56, 0xfe, 0x53, 0xbc, 0x36, 0xdf, 0xd2, 0x22, 0x3f, 0xc4, 0x2e,
-	0x60, 0x2d, 0x81, 0x0c, 0xd6, 0xfe, 0x4a, 0x81, 0x1c, 0x58, 0x9b, 0xff, 0xc2, 0xd2, 0xee, 0xc4,
-	0x71, 0x95, 0xf6, 0x31, 0xc6, 0xbf, 0xa7, 0x63, 0xbb, 0x6f, 0x50, 0x18, 0x25, 0x2d, 0x46, 0x49,
-	0x61, 0x8b, 0xec, 0x28, 0xe9, 0x1e, 0x0f, 0x85, 0xf5, 0x06, 0x25, 0xa7, 0xff, 0x1e, 0x59, 0xf8,
-	0x52, 0xc2, 0x1f, 0xe0, 0x9b, 0xff, 0x01, 0x4f, 0x76, 0x2b, 0x8c, 0x8e, 0x61, 0xbc, 0x51, 0xcb,
-	0x08, 0xe9, 0x65, 0xc8, 0xed, 0x9f, 0x4d, 0x7c, 0xc6, 0x40, 0x92, 0x37, 0x08, 0xbb, 0x30, 0x5b,
-	0x72, 0xeb, 0x2f, 0x38, 0xa7, 0x97, 0xaa, 0x43, 0x97, 0x95, 0x43, 0xbe, 0x7f, 0xf3, 0xd5, 0xe7,
-	0xef, 0x6f, 0x9d, 0x6b, 0xa4, 0xcb, 0xea, 0x76, 0x9e, 0x7c, 0x44, 0xd8, 0x85, 0x0b, 0x20, 0xb7,
-	0xeb, 0x52, 0xe6, 0xd7, 0xae, 0xd3, 0xfb, 0x07, 0x87, 0x45, 0x7b, 0x60, 0xd0, 0xee, 0x91, 0xbb,
-	0xac, 0xee, 0x6f, 0xc6, 0xc6, 0x51, 0x22, 0x27, 0x6c, 0xac, 0xd5, 0x84, 0x8d, 0x61, 0x5b, 0x27,
-	0xe4, 0x1d, 0xc2, 0x2d, 0xe8, 0xb8, 0x13, 0x2f, 0x41, 0x3c, 0xbf, 0x7a, 0xf5, 0xc4, 0xa7, 0x56,
-	0x69, 0xa9, 0xcb, 0x84, 0xa2, 0x7f, 0xff, 0x78, 0xea, 0xa1, 0x93, 0xa9, 0x87, 0xbe, 0x4d, 0x3d,
-	0xf4, 0x7a, 0xe6, 0x35, 0x4e, 0x66, 0x5e, 0xe3, 0xcb, 0xcc, 0x6b, 0x3c, 0xeb, 0x56, 0xe4, 0x2f,
-	0xab, 0x6e, 0x7d, 0x94, 0x09, 0x35, 0x70, 0xcd, 0x67, 0xe5, 0xce, 0xaf, 0x00, 0x00, 0x00, 0xff,
-	0xff, 0xb9, 0x93, 0x4f, 0xca, 0x5d, 0x05, 0x00, 0x00,
+	// 683 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x96, 0x4f, 0x6b, 0x13, 0x4f,
+	0x18, 0xc7, 0x33, 0x49, 0x7f, 0xfb, 0xa3, 0x23, 0x88, 0x8e, 0x35, 0xb4, 0x41, 0xd6, 0x76, 0xa5,
+	0xb5, 0x16, 0xdc, 0x31, 0x2d, 0x45, 0xa1, 0xa8, 0x4d, 0x2d, 0x2d, 0xde, 0xda, 0x3d, 0x08, 0xea,
+	0xa1, 0x4c, 0xd3, 0x61, 0x59, 0xd8, 0xec, 0x6c, 0x77, 0x26, 0xc5, 0x12, 0x72, 0xf1, 0x15, 0x88,
+	0x9e, 0xc4, 0x9b, 0x27, 0x0f, 0x1e, 0xf4, 0x5d, 0xf4, 0x58, 0xf0, 0xe2, 0x45, 0x91, 0x44, 0xf1,
+	0x6d, 0xc8, 0xce, 0x4c, 0x71, 0x37, 0x4d, 0xb2, 0xdb, 0x3f, 0x5e, 0xca, 0xcc, 0xee, 0xf3, 0xe7,
+	0xf3, 0x7c, 0x9f, 0x67, 0x9f, 0x06, 0x4e, 0xef, 0x51, 0xce, 0xa9, 0xcf, 0x22, 0x52, 0xf7, 0x29,
+	0x4e, 0x5d, 0x76, 0x9b, 0x34, 0xda, 0xb7, 0xc3, 0x88, 0x09, 0x86, 0x26, 0x92, 0x6f, 0xec, 0xe4,
+	0xa5, 0x72, 0x99, 0x34, 0xbc, 0x80, 0x61, 0xf9, 0x57, 0x59, 0x57, 0xc6, 0x5c, 0xe6, 0x32, 0x79,
+	0xc4, 0xf1, 0x49, 0x3f, 0xbd, 0xe6, 0x32, 0xe6, 0xfa, 0x14, 0x93, 0xd0, 0xc3, 0x24, 0x08, 0x98,
+	0x20, 0xc2, 0x63, 0x01, 0xd7, 0x6f, 0xe7, 0xea, 0x8c, 0x37, 0x18, 0xc7, 0xdb, 0x84, 0xeb, 0xd4,
+	0x78, 0xaf, 0xba, 0x4d, 0x05, 0xa9, 0xe2, 0x90, 0xb8, 0x5e, 0x20, 0x8d, 0xb5, 0xed, 0xcc, 0x60,
+	0xe8, 0x90, 0x44, 0xa4, 0xc1, 0xb3, 0xed, 0xd4, 0x45, 0xdb, 0xdd, 0x1b, 0x6c, 0x57, 0x67, 0x01,
+	0x67, 0xbe, 0xb7, 0x43, 0x04, 0xdd, 0xd9, 0xda, 0x21, 0x82, 0x6c, 0x45, 0x34, 0x64, 0x91, 0x50,
+	0x9e, 0xd6, 0x18, 0x44, 0x9b, 0x31, 0xeb, 0x86, 0x4c, 0xeb, 0xd0, 0xdd, 0x26, 0xe5, 0xc2, 0x7a,
+	0x0e, 0xaf, 0xa4, 0x9e, 0xf2, 0x90, 0x05, 0x9c, 0xa2, 0x55, 0x68, 0x28, 0xbc, 0x71, 0x30, 0x09,
+	0x66, 0x2f, 0xcc, 0x4f, 0xd9, 0x03, 0x55, 0xb5, 0x95, 0xeb, 0xca, 0xe8, 0xc1, 0xf7, 0xeb, 0x85,
+	0x0f, 0xbf, 0x3f, 0xcd, 0x01, 0x47, 0xfb, 0x5a, 0x9b, 0xf0, 0xaa, 0x0c, 0xbe, 0x4e, 0xc5, 0x13,
+	0xe9, 0xa1, 0xb3, 0xa2, 0x4b, 0xb0, 0xe4, 0x35, 0x98, 0x8c, 0x3d, 0xea, 0xc4, 0x47, 0x74, 0x11,
+	0x16, 0x05, 0x1f, 0x2f, 0x4e, 0x82, 0xd9, 0x11, 0xa7, 0x28, 0x38, 0x2a, 0x43, 0x83, 0xb3, 0x66,
+	0x54, 0xa7, 0xe3, 0x25, 0x69, 0xa4, 0x6f, 0xd6, 0x53, 0x58, 0xee, 0x0d, 0xa9, 0x91, 0x1f, 0x42,
+	0x43, 0x61, 0xe5, 0x40, 0x56, 0xae, 0x2b, 0x23, 0x31, 0xb2, 0xa3, 0xdd, 0xac, 0x2d, 0x4d, 0x5b,
+	0xf3, 0xfd, 0x34, 0xed, 0x1a, 0x84, 0x7f, 0xfb, 0xaa, 0xa3, 0xcf, 0xd8, 0x6a, 0x08, 0xec, 0x78,
+	0x08, 0x6c, 0x35, 0x7f, 0x7a, 0x08, 0xec, 0x0d, 0xe2, 0x52, 0xed, 0xeb, 0x24, 0x3c, 0xad, 0xf7,
+	0x40, 0xc3, 0x27, 0x32, 0xf4, 0x81, 0x2f, 0x9d, 0x02, 0x1e, 0xad, 0xa7, 0x18, 0x8b, 0x92, 0xf1,
+	0x66, 0x26, 0xa3, 0xca, 0x9e, 0x82, 0x7c, 0x0c, 0xa7, 0x8f, 0x04, 0x7e, 0x94, 0x18, 0xa8, 0x55,
+	0x22, 0x88, 0x23, 0xc7, 0x29, 0x77, 0x0f, 0xad, 0xb7, 0x00, 0xce, 0x64, 0xc5, 0xd2, 0xf5, 0x33,
+	0x58, 0xae, 0xf7, 0xb5, 0xd0, 0x72, 0x57, 0x87, 0xe8, 0xd1, 0x3f, 0xb4, 0xd6, 0x67, 0x40, 0x58,
+	0x8b, 0xe9, 0x32, 0x6b, 0xbe, 0x3f, 0xbc, 0xcc, 0xf3, 0x6a, 0x7e, 0xe7, 0x48, 0x8c, 0x21, 0x19,
+	0x73, 0x88, 0x51, 0xfa, 0x07, 0x62, 0x9c, 0xdb, 0xf0, 0xcc, 0x7f, 0xfe, 0x1f, 0xfe, 0x27, 0x8b,
+	0x44, 0xaf, 0x01, 0x34, 0xd4, 0x62, 0x40, 0xb7, 0x87, 0xe0, 0x1e, 0xdf, 0x48, 0x15, 0x3b, 0xaf,
+	0xb9, 0xca, 0x6f, 0xdd, 0x7a, 0xf9, 0xe5, 0xe7, 0x9b, 0xe2, 0x0d, 0x34, 0x85, 0xb3, 0x56, 0x2d,
+	0xfa, 0x08, 0xa0, 0xa1, 0xbe, 0x1e, 0x74, 0x27, 0x2b, 0x4b, 0xef, 0xce, 0xaa, 0x54, 0x4f, 0xe0,
+	0xa1, 0xd1, 0xee, 0x4b, 0xb4, 0xbb, 0x68, 0x11, 0x67, 0x6d, 0x77, 0xdc, 0xf2, 0x1a, 0xac, 0x8d,
+	0x5b, 0x82, 0xb7, 0x71, 0x4b, 0xad, 0xba, 0x36, 0x7a, 0x07, 0xe0, 0xa8, 0x8a, 0x58, 0xf3, 0x73,
+	0x10, 0xf7, 0xee, 0xad, 0x6c, 0xe2, 0x63, 0x7b, 0x28, 0x97, 0x98, 0x7a, 0xe3, 0xfc, 0x02, 0xb0,
+	0xdc, 0x7f, 0xda, 0xd0, 0x72, 0x0e, 0xa9, 0x86, 0x7e, 0x75, 0x95, 0xda, 0x19, 0x22, 0xe8, 0x52,
+	0xd6, 0x64, 0x29, 0xcb, 0xe8, 0x01, 0x3e, 0xf9, 0xbf, 0xcc, 0x44, 0x3b, 0xd0, 0x37, 0x00, 0x27,
+	0xfa, 0xa7, 0x8a, 0xbb, 0xb2, 0x9c, 0x43, 0xe3, 0x33, 0x96, 0x9a, 0xb9, 0x30, 0xac, 0x25, 0x59,
+	0xea, 0x22, 0x5a, 0x38, 0x45, 0xa9, 0x2b, 0x4b, 0x07, 0x1d, 0x13, 0x1c, 0x76, 0x4c, 0xf0, 0xa3,
+	0x63, 0x82, 0x57, 0x5d, 0xb3, 0x70, 0xd8, 0x35, 0x0b, 0x5f, 0xbb, 0x66, 0xe1, 0xd9, 0x54, 0x2a,
+	0xc0, 0x8b, 0x74, 0x3c, 0xb1, 0x1f, 0x52, 0xbe, 0x6d, 0xc8, 0xdf, 0x16, 0x0b, 0x7f, 0x02, 0x00,
+	0x00, 0xff, 0xff, 0x1f, 0x44, 0x7c, 0x32, 0x9c, 0x09, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -381,6 +591,9 @@ type QueryClient interface {
 	// Queries a list of Vessel items.
 	Vessel(ctx context.Context, in *QueryGetVesselRequest, opts ...grpc.CallOption) (*QueryGetVesselResponse, error)
 	VesselAll(ctx context.Context, in *QueryAllVesselRequest, opts ...grpc.CallOption) (*QueryAllVesselResponse, error)
+	// Queries a list of ConsolidatedDataReport items.
+	ConsolidatedDataReport(ctx context.Context, in *QueryGetConsolidatedDataReportRequest, opts ...grpc.CallOption) (*QueryGetConsolidatedDataReportResponse, error)
+	ConsolidatedDataReportAll(ctx context.Context, in *QueryAllConsolidatedDataReportRequest, opts ...grpc.CallOption) (*QueryAllConsolidatedDataReportResponse, error)
 }
 
 type queryClient struct {
@@ -418,6 +631,24 @@ func (c *queryClient) VesselAll(ctx context.Context, in *QueryAllVesselRequest, 
 	return out, nil
 }
 
+func (c *queryClient) ConsolidatedDataReport(ctx context.Context, in *QueryGetConsolidatedDataReportRequest, opts ...grpc.CallOption) (*QueryGetConsolidatedDataReportResponse, error) {
+	out := new(QueryGetConsolidatedDataReportResponse)
+	err := c.cc.Invoke(ctx, "/vesseloracle.vesseloracle.Query/ConsolidatedDataReport", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) ConsolidatedDataReportAll(ctx context.Context, in *QueryAllConsolidatedDataReportRequest, opts ...grpc.CallOption) (*QueryAllConsolidatedDataReportResponse, error) {
+	out := new(QueryAllConsolidatedDataReportResponse)
+	err := c.cc.Invoke(ctx, "/vesseloracle.vesseloracle.Query/ConsolidatedDataReportAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 type QueryServer interface {
 	// Parameters queries the parameters of the module.
@@ -425,6 +656,9 @@ type QueryServer interface {
 	// Queries a list of Vessel items.
 	Vessel(context.Context, *QueryGetVesselRequest) (*QueryGetVesselResponse, error)
 	VesselAll(context.Context, *QueryAllVesselRequest) (*QueryAllVesselResponse, error)
+	// Queries a list of ConsolidatedDataReport items.
+	ConsolidatedDataReport(context.Context, *QueryGetConsolidatedDataReportRequest) (*QueryGetConsolidatedDataReportResponse, error)
+	ConsolidatedDataReportAll(context.Context, *QueryAllConsolidatedDataReportRequest) (*QueryAllConsolidatedDataReportResponse, error)
 }
 
 // UnimplementedQueryServer can be embedded to have forward compatible implementations.
@@ -439,6 +673,12 @@ func (*UnimplementedQueryServer) Vessel(ctx context.Context, req *QueryGetVessel
 }
 func (*UnimplementedQueryServer) VesselAll(ctx context.Context, req *QueryAllVesselRequest) (*QueryAllVesselResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VesselAll not implemented")
+}
+func (*UnimplementedQueryServer) ConsolidatedDataReport(ctx context.Context, req *QueryGetConsolidatedDataReportRequest) (*QueryGetConsolidatedDataReportResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ConsolidatedDataReport not implemented")
+}
+func (*UnimplementedQueryServer) ConsolidatedDataReportAll(ctx context.Context, req *QueryAllConsolidatedDataReportRequest) (*QueryAllConsolidatedDataReportResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ConsolidatedDataReportAll not implemented")
 }
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
@@ -499,6 +739,42 @@ func _Query_VesselAll_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_ConsolidatedDataReport_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetConsolidatedDataReportRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).ConsolidatedDataReport(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/vesseloracle.vesseloracle.Query/ConsolidatedDataReport",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).ConsolidatedDataReport(ctx, req.(*QueryGetConsolidatedDataReportRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_ConsolidatedDataReportAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllConsolidatedDataReportRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).ConsolidatedDataReportAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/vesseloracle.vesseloracle.Query/ConsolidatedDataReportAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).ConsolidatedDataReportAll(ctx, req.(*QueryAllConsolidatedDataReportRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Query_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "vesseloracle.vesseloracle.Query",
 	HandlerType: (*QueryServer)(nil),
@@ -514,6 +790,14 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "VesselAll",
 			Handler:    _Query_VesselAll_Handler,
+		},
+		{
+			MethodName: "ConsolidatedDataReport",
+			Handler:    _Query_ConsolidatedDataReport_Handler,
+		},
+		{
+			MethodName: "ConsolidatedDataReportAll",
+			Handler:    _Query_ConsolidatedDataReportAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -735,6 +1019,158 @@ func (m *QueryAllVesselResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) 
 	return len(dAtA) - i, nil
 }
 
+func (m *QueryGetConsolidatedDataReportRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetConsolidatedDataReportRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetConsolidatedDataReportRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Ts != 0 {
+		i = encodeVarintQuery(dAtA, i, uint64(m.Ts))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Imo) > 0 {
+		i -= len(m.Imo)
+		copy(dAtA[i:], m.Imo)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.Imo)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryGetConsolidatedDataReportResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetConsolidatedDataReportResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetConsolidatedDataReportResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	{
+		size, err := m.ConsolidatedDataReport.MarshalToSizedBuffer(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+		i = encodeVarintQuery(dAtA, i, uint64(size))
+	}
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllConsolidatedDataReportRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllConsolidatedDataReportRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllConsolidatedDataReportRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllConsolidatedDataReportResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllConsolidatedDataReportResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllConsolidatedDataReportResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.ConsolidatedDataReport) > 0 {
+		for iNdEx := len(m.ConsolidatedDataReport) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.ConsolidatedDataReport[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintQuery(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
 	offset -= sovQuery(v)
 	base := offset
@@ -818,6 +1254,65 @@ func (m *QueryAllVesselResponse) Size() (n int) {
 	_ = l
 	if len(m.Vessel) > 0 {
 		for _, e := range m.Vessel {
+			l = e.Size()
+			n += 1 + l + sovQuery(uint64(l))
+		}
+	}
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryGetConsolidatedDataReportRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Imo)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	if m.Ts != 0 {
+		n += 1 + sovQuery(uint64(m.Ts))
+	}
+	return n
+}
+
+func (m *QueryGetConsolidatedDataReportResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = m.ConsolidatedDataReport.Size()
+	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryAllConsolidatedDataReportRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllConsolidatedDataReportResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.ConsolidatedDataReport) > 0 {
+		for _, e := range m.ConsolidatedDataReport {
 			l = e.Size()
 			n += 1 + l + sovQuery(uint64(l))
 		}
@@ -1330,6 +1825,396 @@ func (m *QueryAllVesselResponse) Unmarshal(dAtA []byte) error {
 			}
 			m.Vessel = append(m.Vessel, Vessel{})
 			if err := m.Vessel[len(m.Vessel)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageResponse{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetConsolidatedDataReportRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetConsolidatedDataReportRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetConsolidatedDataReportRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Imo", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Imo = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Ts", wireType)
+			}
+			m.Ts = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Ts |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetConsolidatedDataReportResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetConsolidatedDataReportResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetConsolidatedDataReportResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ConsolidatedDataReport", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if err := m.ConsolidatedDataReport.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllConsolidatedDataReportRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllConsolidatedDataReportRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllConsolidatedDataReportRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageRequest{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllConsolidatedDataReportResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllConsolidatedDataReportResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllConsolidatedDataReportResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ConsolidatedDataReport", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ConsolidatedDataReport = append(m.ConsolidatedDataReport, ConsolidatedDataReport{})
+			if err := m.ConsolidatedDataReport[len(m.ConsolidatedDataReport)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex

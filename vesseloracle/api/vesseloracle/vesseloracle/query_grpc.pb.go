@@ -19,9 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Query_Params_FullMethodName    = "/vesseloracle.vesseloracle.Query/Params"
-	Query_Vessel_FullMethodName    = "/vesseloracle.vesseloracle.Query/Vessel"
-	Query_VesselAll_FullMethodName = "/vesseloracle.vesseloracle.Query/VesselAll"
+	Query_Params_FullMethodName                    = "/vesseloracle.vesseloracle.Query/Params"
+	Query_Vessel_FullMethodName                    = "/vesseloracle.vesseloracle.Query/Vessel"
+	Query_VesselAll_FullMethodName                 = "/vesseloracle.vesseloracle.Query/VesselAll"
+	Query_ConsolidatedDataReport_FullMethodName    = "/vesseloracle.vesseloracle.Query/ConsolidatedDataReport"
+	Query_ConsolidatedDataReportAll_FullMethodName = "/vesseloracle.vesseloracle.Query/ConsolidatedDataReportAll"
 )
 
 // QueryClient is the client API for Query service.
@@ -33,6 +35,9 @@ type QueryClient interface {
 	// Queries a list of Vessel items.
 	Vessel(ctx context.Context, in *QueryGetVesselRequest, opts ...grpc.CallOption) (*QueryGetVesselResponse, error)
 	VesselAll(ctx context.Context, in *QueryAllVesselRequest, opts ...grpc.CallOption) (*QueryAllVesselResponse, error)
+	// Queries a list of ConsolidatedDataReport items.
+	ConsolidatedDataReport(ctx context.Context, in *QueryGetConsolidatedDataReportRequest, opts ...grpc.CallOption) (*QueryGetConsolidatedDataReportResponse, error)
+	ConsolidatedDataReportAll(ctx context.Context, in *QueryAllConsolidatedDataReportRequest, opts ...grpc.CallOption) (*QueryAllConsolidatedDataReportResponse, error)
 }
 
 type queryClient struct {
@@ -70,6 +75,24 @@ func (c *queryClient) VesselAll(ctx context.Context, in *QueryAllVesselRequest, 
 	return out, nil
 }
 
+func (c *queryClient) ConsolidatedDataReport(ctx context.Context, in *QueryGetConsolidatedDataReportRequest, opts ...grpc.CallOption) (*QueryGetConsolidatedDataReportResponse, error) {
+	out := new(QueryGetConsolidatedDataReportResponse)
+	err := c.cc.Invoke(ctx, Query_ConsolidatedDataReport_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) ConsolidatedDataReportAll(ctx context.Context, in *QueryAllConsolidatedDataReportRequest, opts ...grpc.CallOption) (*QueryAllConsolidatedDataReportResponse, error) {
+	out := new(QueryAllConsolidatedDataReportResponse)
+	err := c.cc.Invoke(ctx, Query_ConsolidatedDataReportAll_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 // All implementations must embed UnimplementedQueryServer
 // for forward compatibility
@@ -79,6 +102,9 @@ type QueryServer interface {
 	// Queries a list of Vessel items.
 	Vessel(context.Context, *QueryGetVesselRequest) (*QueryGetVesselResponse, error)
 	VesselAll(context.Context, *QueryAllVesselRequest) (*QueryAllVesselResponse, error)
+	// Queries a list of ConsolidatedDataReport items.
+	ConsolidatedDataReport(context.Context, *QueryGetConsolidatedDataReportRequest) (*QueryGetConsolidatedDataReportResponse, error)
+	ConsolidatedDataReportAll(context.Context, *QueryAllConsolidatedDataReportRequest) (*QueryAllConsolidatedDataReportResponse, error)
 	mustEmbedUnimplementedQueryServer()
 }
 
@@ -94,6 +120,12 @@ func (UnimplementedQueryServer) Vessel(context.Context, *QueryGetVesselRequest) 
 }
 func (UnimplementedQueryServer) VesselAll(context.Context, *QueryAllVesselRequest) (*QueryAllVesselResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VesselAll not implemented")
+}
+func (UnimplementedQueryServer) ConsolidatedDataReport(context.Context, *QueryGetConsolidatedDataReportRequest) (*QueryGetConsolidatedDataReportResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ConsolidatedDataReport not implemented")
+}
+func (UnimplementedQueryServer) ConsolidatedDataReportAll(context.Context, *QueryAllConsolidatedDataReportRequest) (*QueryAllConsolidatedDataReportResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ConsolidatedDataReportAll not implemented")
 }
 func (UnimplementedQueryServer) mustEmbedUnimplementedQueryServer() {}
 
@@ -162,6 +194,42 @@ func _Query_VesselAll_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_ConsolidatedDataReport_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetConsolidatedDataReportRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).ConsolidatedDataReport(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_ConsolidatedDataReport_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).ConsolidatedDataReport(ctx, req.(*QueryGetConsolidatedDataReportRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_ConsolidatedDataReportAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllConsolidatedDataReportRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).ConsolidatedDataReportAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_ConsolidatedDataReportAll_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).ConsolidatedDataReportAll(ctx, req.(*QueryAllConsolidatedDataReportRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Query_ServiceDesc is the grpc.ServiceDesc for Query service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -180,6 +248,14 @@ var Query_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "VesselAll",
 			Handler:    _Query_VesselAll_Handler,
+		},
+		{
+			MethodName: "ConsolidatedDataReport",
+			Handler:    _Query_ConsolidatedDataReport_Handler,
+		},
+		{
+			MethodName: "ConsolidatedDataReportAll",
+			Handler:    _Query_ConsolidatedDataReportAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

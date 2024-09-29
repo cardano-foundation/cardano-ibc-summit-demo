@@ -13,6 +13,14 @@ func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 		&MsgUpdateVessel{},
 		&MsgDeleteVessel{},
 	)
+	registry.RegisterImplementations((*sdk.Msg)(nil),
+		&MsgConsolidateReports{},
+	)
+	registry.RegisterImplementations((*sdk.Msg)(nil),
+		&MsgCreateConsolidatedDataReport{},
+		&MsgUpdateConsolidatedDataReport{},
+		&MsgDeleteConsolidatedDataReport{},
+	)
 	// this line is used by starport scaffolding # 3
 
 	registry.RegisterImplementations((*sdk.Msg)(nil),

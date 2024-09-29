@@ -28,6 +28,17 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					Short:          "Shows a vessel",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "imo"}, {ProtoField: "ts"}},
 				},
+				{
+					RpcMethod: "ConsolidatedDataReportAll",
+					Use:       "list-consolidated-data-report",
+					Short:     "List all consolidated-data-report",
+				},
+				{
+					RpcMethod:      "ConsolidatedDataReport",
+					Use:            "show-consolidated-data-report [id]",
+					Short:          "Shows a consolidated-data-report",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "imo"}, {ProtoField: "ts"}},
+				},
 				// this line is used by ignite scaffolding # autocli/query
 			},
 		},
@@ -55,6 +66,30 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					RpcMethod:      "DeleteVessel",
 					Use:            "delete-vessel [imo] [ts]",
 					Short:          "Delete vessel",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "imo"}, {ProtoField: "ts"}},
+				},
+				{
+					RpcMethod:      "ConsolidateReports",
+					Use:            "consolidate-reports [imo]",
+					Short:          "Send a consolidate-reports tx",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "imo"}},
+				},
+				{
+					RpcMethod:      "CreateConsolidatedDataReport",
+					Use:            "create-consolidated-data-report [imo] [ts] [totalSamples] [etaOutliers] [etaMeanCleaned] [etaMeanAll] [etaStdCleaned] [etaStdAll] [depportScore] [depport]",
+					Short:          "Create a new consolidated-data-report",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "imo"}, {ProtoField: "ts"}, {ProtoField: "totalSamples"}, {ProtoField: "etaOutliers"}, {ProtoField: "etaMeanCleaned"}, {ProtoField: "etaMeanAll"}, {ProtoField: "etaStdCleaned"}, {ProtoField: "etaStdAll"}, {ProtoField: "depportScore"}, {ProtoField: "depport"}},
+				},
+				{
+					RpcMethod:      "UpdateConsolidatedDataReport",
+					Use:            "update-consolidated-data-report [imo] [ts] [totalSamples] [etaOutliers] [etaMeanCleaned] [etaMeanAll] [etaStdCleaned] [etaStdAll] [depportScore] [depport]",
+					Short:          "Update consolidated-data-report",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "imo"}, {ProtoField: "ts"}, {ProtoField: "totalSamples"}, {ProtoField: "etaOutliers"}, {ProtoField: "etaMeanCleaned"}, {ProtoField: "etaMeanAll"}, {ProtoField: "etaStdCleaned"}, {ProtoField: "etaStdAll"}, {ProtoField: "depportScore"}, {ProtoField: "depport"}},
+				},
+				{
+					RpcMethod:      "DeleteConsolidatedDataReport",
+					Use:            "delete-consolidated-data-report [imo] [ts]",
+					Short:          "Delete consolidated-data-report",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "imo"}, {ProtoField: "ts"}},
 				},
 				// this line is used by ignite scaffolding # autocli/tx

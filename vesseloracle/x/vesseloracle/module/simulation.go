@@ -35,6 +35,22 @@ const (
 	// TODO: Determine the simulation weight value
 	defaultWeightMsgDeleteVessel int = 100
 
+	opWeightMsgConsolidateReports = "op_weight_msg_consolidate_reports"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgConsolidateReports int = 100
+
+	opWeightMsgCreateConsolidatedDataReport = "op_weight_msg_consolidated_data_report"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgCreateConsolidatedDataReport int = 100
+
+	opWeightMsgUpdateConsolidatedDataReport = "op_weight_msg_consolidated_data_report"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgUpdateConsolidatedDataReport int = 100
+
+	opWeightMsgDeleteConsolidatedDataReport = "op_weight_msg_consolidated_data_report"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgDeleteConsolidatedDataReport int = 100
+
 	// this line is used by starport scaffolding # simapp/module/const
 )
 
@@ -47,6 +63,18 @@ func (AppModule) GenerateGenesisState(simState *module.SimulationState) {
 	vesseloracleGenesis := types.GenesisState{
 		Params: types.DefaultParams(),
 		VesselList: []types.Vessel{
+			{
+				Creator: sample.AccAddress(),
+				Imo:     "0",
+				Ts:      0,
+			},
+			{
+				Creator: sample.AccAddress(),
+				Imo:     "1",
+				Ts:      1,
+			},
+		},
+		ConsolidatedDataReportList: []types.ConsolidatedDataReport{
 			{
 				Creator: sample.AccAddress(),
 				Imo:     "0",
@@ -103,6 +131,50 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 		vesseloraclesimulation.SimulateMsgDeleteVessel(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
+	var weightMsgConsolidateReports int
+	simState.AppParams.GetOrGenerate(opWeightMsgConsolidateReports, &weightMsgConsolidateReports, nil,
+		func(_ *rand.Rand) {
+			weightMsgConsolidateReports = defaultWeightMsgConsolidateReports
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgConsolidateReports,
+		vesseloraclesimulation.SimulateMsgConsolidateReports(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgCreateConsolidatedDataReport int
+	simState.AppParams.GetOrGenerate(opWeightMsgCreateConsolidatedDataReport, &weightMsgCreateConsolidatedDataReport, nil,
+		func(_ *rand.Rand) {
+			weightMsgCreateConsolidatedDataReport = defaultWeightMsgCreateConsolidatedDataReport
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgCreateConsolidatedDataReport,
+		vesseloraclesimulation.SimulateMsgCreateConsolidatedDataReport(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgUpdateConsolidatedDataReport int
+	simState.AppParams.GetOrGenerate(opWeightMsgUpdateConsolidatedDataReport, &weightMsgUpdateConsolidatedDataReport, nil,
+		func(_ *rand.Rand) {
+			weightMsgUpdateConsolidatedDataReport = defaultWeightMsgUpdateConsolidatedDataReport
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgUpdateConsolidatedDataReport,
+		vesseloraclesimulation.SimulateMsgUpdateConsolidatedDataReport(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgDeleteConsolidatedDataReport int
+	simState.AppParams.GetOrGenerate(opWeightMsgDeleteConsolidatedDataReport, &weightMsgDeleteConsolidatedDataReport, nil,
+		func(_ *rand.Rand) {
+			weightMsgDeleteConsolidatedDataReport = defaultWeightMsgDeleteConsolidatedDataReport
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgDeleteConsolidatedDataReport,
+		vesseloraclesimulation.SimulateMsgDeleteConsolidatedDataReport(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
 	// this line is used by starport scaffolding # simapp/module/operation
 
 	return operations
@@ -132,6 +204,38 @@ func (am AppModule) ProposalMsgs(simState module.SimulationState) []simtypes.Wei
 			defaultWeightMsgDeleteVessel,
 			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
 				vesseloraclesimulation.SimulateMsgDeleteVessel(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgConsolidateReports,
+			defaultWeightMsgConsolidateReports,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				vesseloraclesimulation.SimulateMsgConsolidateReports(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgCreateConsolidatedDataReport,
+			defaultWeightMsgCreateConsolidatedDataReport,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				vesseloraclesimulation.SimulateMsgCreateConsolidatedDataReport(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgUpdateConsolidatedDataReport,
+			defaultWeightMsgUpdateConsolidatedDataReport,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				vesseloraclesimulation.SimulateMsgUpdateConsolidatedDataReport(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgDeleteConsolidatedDataReport,
+			defaultWeightMsgDeleteConsolidatedDataReport,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				vesseloraclesimulation.SimulateMsgDeleteConsolidatedDataReport(am.accountKeeper, am.bankKeeper, am.keeper)
 				return nil
 			},
 		),

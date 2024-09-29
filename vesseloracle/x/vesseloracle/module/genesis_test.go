@@ -25,6 +25,16 @@ func TestGenesis(t *testing.T) {
 				Ts:  1,
 			},
 		},
+		ConsolidatedDataReportList: []types.ConsolidatedDataReport{
+			{
+				Imo: "0",
+				Ts:  0,
+			},
+			{
+				Imo: "1",
+				Ts:  1,
+			},
+		},
 		// this line is used by starport scaffolding # genesis/test/state
 	}
 
@@ -37,5 +47,6 @@ func TestGenesis(t *testing.T) {
 	nullify.Fill(got)
 
 	require.ElementsMatch(t, genesisState.VesselList, got.VesselList)
+	require.ElementsMatch(t, genesisState.ConsolidatedDataReportList, got.ConsolidatedDataReportList)
 	// this line is used by starport scaffolding # genesis/test/assert
 }

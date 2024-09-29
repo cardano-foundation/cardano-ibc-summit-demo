@@ -13,6 +13,10 @@ func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) 
 	for _, elem := range genState.VesselList {
 		k.SetVessel(ctx, elem)
 	}
+	// Set all the consolidatedDataReport
+	for _, elem := range genState.ConsolidatedDataReportList {
+		k.SetConsolidatedDataReport(ctx, elem)
+	}
 	// this line is used by starport scaffolding # genesis/module/init
 	if err := k.SetParams(ctx, genState.Params); err != nil {
 		panic(err)
@@ -25,6 +29,7 @@ func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 	genesis.Params = k.GetParams(ctx)
 
 	genesis.VesselList = k.GetAllVessel(ctx)
+	genesis.ConsolidatedDataReportList = k.GetAllConsolidatedDataReport(ctx)
 	// this line is used by starport scaffolding # genesis/module/export
 
 	return genesis

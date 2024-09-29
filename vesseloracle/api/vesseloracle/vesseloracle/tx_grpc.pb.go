@@ -19,10 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Msg_UpdateParams_FullMethodName = "/vesseloracle.vesseloracle.Msg/UpdateParams"
-	Msg_CreateVessel_FullMethodName = "/vesseloracle.vesseloracle.Msg/CreateVessel"
-	Msg_UpdateVessel_FullMethodName = "/vesseloracle.vesseloracle.Msg/UpdateVessel"
-	Msg_DeleteVessel_FullMethodName = "/vesseloracle.vesseloracle.Msg/DeleteVessel"
+	Msg_UpdateParams_FullMethodName                 = "/vesseloracle.vesseloracle.Msg/UpdateParams"
+	Msg_CreateVessel_FullMethodName                 = "/vesseloracle.vesseloracle.Msg/CreateVessel"
+	Msg_UpdateVessel_FullMethodName                 = "/vesseloracle.vesseloracle.Msg/UpdateVessel"
+	Msg_DeleteVessel_FullMethodName                 = "/vesseloracle.vesseloracle.Msg/DeleteVessel"
+	Msg_ConsolidateReports_FullMethodName           = "/vesseloracle.vesseloracle.Msg/ConsolidateReports"
+	Msg_CreateConsolidatedDataReport_FullMethodName = "/vesseloracle.vesseloracle.Msg/CreateConsolidatedDataReport"
+	Msg_UpdateConsolidatedDataReport_FullMethodName = "/vesseloracle.vesseloracle.Msg/UpdateConsolidatedDataReport"
+	Msg_DeleteConsolidatedDataReport_FullMethodName = "/vesseloracle.vesseloracle.Msg/DeleteConsolidatedDataReport"
 )
 
 // MsgClient is the client API for Msg service.
@@ -35,6 +39,10 @@ type MsgClient interface {
 	CreateVessel(ctx context.Context, in *MsgCreateVessel, opts ...grpc.CallOption) (*MsgCreateVesselResponse, error)
 	UpdateVessel(ctx context.Context, in *MsgUpdateVessel, opts ...grpc.CallOption) (*MsgUpdateVesselResponse, error)
 	DeleteVessel(ctx context.Context, in *MsgDeleteVessel, opts ...grpc.CallOption) (*MsgDeleteVesselResponse, error)
+	ConsolidateReports(ctx context.Context, in *MsgConsolidateReports, opts ...grpc.CallOption) (*MsgConsolidateReportsResponse, error)
+	CreateConsolidatedDataReport(ctx context.Context, in *MsgCreateConsolidatedDataReport, opts ...grpc.CallOption) (*MsgCreateConsolidatedDataReportResponse, error)
+	UpdateConsolidatedDataReport(ctx context.Context, in *MsgUpdateConsolidatedDataReport, opts ...grpc.CallOption) (*MsgUpdateConsolidatedDataReportResponse, error)
+	DeleteConsolidatedDataReport(ctx context.Context, in *MsgDeleteConsolidatedDataReport, opts ...grpc.CallOption) (*MsgDeleteConsolidatedDataReportResponse, error)
 }
 
 type msgClient struct {
@@ -81,6 +89,42 @@ func (c *msgClient) DeleteVessel(ctx context.Context, in *MsgDeleteVessel, opts 
 	return out, nil
 }
 
+func (c *msgClient) ConsolidateReports(ctx context.Context, in *MsgConsolidateReports, opts ...grpc.CallOption) (*MsgConsolidateReportsResponse, error) {
+	out := new(MsgConsolidateReportsResponse)
+	err := c.cc.Invoke(ctx, Msg_ConsolidateReports_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) CreateConsolidatedDataReport(ctx context.Context, in *MsgCreateConsolidatedDataReport, opts ...grpc.CallOption) (*MsgCreateConsolidatedDataReportResponse, error) {
+	out := new(MsgCreateConsolidatedDataReportResponse)
+	err := c.cc.Invoke(ctx, Msg_CreateConsolidatedDataReport_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) UpdateConsolidatedDataReport(ctx context.Context, in *MsgUpdateConsolidatedDataReport, opts ...grpc.CallOption) (*MsgUpdateConsolidatedDataReportResponse, error) {
+	out := new(MsgUpdateConsolidatedDataReportResponse)
+	err := c.cc.Invoke(ctx, Msg_UpdateConsolidatedDataReport_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) DeleteConsolidatedDataReport(ctx context.Context, in *MsgDeleteConsolidatedDataReport, opts ...grpc.CallOption) (*MsgDeleteConsolidatedDataReportResponse, error) {
+	out := new(MsgDeleteConsolidatedDataReportResponse)
+	err := c.cc.Invoke(ctx, Msg_DeleteConsolidatedDataReport_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 // All implementations must embed UnimplementedMsgServer
 // for forward compatibility
@@ -91,6 +135,10 @@ type MsgServer interface {
 	CreateVessel(context.Context, *MsgCreateVessel) (*MsgCreateVesselResponse, error)
 	UpdateVessel(context.Context, *MsgUpdateVessel) (*MsgUpdateVesselResponse, error)
 	DeleteVessel(context.Context, *MsgDeleteVessel) (*MsgDeleteVesselResponse, error)
+	ConsolidateReports(context.Context, *MsgConsolidateReports) (*MsgConsolidateReportsResponse, error)
+	CreateConsolidatedDataReport(context.Context, *MsgCreateConsolidatedDataReport) (*MsgCreateConsolidatedDataReportResponse, error)
+	UpdateConsolidatedDataReport(context.Context, *MsgUpdateConsolidatedDataReport) (*MsgUpdateConsolidatedDataReportResponse, error)
+	DeleteConsolidatedDataReport(context.Context, *MsgDeleteConsolidatedDataReport) (*MsgDeleteConsolidatedDataReportResponse, error)
 	mustEmbedUnimplementedMsgServer()
 }
 
@@ -109,6 +157,18 @@ func (UnimplementedMsgServer) UpdateVessel(context.Context, *MsgUpdateVessel) (*
 }
 func (UnimplementedMsgServer) DeleteVessel(context.Context, *MsgDeleteVessel) (*MsgDeleteVesselResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteVessel not implemented")
+}
+func (UnimplementedMsgServer) ConsolidateReports(context.Context, *MsgConsolidateReports) (*MsgConsolidateReportsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ConsolidateReports not implemented")
+}
+func (UnimplementedMsgServer) CreateConsolidatedDataReport(context.Context, *MsgCreateConsolidatedDataReport) (*MsgCreateConsolidatedDataReportResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateConsolidatedDataReport not implemented")
+}
+func (UnimplementedMsgServer) UpdateConsolidatedDataReport(context.Context, *MsgUpdateConsolidatedDataReport) (*MsgUpdateConsolidatedDataReportResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateConsolidatedDataReport not implemented")
+}
+func (UnimplementedMsgServer) DeleteConsolidatedDataReport(context.Context, *MsgDeleteConsolidatedDataReport) (*MsgDeleteConsolidatedDataReportResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteConsolidatedDataReport not implemented")
 }
 func (UnimplementedMsgServer) mustEmbedUnimplementedMsgServer() {}
 
@@ -195,6 +255,78 @@ func _Msg_DeleteVessel_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_ConsolidateReports_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgConsolidateReports)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).ConsolidateReports(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_ConsolidateReports_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).ConsolidateReports(ctx, req.(*MsgConsolidateReports))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_CreateConsolidatedDataReport_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCreateConsolidatedDataReport)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).CreateConsolidatedDataReport(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_CreateConsolidatedDataReport_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).CreateConsolidatedDataReport(ctx, req.(*MsgCreateConsolidatedDataReport))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_UpdateConsolidatedDataReport_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgUpdateConsolidatedDataReport)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).UpdateConsolidatedDataReport(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_UpdateConsolidatedDataReport_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).UpdateConsolidatedDataReport(ctx, req.(*MsgUpdateConsolidatedDataReport))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_DeleteConsolidatedDataReport_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgDeleteConsolidatedDataReport)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).DeleteConsolidatedDataReport(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_DeleteConsolidatedDataReport_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).DeleteConsolidatedDataReport(ctx, req.(*MsgDeleteConsolidatedDataReport))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Msg_ServiceDesc is the grpc.ServiceDesc for Msg service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -217,6 +349,22 @@ var Msg_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteVessel",
 			Handler:    _Msg_DeleteVessel_Handler,
+		},
+		{
+			MethodName: "ConsolidateReports",
+			Handler:    _Msg_ConsolidateReports_Handler,
+		},
+		{
+			MethodName: "CreateConsolidatedDataReport",
+			Handler:    _Msg_CreateConsolidatedDataReport_Handler,
+		},
+		{
+			MethodName: "UpdateConsolidatedDataReport",
+			Handler:    _Msg_UpdateConsolidatedDataReport_Handler,
+		},
+		{
+			MethodName: "DeleteConsolidatedDataReport",
+			Handler:    _Msg_DeleteConsolidatedDataReport_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

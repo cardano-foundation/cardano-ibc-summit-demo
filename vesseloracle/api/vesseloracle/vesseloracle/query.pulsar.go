@@ -2782,6 +2782,1917 @@ func (x *fastReflection_QueryAllVesselResponse) ProtoMethods() *protoiface.Metho
 	}
 }
 
+var (
+	md_QueryGetConsolidatedDataReportRequest     protoreflect.MessageDescriptor
+	fd_QueryGetConsolidatedDataReportRequest_imo protoreflect.FieldDescriptor
+	fd_QueryGetConsolidatedDataReportRequest_ts  protoreflect.FieldDescriptor
+)
+
+func init() {
+	file_vesseloracle_vesseloracle_query_proto_init()
+	md_QueryGetConsolidatedDataReportRequest = File_vesseloracle_vesseloracle_query_proto.Messages().ByName("QueryGetConsolidatedDataReportRequest")
+	fd_QueryGetConsolidatedDataReportRequest_imo = md_QueryGetConsolidatedDataReportRequest.Fields().ByName("imo")
+	fd_QueryGetConsolidatedDataReportRequest_ts = md_QueryGetConsolidatedDataReportRequest.Fields().ByName("ts")
+}
+
+var _ protoreflect.Message = (*fastReflection_QueryGetConsolidatedDataReportRequest)(nil)
+
+type fastReflection_QueryGetConsolidatedDataReportRequest QueryGetConsolidatedDataReportRequest
+
+func (x *QueryGetConsolidatedDataReportRequest) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_QueryGetConsolidatedDataReportRequest)(x)
+}
+
+func (x *QueryGetConsolidatedDataReportRequest) slowProtoReflect() protoreflect.Message {
+	mi := &file_vesseloracle_vesseloracle_query_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+var _fastReflection_QueryGetConsolidatedDataReportRequest_messageType fastReflection_QueryGetConsolidatedDataReportRequest_messageType
+var _ protoreflect.MessageType = fastReflection_QueryGetConsolidatedDataReportRequest_messageType{}
+
+type fastReflection_QueryGetConsolidatedDataReportRequest_messageType struct{}
+
+func (x fastReflection_QueryGetConsolidatedDataReportRequest_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_QueryGetConsolidatedDataReportRequest)(nil)
+}
+func (x fastReflection_QueryGetConsolidatedDataReportRequest_messageType) New() protoreflect.Message {
+	return new(fastReflection_QueryGetConsolidatedDataReportRequest)
+}
+func (x fastReflection_QueryGetConsolidatedDataReportRequest_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetConsolidatedDataReportRequest
+}
+
+// Descriptor returns message descriptor, which contains only the protobuf
+// type information for the message.
+func (x *fastReflection_QueryGetConsolidatedDataReportRequest) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetConsolidatedDataReportRequest
+}
+
+// Type returns the message type, which encapsulates both Go and protobuf
+// type information. If the Go type information is not needed,
+// it is recommended that the message descriptor be used instead.
+func (x *fastReflection_QueryGetConsolidatedDataReportRequest) Type() protoreflect.MessageType {
+	return _fastReflection_QueryGetConsolidatedDataReportRequest_messageType
+}
+
+// New returns a newly allocated and mutable empty message.
+func (x *fastReflection_QueryGetConsolidatedDataReportRequest) New() protoreflect.Message {
+	return new(fastReflection_QueryGetConsolidatedDataReportRequest)
+}
+
+// Interface unwraps the message reflection interface and
+// returns the underlying ProtoMessage interface.
+func (x *fastReflection_QueryGetConsolidatedDataReportRequest) Interface() protoreflect.ProtoMessage {
+	return (*QueryGetConsolidatedDataReportRequest)(x)
+}
+
+// Range iterates over every populated field in an undefined order,
+// calling f for each field descriptor and value encountered.
+// Range returns immediately if f returns false.
+// While iterating, mutating operations may only be performed
+// on the current field descriptor.
+func (x *fastReflection_QueryGetConsolidatedDataReportRequest) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.Imo != "" {
+		value := protoreflect.ValueOfString(x.Imo)
+		if !f(fd_QueryGetConsolidatedDataReportRequest_imo, value) {
+			return
+		}
+	}
+	if x.Ts != uint64(0) {
+		value := protoreflect.ValueOfUint64(x.Ts)
+		if !f(fd_QueryGetConsolidatedDataReportRequest_ts, value) {
+			return
+		}
+	}
+}
+
+// Has reports whether a field is populated.
+//
+// Some fields have the property of nullability where it is possible to
+// distinguish between the default value of a field and whether the field
+// was explicitly populated with the default value. Singular message fields,
+// member fields of a oneof, and proto2 scalar fields are nullable. Such
+// fields are populated only if explicitly set.
+//
+// In other cases (aside from the nullable cases above),
+// a proto3 scalar field is populated if it contains a non-zero value, and
+// a repeated field is populated if it is non-empty.
+func (x *fastReflection_QueryGetConsolidatedDataReportRequest) Has(fd protoreflect.FieldDescriptor) bool {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest.imo":
+		return x.Imo != ""
+	case "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest.ts":
+		return x.Ts != uint64(0)
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest does not contain field %s", fd.FullName()))
+	}
+}
+
+// Clear clears the field such that a subsequent Has call reports false.
+//
+// Clearing an extension field clears both the extension type and value
+// associated with the given field number.
+//
+// Clear is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryGetConsolidatedDataReportRequest) Clear(fd protoreflect.FieldDescriptor) {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest.imo":
+		x.Imo = ""
+	case "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest.ts":
+		x.Ts = uint64(0)
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest does not contain field %s", fd.FullName()))
+	}
+}
+
+// Get retrieves the value for a field.
+//
+// For unpopulated scalars, it returns the default value, where
+// the default value of a bytes scalar is guaranteed to be a copy.
+// For unpopulated composite types, it returns an empty, read-only view
+// of the value; to obtain a mutable reference, use Mutable.
+func (x *fastReflection_QueryGetConsolidatedDataReportRequest) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+	switch descriptor.FullName() {
+	case "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest.imo":
+		value := x.Imo
+		return protoreflect.ValueOfString(value)
+	case "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest.ts":
+		value := x.Ts
+		return protoreflect.ValueOfUint64(value)
+	default:
+		if descriptor.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest does not contain field %s", descriptor.FullName()))
+	}
+}
+
+// Set stores the value for a field.
+//
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType.
+// When setting a composite type, it is unspecified whether the stored value
+// aliases the source's memory in any way. If the composite value is an
+// empty, read-only value, then it panics.
+//
+// Set is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryGetConsolidatedDataReportRequest) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest.imo":
+		x.Imo = value.Interface().(string)
+	case "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest.ts":
+		x.Ts = value.Uint()
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest does not contain field %s", fd.FullName()))
+	}
+}
+
+// Mutable returns a mutable reference to a composite type.
+//
+// If the field is unpopulated, it may allocate a composite value.
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType
+// if not already stored.
+// It panics if the field does not contain a composite type.
+//
+// Mutable is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryGetConsolidatedDataReportRequest) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest.imo":
+		panic(fmt.Errorf("field imo of message vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest is not mutable"))
+	case "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest.ts":
+		panic(fmt.Errorf("field ts of message vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest is not mutable"))
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest does not contain field %s", fd.FullName()))
+	}
+}
+
+// NewField returns a new value that is assignable to the field
+// for the given descriptor. For scalars, this returns the default value.
+// For lists, maps, and messages, this returns a new, empty, mutable value.
+func (x *fastReflection_QueryGetConsolidatedDataReportRequest) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest.imo":
+		return protoreflect.ValueOfString("")
+	case "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest.ts":
+		return protoreflect.ValueOfUint64(uint64(0))
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest does not contain field %s", fd.FullName()))
+	}
+}
+
+// WhichOneof reports which field within the oneof is populated,
+// returning nil if none are populated.
+// It panics if the oneof descriptor does not belong to this message.
+func (x *fastReflection_QueryGetConsolidatedDataReportRequest) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+	switch d.FullName() {
+	default:
+		panic(fmt.Errorf("%s is not a oneof field in vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest", d.FullName()))
+	}
+	panic("unreachable")
+}
+
+// GetUnknown retrieves the entire list of unknown fields.
+// The caller may only mutate the contents of the RawFields
+// if the mutated bytes are stored back into the message with SetUnknown.
+func (x *fastReflection_QueryGetConsolidatedDataReportRequest) GetUnknown() protoreflect.RawFields {
+	return x.unknownFields
+}
+
+// SetUnknown stores an entire list of unknown fields.
+// The raw fields must be syntactically valid according to the wire format.
+// An implementation may panic if this is not the case.
+// Once stored, the caller must not mutate the content of the RawFields.
+// An empty RawFields may be passed to clear the fields.
+//
+// SetUnknown is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryGetConsolidatedDataReportRequest) SetUnknown(fields protoreflect.RawFields) {
+	x.unknownFields = fields
+}
+
+// IsValid reports whether the message is valid.
+//
+// An invalid message is an empty, read-only value.
+//
+// An invalid message often corresponds to a nil pointer of the concrete
+// message type, but the details are implementation dependent.
+// Validity is not part of the protobuf data model, and may not
+// be preserved in marshaling or other operations.
+func (x *fastReflection_QueryGetConsolidatedDataReportRequest) IsValid() bool {
+	return x != nil
+}
+
+// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
+// This method may return nil.
+//
+// The returned methods type is identical to
+// "google.golang.org/protobuf/runtime/protoiface".Methods.
+// Consult the protoiface package documentation for details.
+func (x *fastReflection_QueryGetConsolidatedDataReportRequest) ProtoMethods() *protoiface.Methods {
+	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
+		x := input.Message.Interface().(*QueryGetConsolidatedDataReportRequest)
+		if x == nil {
+			return protoiface.SizeOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Size:              0,
+			}
+		}
+		options := runtime.SizeInputToOptions(input)
+		_ = options
+		var n int
+		var l int
+		_ = l
+		l = len(x.Imo)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		if x.Ts != 0 {
+			n += 1 + runtime.Sov(uint64(x.Ts))
+		}
+		if x.unknownFields != nil {
+			n += len(x.unknownFields)
+		}
+		return protoiface.SizeOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Size:              n,
+		}
+	}
+
+	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
+		x := input.Message.Interface().(*QueryGetConsolidatedDataReportRequest)
+		if x == nil {
+			return protoiface.MarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Buf:               input.Buf,
+			}, nil
+		}
+		options := runtime.MarshalInputToOptions(input)
+		_ = options
+		size := options.Size(x)
+		dAtA := make([]byte, size)
+		i := len(dAtA)
+		_ = i
+		var l int
+		_ = l
+		if x.unknownFields != nil {
+			i -= len(x.unknownFields)
+			copy(dAtA[i:], x.unknownFields)
+		}
+		if x.Ts != 0 {
+			i = runtime.EncodeVarint(dAtA, i, uint64(x.Ts))
+			i--
+			dAtA[i] = 0x10
+		}
+		if len(x.Imo) > 0 {
+			i -= len(x.Imo)
+			copy(dAtA[i:], x.Imo)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Imo)))
+			i--
+			dAtA[i] = 0xa
+		}
+		if input.Buf != nil {
+			input.Buf = append(input.Buf, dAtA...)
+		} else {
+			input.Buf = dAtA
+		}
+		return protoiface.MarshalOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Buf:               input.Buf,
+		}, nil
+	}
+	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
+		x := input.Message.Interface().(*QueryGetConsolidatedDataReportRequest)
+		if x == nil {
+			return protoiface.UnmarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Flags:             input.Flags,
+			}, nil
+		}
+		options := runtime.UnmarshalInputToOptions(input)
+		_ = options
+		dAtA := input.Buf
+		l := len(dAtA)
+		iNdEx := 0
+		for iNdEx < l {
+			preIndex := iNdEx
+			var wire uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				wire |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			fieldNum := int32(wire >> 3)
+			wireType := int(wire & 0x7)
+			if wireType == 4 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetConsolidatedDataReportRequest: wiretype end group for non-group")
+			}
+			if fieldNum <= 0 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetConsolidatedDataReportRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			}
+			switch fieldNum {
+			case 1:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Imo", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Imo = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 2:
+				if wireType != 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Ts", wireType)
+				}
+				x.Ts = 0
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					x.Ts |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+			default:
+				iNdEx = preIndex
+				skippy, err := runtime.Skip(dAtA[iNdEx:])
+				if err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				if (skippy < 0) || (iNdEx+skippy) < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if (iNdEx + skippy) > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if !options.DiscardUnknown {
+					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
+				}
+				iNdEx += skippy
+			}
+		}
+
+		if iNdEx > l {
+			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+		}
+		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
+	}
+	return &protoiface.Methods{
+		NoUnkeyedLiterals: struct{}{},
+		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
+		Size:              size,
+		Marshal:           marshal,
+		Unmarshal:         unmarshal,
+		Merge:             nil,
+		CheckInitialized:  nil,
+	}
+}
+
+var (
+	md_QueryGetConsolidatedDataReportResponse                        protoreflect.MessageDescriptor
+	fd_QueryGetConsolidatedDataReportResponse_consolidatedDataReport protoreflect.FieldDescriptor
+)
+
+func init() {
+	file_vesseloracle_vesseloracle_query_proto_init()
+	md_QueryGetConsolidatedDataReportResponse = File_vesseloracle_vesseloracle_query_proto.Messages().ByName("QueryGetConsolidatedDataReportResponse")
+	fd_QueryGetConsolidatedDataReportResponse_consolidatedDataReport = md_QueryGetConsolidatedDataReportResponse.Fields().ByName("consolidatedDataReport")
+}
+
+var _ protoreflect.Message = (*fastReflection_QueryGetConsolidatedDataReportResponse)(nil)
+
+type fastReflection_QueryGetConsolidatedDataReportResponse QueryGetConsolidatedDataReportResponse
+
+func (x *QueryGetConsolidatedDataReportResponse) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_QueryGetConsolidatedDataReportResponse)(x)
+}
+
+func (x *QueryGetConsolidatedDataReportResponse) slowProtoReflect() protoreflect.Message {
+	mi := &file_vesseloracle_vesseloracle_query_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+var _fastReflection_QueryGetConsolidatedDataReportResponse_messageType fastReflection_QueryGetConsolidatedDataReportResponse_messageType
+var _ protoreflect.MessageType = fastReflection_QueryGetConsolidatedDataReportResponse_messageType{}
+
+type fastReflection_QueryGetConsolidatedDataReportResponse_messageType struct{}
+
+func (x fastReflection_QueryGetConsolidatedDataReportResponse_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_QueryGetConsolidatedDataReportResponse)(nil)
+}
+func (x fastReflection_QueryGetConsolidatedDataReportResponse_messageType) New() protoreflect.Message {
+	return new(fastReflection_QueryGetConsolidatedDataReportResponse)
+}
+func (x fastReflection_QueryGetConsolidatedDataReportResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetConsolidatedDataReportResponse
+}
+
+// Descriptor returns message descriptor, which contains only the protobuf
+// type information for the message.
+func (x *fastReflection_QueryGetConsolidatedDataReportResponse) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetConsolidatedDataReportResponse
+}
+
+// Type returns the message type, which encapsulates both Go and protobuf
+// type information. If the Go type information is not needed,
+// it is recommended that the message descriptor be used instead.
+func (x *fastReflection_QueryGetConsolidatedDataReportResponse) Type() protoreflect.MessageType {
+	return _fastReflection_QueryGetConsolidatedDataReportResponse_messageType
+}
+
+// New returns a newly allocated and mutable empty message.
+func (x *fastReflection_QueryGetConsolidatedDataReportResponse) New() protoreflect.Message {
+	return new(fastReflection_QueryGetConsolidatedDataReportResponse)
+}
+
+// Interface unwraps the message reflection interface and
+// returns the underlying ProtoMessage interface.
+func (x *fastReflection_QueryGetConsolidatedDataReportResponse) Interface() protoreflect.ProtoMessage {
+	return (*QueryGetConsolidatedDataReportResponse)(x)
+}
+
+// Range iterates over every populated field in an undefined order,
+// calling f for each field descriptor and value encountered.
+// Range returns immediately if f returns false.
+// While iterating, mutating operations may only be performed
+// on the current field descriptor.
+func (x *fastReflection_QueryGetConsolidatedDataReportResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.ConsolidatedDataReport != nil {
+		value := protoreflect.ValueOfMessage(x.ConsolidatedDataReport.ProtoReflect())
+		if !f(fd_QueryGetConsolidatedDataReportResponse_consolidatedDataReport, value) {
+			return
+		}
+	}
+}
+
+// Has reports whether a field is populated.
+//
+// Some fields have the property of nullability where it is possible to
+// distinguish between the default value of a field and whether the field
+// was explicitly populated with the default value. Singular message fields,
+// member fields of a oneof, and proto2 scalar fields are nullable. Such
+// fields are populated only if explicitly set.
+//
+// In other cases (aside from the nullable cases above),
+// a proto3 scalar field is populated if it contains a non-zero value, and
+// a repeated field is populated if it is non-empty.
+func (x *fastReflection_QueryGetConsolidatedDataReportResponse) Has(fd protoreflect.FieldDescriptor) bool {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse.consolidatedDataReport":
+		return x.ConsolidatedDataReport != nil
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Clear clears the field such that a subsequent Has call reports false.
+//
+// Clearing an extension field clears both the extension type and value
+// associated with the given field number.
+//
+// Clear is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryGetConsolidatedDataReportResponse) Clear(fd protoreflect.FieldDescriptor) {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse.consolidatedDataReport":
+		x.ConsolidatedDataReport = nil
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Get retrieves the value for a field.
+//
+// For unpopulated scalars, it returns the default value, where
+// the default value of a bytes scalar is guaranteed to be a copy.
+// For unpopulated composite types, it returns an empty, read-only view
+// of the value; to obtain a mutable reference, use Mutable.
+func (x *fastReflection_QueryGetConsolidatedDataReportResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+	switch descriptor.FullName() {
+	case "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse.consolidatedDataReport":
+		value := x.ConsolidatedDataReport
+		return protoreflect.ValueOfMessage(value.ProtoReflect())
+	default:
+		if descriptor.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse does not contain field %s", descriptor.FullName()))
+	}
+}
+
+// Set stores the value for a field.
+//
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType.
+// When setting a composite type, it is unspecified whether the stored value
+// aliases the source's memory in any way. If the composite value is an
+// empty, read-only value, then it panics.
+//
+// Set is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryGetConsolidatedDataReportResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse.consolidatedDataReport":
+		x.ConsolidatedDataReport = value.Message().Interface().(*ConsolidatedDataReport)
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Mutable returns a mutable reference to a composite type.
+//
+// If the field is unpopulated, it may allocate a composite value.
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType
+// if not already stored.
+// It panics if the field does not contain a composite type.
+//
+// Mutable is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryGetConsolidatedDataReportResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse.consolidatedDataReport":
+		if x.ConsolidatedDataReport == nil {
+			x.ConsolidatedDataReport = new(ConsolidatedDataReport)
+		}
+		return protoreflect.ValueOfMessage(x.ConsolidatedDataReport.ProtoReflect())
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// NewField returns a new value that is assignable to the field
+// for the given descriptor. For scalars, this returns the default value.
+// For lists, maps, and messages, this returns a new, empty, mutable value.
+func (x *fastReflection_QueryGetConsolidatedDataReportResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse.consolidatedDataReport":
+		m := new(ConsolidatedDataReport)
+		return protoreflect.ValueOfMessage(m.ProtoReflect())
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// WhichOneof reports which field within the oneof is populated,
+// returning nil if none are populated.
+// It panics if the oneof descriptor does not belong to this message.
+func (x *fastReflection_QueryGetConsolidatedDataReportResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+	switch d.FullName() {
+	default:
+		panic(fmt.Errorf("%s is not a oneof field in vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse", d.FullName()))
+	}
+	panic("unreachable")
+}
+
+// GetUnknown retrieves the entire list of unknown fields.
+// The caller may only mutate the contents of the RawFields
+// if the mutated bytes are stored back into the message with SetUnknown.
+func (x *fastReflection_QueryGetConsolidatedDataReportResponse) GetUnknown() protoreflect.RawFields {
+	return x.unknownFields
+}
+
+// SetUnknown stores an entire list of unknown fields.
+// The raw fields must be syntactically valid according to the wire format.
+// An implementation may panic if this is not the case.
+// Once stored, the caller must not mutate the content of the RawFields.
+// An empty RawFields may be passed to clear the fields.
+//
+// SetUnknown is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryGetConsolidatedDataReportResponse) SetUnknown(fields protoreflect.RawFields) {
+	x.unknownFields = fields
+}
+
+// IsValid reports whether the message is valid.
+//
+// An invalid message is an empty, read-only value.
+//
+// An invalid message often corresponds to a nil pointer of the concrete
+// message type, but the details are implementation dependent.
+// Validity is not part of the protobuf data model, and may not
+// be preserved in marshaling or other operations.
+func (x *fastReflection_QueryGetConsolidatedDataReportResponse) IsValid() bool {
+	return x != nil
+}
+
+// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
+// This method may return nil.
+//
+// The returned methods type is identical to
+// "google.golang.org/protobuf/runtime/protoiface".Methods.
+// Consult the protoiface package documentation for details.
+func (x *fastReflection_QueryGetConsolidatedDataReportResponse) ProtoMethods() *protoiface.Methods {
+	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
+		x := input.Message.Interface().(*QueryGetConsolidatedDataReportResponse)
+		if x == nil {
+			return protoiface.SizeOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Size:              0,
+			}
+		}
+		options := runtime.SizeInputToOptions(input)
+		_ = options
+		var n int
+		var l int
+		_ = l
+		if x.ConsolidatedDataReport != nil {
+			l = options.Size(x.ConsolidatedDataReport)
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		if x.unknownFields != nil {
+			n += len(x.unknownFields)
+		}
+		return protoiface.SizeOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Size:              n,
+		}
+	}
+
+	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
+		x := input.Message.Interface().(*QueryGetConsolidatedDataReportResponse)
+		if x == nil {
+			return protoiface.MarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Buf:               input.Buf,
+			}, nil
+		}
+		options := runtime.MarshalInputToOptions(input)
+		_ = options
+		size := options.Size(x)
+		dAtA := make([]byte, size)
+		i := len(dAtA)
+		_ = i
+		var l int
+		_ = l
+		if x.unknownFields != nil {
+			i -= len(x.unknownFields)
+			copy(dAtA[i:], x.unknownFields)
+		}
+		if x.ConsolidatedDataReport != nil {
+			encoded, err := options.Marshal(x.ConsolidatedDataReport)
+			if err != nil {
+				return protoiface.MarshalOutput{
+					NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+					Buf:               input.Buf,
+				}, err
+			}
+			i -= len(encoded)
+			copy(dAtA[i:], encoded)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+			i--
+			dAtA[i] = 0xa
+		}
+		if input.Buf != nil {
+			input.Buf = append(input.Buf, dAtA...)
+		} else {
+			input.Buf = dAtA
+		}
+		return protoiface.MarshalOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Buf:               input.Buf,
+		}, nil
+	}
+	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
+		x := input.Message.Interface().(*QueryGetConsolidatedDataReportResponse)
+		if x == nil {
+			return protoiface.UnmarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Flags:             input.Flags,
+			}, nil
+		}
+		options := runtime.UnmarshalInputToOptions(input)
+		_ = options
+		dAtA := input.Buf
+		l := len(dAtA)
+		iNdEx := 0
+		for iNdEx < l {
+			preIndex := iNdEx
+			var wire uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				wire |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			fieldNum := int32(wire >> 3)
+			wireType := int(wire & 0x7)
+			if wireType == 4 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetConsolidatedDataReportResponse: wiretype end group for non-group")
+			}
+			if fieldNum <= 0 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetConsolidatedDataReportResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			}
+			switch fieldNum {
+			case 1:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field ConsolidatedDataReport", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if x.ConsolidatedDataReport == nil {
+					x.ConsolidatedDataReport = &ConsolidatedDataReport{}
+				}
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.ConsolidatedDataReport); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				iNdEx = postIndex
+			default:
+				iNdEx = preIndex
+				skippy, err := runtime.Skip(dAtA[iNdEx:])
+				if err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				if (skippy < 0) || (iNdEx+skippy) < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if (iNdEx + skippy) > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if !options.DiscardUnknown {
+					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
+				}
+				iNdEx += skippy
+			}
+		}
+
+		if iNdEx > l {
+			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+		}
+		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
+	}
+	return &protoiface.Methods{
+		NoUnkeyedLiterals: struct{}{},
+		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
+		Size:              size,
+		Marshal:           marshal,
+		Unmarshal:         unmarshal,
+		Merge:             nil,
+		CheckInitialized:  nil,
+	}
+}
+
+var (
+	md_QueryAllConsolidatedDataReportRequest            protoreflect.MessageDescriptor
+	fd_QueryAllConsolidatedDataReportRequest_pagination protoreflect.FieldDescriptor
+)
+
+func init() {
+	file_vesseloracle_vesseloracle_query_proto_init()
+	md_QueryAllConsolidatedDataReportRequest = File_vesseloracle_vesseloracle_query_proto.Messages().ByName("QueryAllConsolidatedDataReportRequest")
+	fd_QueryAllConsolidatedDataReportRequest_pagination = md_QueryAllConsolidatedDataReportRequest.Fields().ByName("pagination")
+}
+
+var _ protoreflect.Message = (*fastReflection_QueryAllConsolidatedDataReportRequest)(nil)
+
+type fastReflection_QueryAllConsolidatedDataReportRequest QueryAllConsolidatedDataReportRequest
+
+func (x *QueryAllConsolidatedDataReportRequest) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_QueryAllConsolidatedDataReportRequest)(x)
+}
+
+func (x *QueryAllConsolidatedDataReportRequest) slowProtoReflect() protoreflect.Message {
+	mi := &file_vesseloracle_vesseloracle_query_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+var _fastReflection_QueryAllConsolidatedDataReportRequest_messageType fastReflection_QueryAllConsolidatedDataReportRequest_messageType
+var _ protoreflect.MessageType = fastReflection_QueryAllConsolidatedDataReportRequest_messageType{}
+
+type fastReflection_QueryAllConsolidatedDataReportRequest_messageType struct{}
+
+func (x fastReflection_QueryAllConsolidatedDataReportRequest_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_QueryAllConsolidatedDataReportRequest)(nil)
+}
+func (x fastReflection_QueryAllConsolidatedDataReportRequest_messageType) New() protoreflect.Message {
+	return new(fastReflection_QueryAllConsolidatedDataReportRequest)
+}
+func (x fastReflection_QueryAllConsolidatedDataReportRequest_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryAllConsolidatedDataReportRequest
+}
+
+// Descriptor returns message descriptor, which contains only the protobuf
+// type information for the message.
+func (x *fastReflection_QueryAllConsolidatedDataReportRequest) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryAllConsolidatedDataReportRequest
+}
+
+// Type returns the message type, which encapsulates both Go and protobuf
+// type information. If the Go type information is not needed,
+// it is recommended that the message descriptor be used instead.
+func (x *fastReflection_QueryAllConsolidatedDataReportRequest) Type() protoreflect.MessageType {
+	return _fastReflection_QueryAllConsolidatedDataReportRequest_messageType
+}
+
+// New returns a newly allocated and mutable empty message.
+func (x *fastReflection_QueryAllConsolidatedDataReportRequest) New() protoreflect.Message {
+	return new(fastReflection_QueryAllConsolidatedDataReportRequest)
+}
+
+// Interface unwraps the message reflection interface and
+// returns the underlying ProtoMessage interface.
+func (x *fastReflection_QueryAllConsolidatedDataReportRequest) Interface() protoreflect.ProtoMessage {
+	return (*QueryAllConsolidatedDataReportRequest)(x)
+}
+
+// Range iterates over every populated field in an undefined order,
+// calling f for each field descriptor and value encountered.
+// Range returns immediately if f returns false.
+// While iterating, mutating operations may only be performed
+// on the current field descriptor.
+func (x *fastReflection_QueryAllConsolidatedDataReportRequest) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.Pagination != nil {
+		value := protoreflect.ValueOfMessage(x.Pagination.ProtoReflect())
+		if !f(fd_QueryAllConsolidatedDataReportRequest_pagination, value) {
+			return
+		}
+	}
+}
+
+// Has reports whether a field is populated.
+//
+// Some fields have the property of nullability where it is possible to
+// distinguish between the default value of a field and whether the field
+// was explicitly populated with the default value. Singular message fields,
+// member fields of a oneof, and proto2 scalar fields are nullable. Such
+// fields are populated only if explicitly set.
+//
+// In other cases (aside from the nullable cases above),
+// a proto3 scalar field is populated if it contains a non-zero value, and
+// a repeated field is populated if it is non-empty.
+func (x *fastReflection_QueryAllConsolidatedDataReportRequest) Has(fd protoreflect.FieldDescriptor) bool {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest.pagination":
+		return x.Pagination != nil
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest does not contain field %s", fd.FullName()))
+	}
+}
+
+// Clear clears the field such that a subsequent Has call reports false.
+//
+// Clearing an extension field clears both the extension type and value
+// associated with the given field number.
+//
+// Clear is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryAllConsolidatedDataReportRequest) Clear(fd protoreflect.FieldDescriptor) {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest.pagination":
+		x.Pagination = nil
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest does not contain field %s", fd.FullName()))
+	}
+}
+
+// Get retrieves the value for a field.
+//
+// For unpopulated scalars, it returns the default value, where
+// the default value of a bytes scalar is guaranteed to be a copy.
+// For unpopulated composite types, it returns an empty, read-only view
+// of the value; to obtain a mutable reference, use Mutable.
+func (x *fastReflection_QueryAllConsolidatedDataReportRequest) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+	switch descriptor.FullName() {
+	case "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest.pagination":
+		value := x.Pagination
+		return protoreflect.ValueOfMessage(value.ProtoReflect())
+	default:
+		if descriptor.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest does not contain field %s", descriptor.FullName()))
+	}
+}
+
+// Set stores the value for a field.
+//
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType.
+// When setting a composite type, it is unspecified whether the stored value
+// aliases the source's memory in any way. If the composite value is an
+// empty, read-only value, then it panics.
+//
+// Set is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryAllConsolidatedDataReportRequest) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest.pagination":
+		x.Pagination = value.Message().Interface().(*v1beta1.PageRequest)
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest does not contain field %s", fd.FullName()))
+	}
+}
+
+// Mutable returns a mutable reference to a composite type.
+//
+// If the field is unpopulated, it may allocate a composite value.
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType
+// if not already stored.
+// It panics if the field does not contain a composite type.
+//
+// Mutable is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryAllConsolidatedDataReportRequest) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest.pagination":
+		if x.Pagination == nil {
+			x.Pagination = new(v1beta1.PageRequest)
+		}
+		return protoreflect.ValueOfMessage(x.Pagination.ProtoReflect())
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest does not contain field %s", fd.FullName()))
+	}
+}
+
+// NewField returns a new value that is assignable to the field
+// for the given descriptor. For scalars, this returns the default value.
+// For lists, maps, and messages, this returns a new, empty, mutable value.
+func (x *fastReflection_QueryAllConsolidatedDataReportRequest) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest.pagination":
+		m := new(v1beta1.PageRequest)
+		return protoreflect.ValueOfMessage(m.ProtoReflect())
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest does not contain field %s", fd.FullName()))
+	}
+}
+
+// WhichOneof reports which field within the oneof is populated,
+// returning nil if none are populated.
+// It panics if the oneof descriptor does not belong to this message.
+func (x *fastReflection_QueryAllConsolidatedDataReportRequest) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+	switch d.FullName() {
+	default:
+		panic(fmt.Errorf("%s is not a oneof field in vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest", d.FullName()))
+	}
+	panic("unreachable")
+}
+
+// GetUnknown retrieves the entire list of unknown fields.
+// The caller may only mutate the contents of the RawFields
+// if the mutated bytes are stored back into the message with SetUnknown.
+func (x *fastReflection_QueryAllConsolidatedDataReportRequest) GetUnknown() protoreflect.RawFields {
+	return x.unknownFields
+}
+
+// SetUnknown stores an entire list of unknown fields.
+// The raw fields must be syntactically valid according to the wire format.
+// An implementation may panic if this is not the case.
+// Once stored, the caller must not mutate the content of the RawFields.
+// An empty RawFields may be passed to clear the fields.
+//
+// SetUnknown is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryAllConsolidatedDataReportRequest) SetUnknown(fields protoreflect.RawFields) {
+	x.unknownFields = fields
+}
+
+// IsValid reports whether the message is valid.
+//
+// An invalid message is an empty, read-only value.
+//
+// An invalid message often corresponds to a nil pointer of the concrete
+// message type, but the details are implementation dependent.
+// Validity is not part of the protobuf data model, and may not
+// be preserved in marshaling or other operations.
+func (x *fastReflection_QueryAllConsolidatedDataReportRequest) IsValid() bool {
+	return x != nil
+}
+
+// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
+// This method may return nil.
+//
+// The returned methods type is identical to
+// "google.golang.org/protobuf/runtime/protoiface".Methods.
+// Consult the protoiface package documentation for details.
+func (x *fastReflection_QueryAllConsolidatedDataReportRequest) ProtoMethods() *protoiface.Methods {
+	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
+		x := input.Message.Interface().(*QueryAllConsolidatedDataReportRequest)
+		if x == nil {
+			return protoiface.SizeOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Size:              0,
+			}
+		}
+		options := runtime.SizeInputToOptions(input)
+		_ = options
+		var n int
+		var l int
+		_ = l
+		if x.Pagination != nil {
+			l = options.Size(x.Pagination)
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		if x.unknownFields != nil {
+			n += len(x.unknownFields)
+		}
+		return protoiface.SizeOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Size:              n,
+		}
+	}
+
+	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
+		x := input.Message.Interface().(*QueryAllConsolidatedDataReportRequest)
+		if x == nil {
+			return protoiface.MarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Buf:               input.Buf,
+			}, nil
+		}
+		options := runtime.MarshalInputToOptions(input)
+		_ = options
+		size := options.Size(x)
+		dAtA := make([]byte, size)
+		i := len(dAtA)
+		_ = i
+		var l int
+		_ = l
+		if x.unknownFields != nil {
+			i -= len(x.unknownFields)
+			copy(dAtA[i:], x.unknownFields)
+		}
+		if x.Pagination != nil {
+			encoded, err := options.Marshal(x.Pagination)
+			if err != nil {
+				return protoiface.MarshalOutput{
+					NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+					Buf:               input.Buf,
+				}, err
+			}
+			i -= len(encoded)
+			copy(dAtA[i:], encoded)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+			i--
+			dAtA[i] = 0xa
+		}
+		if input.Buf != nil {
+			input.Buf = append(input.Buf, dAtA...)
+		} else {
+			input.Buf = dAtA
+		}
+		return protoiface.MarshalOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Buf:               input.Buf,
+		}, nil
+	}
+	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
+		x := input.Message.Interface().(*QueryAllConsolidatedDataReportRequest)
+		if x == nil {
+			return protoiface.UnmarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Flags:             input.Flags,
+			}, nil
+		}
+		options := runtime.UnmarshalInputToOptions(input)
+		_ = options
+		dAtA := input.Buf
+		l := len(dAtA)
+		iNdEx := 0
+		for iNdEx < l {
+			preIndex := iNdEx
+			var wire uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				wire |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			fieldNum := int32(wire >> 3)
+			wireType := int(wire & 0x7)
+			if wireType == 4 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryAllConsolidatedDataReportRequest: wiretype end group for non-group")
+			}
+			if fieldNum <= 0 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryAllConsolidatedDataReportRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			}
+			switch fieldNum {
+			case 1:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if x.Pagination == nil {
+					x.Pagination = &v1beta1.PageRequest{}
+				}
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.Pagination); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				iNdEx = postIndex
+			default:
+				iNdEx = preIndex
+				skippy, err := runtime.Skip(dAtA[iNdEx:])
+				if err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				if (skippy < 0) || (iNdEx+skippy) < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if (iNdEx + skippy) > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if !options.DiscardUnknown {
+					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
+				}
+				iNdEx += skippy
+			}
+		}
+
+		if iNdEx > l {
+			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+		}
+		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
+	}
+	return &protoiface.Methods{
+		NoUnkeyedLiterals: struct{}{},
+		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
+		Size:              size,
+		Marshal:           marshal,
+		Unmarshal:         unmarshal,
+		Merge:             nil,
+		CheckInitialized:  nil,
+	}
+}
+
+var _ protoreflect.List = (*_QueryAllConsolidatedDataReportResponse_1_list)(nil)
+
+type _QueryAllConsolidatedDataReportResponse_1_list struct {
+	list *[]*ConsolidatedDataReport
+}
+
+func (x *_QueryAllConsolidatedDataReportResponse_1_list) Len() int {
+	if x.list == nil {
+		return 0
+	}
+	return len(*x.list)
+}
+
+func (x *_QueryAllConsolidatedDataReportResponse_1_list) Get(i int) protoreflect.Value {
+	return protoreflect.ValueOfMessage((*x.list)[i].ProtoReflect())
+}
+
+func (x *_QueryAllConsolidatedDataReportResponse_1_list) Set(i int, value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*ConsolidatedDataReport)
+	(*x.list)[i] = concreteValue
+}
+
+func (x *_QueryAllConsolidatedDataReportResponse_1_list) Append(value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*ConsolidatedDataReport)
+	*x.list = append(*x.list, concreteValue)
+}
+
+func (x *_QueryAllConsolidatedDataReportResponse_1_list) AppendMutable() protoreflect.Value {
+	v := new(ConsolidatedDataReport)
+	*x.list = append(*x.list, v)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_QueryAllConsolidatedDataReportResponse_1_list) Truncate(n int) {
+	for i := n; i < len(*x.list); i++ {
+		(*x.list)[i] = nil
+	}
+	*x.list = (*x.list)[:n]
+}
+
+func (x *_QueryAllConsolidatedDataReportResponse_1_list) NewElement() protoreflect.Value {
+	v := new(ConsolidatedDataReport)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_QueryAllConsolidatedDataReportResponse_1_list) IsValid() bool {
+	return x.list != nil
+}
+
+var (
+	md_QueryAllConsolidatedDataReportResponse                        protoreflect.MessageDescriptor
+	fd_QueryAllConsolidatedDataReportResponse_consolidatedDataReport protoreflect.FieldDescriptor
+	fd_QueryAllConsolidatedDataReportResponse_pagination             protoreflect.FieldDescriptor
+)
+
+func init() {
+	file_vesseloracle_vesseloracle_query_proto_init()
+	md_QueryAllConsolidatedDataReportResponse = File_vesseloracle_vesseloracle_query_proto.Messages().ByName("QueryAllConsolidatedDataReportResponse")
+	fd_QueryAllConsolidatedDataReportResponse_consolidatedDataReport = md_QueryAllConsolidatedDataReportResponse.Fields().ByName("consolidatedDataReport")
+	fd_QueryAllConsolidatedDataReportResponse_pagination = md_QueryAllConsolidatedDataReportResponse.Fields().ByName("pagination")
+}
+
+var _ protoreflect.Message = (*fastReflection_QueryAllConsolidatedDataReportResponse)(nil)
+
+type fastReflection_QueryAllConsolidatedDataReportResponse QueryAllConsolidatedDataReportResponse
+
+func (x *QueryAllConsolidatedDataReportResponse) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_QueryAllConsolidatedDataReportResponse)(x)
+}
+
+func (x *QueryAllConsolidatedDataReportResponse) slowProtoReflect() protoreflect.Message {
+	mi := &file_vesseloracle_vesseloracle_query_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+var _fastReflection_QueryAllConsolidatedDataReportResponse_messageType fastReflection_QueryAllConsolidatedDataReportResponse_messageType
+var _ protoreflect.MessageType = fastReflection_QueryAllConsolidatedDataReportResponse_messageType{}
+
+type fastReflection_QueryAllConsolidatedDataReportResponse_messageType struct{}
+
+func (x fastReflection_QueryAllConsolidatedDataReportResponse_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_QueryAllConsolidatedDataReportResponse)(nil)
+}
+func (x fastReflection_QueryAllConsolidatedDataReportResponse_messageType) New() protoreflect.Message {
+	return new(fastReflection_QueryAllConsolidatedDataReportResponse)
+}
+func (x fastReflection_QueryAllConsolidatedDataReportResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryAllConsolidatedDataReportResponse
+}
+
+// Descriptor returns message descriptor, which contains only the protobuf
+// type information for the message.
+func (x *fastReflection_QueryAllConsolidatedDataReportResponse) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryAllConsolidatedDataReportResponse
+}
+
+// Type returns the message type, which encapsulates both Go and protobuf
+// type information. If the Go type information is not needed,
+// it is recommended that the message descriptor be used instead.
+func (x *fastReflection_QueryAllConsolidatedDataReportResponse) Type() protoreflect.MessageType {
+	return _fastReflection_QueryAllConsolidatedDataReportResponse_messageType
+}
+
+// New returns a newly allocated and mutable empty message.
+func (x *fastReflection_QueryAllConsolidatedDataReportResponse) New() protoreflect.Message {
+	return new(fastReflection_QueryAllConsolidatedDataReportResponse)
+}
+
+// Interface unwraps the message reflection interface and
+// returns the underlying ProtoMessage interface.
+func (x *fastReflection_QueryAllConsolidatedDataReportResponse) Interface() protoreflect.ProtoMessage {
+	return (*QueryAllConsolidatedDataReportResponse)(x)
+}
+
+// Range iterates over every populated field in an undefined order,
+// calling f for each field descriptor and value encountered.
+// Range returns immediately if f returns false.
+// While iterating, mutating operations may only be performed
+// on the current field descriptor.
+func (x *fastReflection_QueryAllConsolidatedDataReportResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if len(x.ConsolidatedDataReport) != 0 {
+		value := protoreflect.ValueOfList(&_QueryAllConsolidatedDataReportResponse_1_list{list: &x.ConsolidatedDataReport})
+		if !f(fd_QueryAllConsolidatedDataReportResponse_consolidatedDataReport, value) {
+			return
+		}
+	}
+	if x.Pagination != nil {
+		value := protoreflect.ValueOfMessage(x.Pagination.ProtoReflect())
+		if !f(fd_QueryAllConsolidatedDataReportResponse_pagination, value) {
+			return
+		}
+	}
+}
+
+// Has reports whether a field is populated.
+//
+// Some fields have the property of nullability where it is possible to
+// distinguish between the default value of a field and whether the field
+// was explicitly populated with the default value. Singular message fields,
+// member fields of a oneof, and proto2 scalar fields are nullable. Such
+// fields are populated only if explicitly set.
+//
+// In other cases (aside from the nullable cases above),
+// a proto3 scalar field is populated if it contains a non-zero value, and
+// a repeated field is populated if it is non-empty.
+func (x *fastReflection_QueryAllConsolidatedDataReportResponse) Has(fd protoreflect.FieldDescriptor) bool {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse.consolidatedDataReport":
+		return len(x.ConsolidatedDataReport) != 0
+	case "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse.pagination":
+		return x.Pagination != nil
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Clear clears the field such that a subsequent Has call reports false.
+//
+// Clearing an extension field clears both the extension type and value
+// associated with the given field number.
+//
+// Clear is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryAllConsolidatedDataReportResponse) Clear(fd protoreflect.FieldDescriptor) {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse.consolidatedDataReport":
+		x.ConsolidatedDataReport = nil
+	case "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse.pagination":
+		x.Pagination = nil
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Get retrieves the value for a field.
+//
+// For unpopulated scalars, it returns the default value, where
+// the default value of a bytes scalar is guaranteed to be a copy.
+// For unpopulated composite types, it returns an empty, read-only view
+// of the value; to obtain a mutable reference, use Mutable.
+func (x *fastReflection_QueryAllConsolidatedDataReportResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+	switch descriptor.FullName() {
+	case "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse.consolidatedDataReport":
+		if len(x.ConsolidatedDataReport) == 0 {
+			return protoreflect.ValueOfList(&_QueryAllConsolidatedDataReportResponse_1_list{})
+		}
+		listValue := &_QueryAllConsolidatedDataReportResponse_1_list{list: &x.ConsolidatedDataReport}
+		return protoreflect.ValueOfList(listValue)
+	case "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse.pagination":
+		value := x.Pagination
+		return protoreflect.ValueOfMessage(value.ProtoReflect())
+	default:
+		if descriptor.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse does not contain field %s", descriptor.FullName()))
+	}
+}
+
+// Set stores the value for a field.
+//
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType.
+// When setting a composite type, it is unspecified whether the stored value
+// aliases the source's memory in any way. If the composite value is an
+// empty, read-only value, then it panics.
+//
+// Set is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryAllConsolidatedDataReportResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse.consolidatedDataReport":
+		lv := value.List()
+		clv := lv.(*_QueryAllConsolidatedDataReportResponse_1_list)
+		x.ConsolidatedDataReport = *clv.list
+	case "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse.pagination":
+		x.Pagination = value.Message().Interface().(*v1beta1.PageResponse)
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Mutable returns a mutable reference to a composite type.
+//
+// If the field is unpopulated, it may allocate a composite value.
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType
+// if not already stored.
+// It panics if the field does not contain a composite type.
+//
+// Mutable is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryAllConsolidatedDataReportResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse.consolidatedDataReport":
+		if x.ConsolidatedDataReport == nil {
+			x.ConsolidatedDataReport = []*ConsolidatedDataReport{}
+		}
+		value := &_QueryAllConsolidatedDataReportResponse_1_list{list: &x.ConsolidatedDataReport}
+		return protoreflect.ValueOfList(value)
+	case "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse.pagination":
+		if x.Pagination == nil {
+			x.Pagination = new(v1beta1.PageResponse)
+		}
+		return protoreflect.ValueOfMessage(x.Pagination.ProtoReflect())
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// NewField returns a new value that is assignable to the field
+// for the given descriptor. For scalars, this returns the default value.
+// For lists, maps, and messages, this returns a new, empty, mutable value.
+func (x *fastReflection_QueryAllConsolidatedDataReportResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse.consolidatedDataReport":
+		list := []*ConsolidatedDataReport{}
+		return protoreflect.ValueOfList(&_QueryAllConsolidatedDataReportResponse_1_list{list: &list})
+	case "vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse.pagination":
+		m := new(v1beta1.PageResponse)
+		return protoreflect.ValueOfMessage(m.ProtoReflect())
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse"))
+		}
+		panic(fmt.Errorf("message vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// WhichOneof reports which field within the oneof is populated,
+// returning nil if none are populated.
+// It panics if the oneof descriptor does not belong to this message.
+func (x *fastReflection_QueryAllConsolidatedDataReportResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+	switch d.FullName() {
+	default:
+		panic(fmt.Errorf("%s is not a oneof field in vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse", d.FullName()))
+	}
+	panic("unreachable")
+}
+
+// GetUnknown retrieves the entire list of unknown fields.
+// The caller may only mutate the contents of the RawFields
+// if the mutated bytes are stored back into the message with SetUnknown.
+func (x *fastReflection_QueryAllConsolidatedDataReportResponse) GetUnknown() protoreflect.RawFields {
+	return x.unknownFields
+}
+
+// SetUnknown stores an entire list of unknown fields.
+// The raw fields must be syntactically valid according to the wire format.
+// An implementation may panic if this is not the case.
+// Once stored, the caller must not mutate the content of the RawFields.
+// An empty RawFields may be passed to clear the fields.
+//
+// SetUnknown is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_QueryAllConsolidatedDataReportResponse) SetUnknown(fields protoreflect.RawFields) {
+	x.unknownFields = fields
+}
+
+// IsValid reports whether the message is valid.
+//
+// An invalid message is an empty, read-only value.
+//
+// An invalid message often corresponds to a nil pointer of the concrete
+// message type, but the details are implementation dependent.
+// Validity is not part of the protobuf data model, and may not
+// be preserved in marshaling or other operations.
+func (x *fastReflection_QueryAllConsolidatedDataReportResponse) IsValid() bool {
+	return x != nil
+}
+
+// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
+// This method may return nil.
+//
+// The returned methods type is identical to
+// "google.golang.org/protobuf/runtime/protoiface".Methods.
+// Consult the protoiface package documentation for details.
+func (x *fastReflection_QueryAllConsolidatedDataReportResponse) ProtoMethods() *protoiface.Methods {
+	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
+		x := input.Message.Interface().(*QueryAllConsolidatedDataReportResponse)
+		if x == nil {
+			return protoiface.SizeOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Size:              0,
+			}
+		}
+		options := runtime.SizeInputToOptions(input)
+		_ = options
+		var n int
+		var l int
+		_ = l
+		if len(x.ConsolidatedDataReport) > 0 {
+			for _, e := range x.ConsolidatedDataReport {
+				l = options.Size(e)
+				n += 1 + l + runtime.Sov(uint64(l))
+			}
+		}
+		if x.Pagination != nil {
+			l = options.Size(x.Pagination)
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		if x.unknownFields != nil {
+			n += len(x.unknownFields)
+		}
+		return protoiface.SizeOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Size:              n,
+		}
+	}
+
+	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
+		x := input.Message.Interface().(*QueryAllConsolidatedDataReportResponse)
+		if x == nil {
+			return protoiface.MarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Buf:               input.Buf,
+			}, nil
+		}
+		options := runtime.MarshalInputToOptions(input)
+		_ = options
+		size := options.Size(x)
+		dAtA := make([]byte, size)
+		i := len(dAtA)
+		_ = i
+		var l int
+		_ = l
+		if x.unknownFields != nil {
+			i -= len(x.unknownFields)
+			copy(dAtA[i:], x.unknownFields)
+		}
+		if x.Pagination != nil {
+			encoded, err := options.Marshal(x.Pagination)
+			if err != nil {
+				return protoiface.MarshalOutput{
+					NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+					Buf:               input.Buf,
+				}, err
+			}
+			i -= len(encoded)
+			copy(dAtA[i:], encoded)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+			i--
+			dAtA[i] = 0x12
+		}
+		if len(x.ConsolidatedDataReport) > 0 {
+			for iNdEx := len(x.ConsolidatedDataReport) - 1; iNdEx >= 0; iNdEx-- {
+				encoded, err := options.Marshal(x.ConsolidatedDataReport[iNdEx])
+				if err != nil {
+					return protoiface.MarshalOutput{
+						NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+						Buf:               input.Buf,
+					}, err
+				}
+				i -= len(encoded)
+				copy(dAtA[i:], encoded)
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+				i--
+				dAtA[i] = 0xa
+			}
+		}
+		if input.Buf != nil {
+			input.Buf = append(input.Buf, dAtA...)
+		} else {
+			input.Buf = dAtA
+		}
+		return protoiface.MarshalOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Buf:               input.Buf,
+		}, nil
+	}
+	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
+		x := input.Message.Interface().(*QueryAllConsolidatedDataReportResponse)
+		if x == nil {
+			return protoiface.UnmarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Flags:             input.Flags,
+			}, nil
+		}
+		options := runtime.UnmarshalInputToOptions(input)
+		_ = options
+		dAtA := input.Buf
+		l := len(dAtA)
+		iNdEx := 0
+		for iNdEx < l {
+			preIndex := iNdEx
+			var wire uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				wire |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			fieldNum := int32(wire >> 3)
+			wireType := int(wire & 0x7)
+			if wireType == 4 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryAllConsolidatedDataReportResponse: wiretype end group for non-group")
+			}
+			if fieldNum <= 0 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryAllConsolidatedDataReportResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			}
+			switch fieldNum {
+			case 1:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field ConsolidatedDataReport", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.ConsolidatedDataReport = append(x.ConsolidatedDataReport, &ConsolidatedDataReport{})
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.ConsolidatedDataReport[len(x.ConsolidatedDataReport)-1]); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				iNdEx = postIndex
+			case 2:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if x.Pagination == nil {
+					x.Pagination = &v1beta1.PageResponse{}
+				}
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.Pagination); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				iNdEx = postIndex
+			default:
+				iNdEx = preIndex
+				skippy, err := runtime.Skip(dAtA[iNdEx:])
+				if err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				if (skippy < 0) || (iNdEx+skippy) < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if (iNdEx + skippy) > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if !options.DiscardUnknown {
+					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
+				}
+				iNdEx += skippy
+			}
+		}
+
+		if iNdEx > l {
+			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+		}
+		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
+	}
+	return &protoiface.Methods{
+		NoUnkeyedLiterals: struct{}{},
+		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
+		Size:              size,
+		Marshal:           marshal,
+		Unmarshal:         unmarshal,
+		Merge:             nil,
+		CheckInitialized:  nil,
+	}
+}
+
 // Code generated by protoc-gen-go. DO NOT EDIT.
 // versions:
 // 	protoc-gen-go v1.27.0
@@ -3023,6 +4934,162 @@ func (x *QueryAllVesselResponse) GetPagination() *v1beta1.PageResponse {
 	return nil
 }
 
+type QueryGetConsolidatedDataReportRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Imo string `protobuf:"bytes,1,opt,name=imo,proto3" json:"imo,omitempty"`
+	Ts  uint64 `protobuf:"varint,2,opt,name=ts,proto3" json:"ts,omitempty"`
+}
+
+func (x *QueryGetConsolidatedDataReportRequest) Reset() {
+	*x = QueryGetConsolidatedDataReportRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_vesseloracle_vesseloracle_query_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *QueryGetConsolidatedDataReportRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*QueryGetConsolidatedDataReportRequest) ProtoMessage() {}
+
+// Deprecated: Use QueryGetConsolidatedDataReportRequest.ProtoReflect.Descriptor instead.
+func (*QueryGetConsolidatedDataReportRequest) Descriptor() ([]byte, []int) {
+	return file_vesseloracle_vesseloracle_query_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *QueryGetConsolidatedDataReportRequest) GetImo() string {
+	if x != nil {
+		return x.Imo
+	}
+	return ""
+}
+
+func (x *QueryGetConsolidatedDataReportRequest) GetTs() uint64 {
+	if x != nil {
+		return x.Ts
+	}
+	return 0
+}
+
+type QueryGetConsolidatedDataReportResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ConsolidatedDataReport *ConsolidatedDataReport `protobuf:"bytes,1,opt,name=consolidatedDataReport,proto3" json:"consolidatedDataReport,omitempty"`
+}
+
+func (x *QueryGetConsolidatedDataReportResponse) Reset() {
+	*x = QueryGetConsolidatedDataReportResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_vesseloracle_vesseloracle_query_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *QueryGetConsolidatedDataReportResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*QueryGetConsolidatedDataReportResponse) ProtoMessage() {}
+
+// Deprecated: Use QueryGetConsolidatedDataReportResponse.ProtoReflect.Descriptor instead.
+func (*QueryGetConsolidatedDataReportResponse) Descriptor() ([]byte, []int) {
+	return file_vesseloracle_vesseloracle_query_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *QueryGetConsolidatedDataReportResponse) GetConsolidatedDataReport() *ConsolidatedDataReport {
+	if x != nil {
+		return x.ConsolidatedDataReport
+	}
+	return nil
+}
+
+type QueryAllConsolidatedDataReportRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Pagination *v1beta1.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (x *QueryAllConsolidatedDataReportRequest) Reset() {
+	*x = QueryAllConsolidatedDataReportRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_vesseloracle_vesseloracle_query_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *QueryAllConsolidatedDataReportRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*QueryAllConsolidatedDataReportRequest) ProtoMessage() {}
+
+// Deprecated: Use QueryAllConsolidatedDataReportRequest.ProtoReflect.Descriptor instead.
+func (*QueryAllConsolidatedDataReportRequest) Descriptor() ([]byte, []int) {
+	return file_vesseloracle_vesseloracle_query_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *QueryAllConsolidatedDataReportRequest) GetPagination() *v1beta1.PageRequest {
+	if x != nil {
+		return x.Pagination
+	}
+	return nil
+}
+
+type QueryAllConsolidatedDataReportResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ConsolidatedDataReport []*ConsolidatedDataReport `protobuf:"bytes,1,rep,name=consolidatedDataReport,proto3" json:"consolidatedDataReport,omitempty"`
+	Pagination             *v1beta1.PageResponse     `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (x *QueryAllConsolidatedDataReportResponse) Reset() {
+	*x = QueryAllConsolidatedDataReportResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_vesseloracle_vesseloracle_query_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *QueryAllConsolidatedDataReportResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*QueryAllConsolidatedDataReportResponse) ProtoMessage() {}
+
+// Deprecated: Use QueryAllConsolidatedDataReportResponse.ProtoReflect.Descriptor instead.
+func (*QueryAllConsolidatedDataReportResponse) Descriptor() ([]byte, []int) {
+	return file_vesseloracle_vesseloracle_query_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *QueryAllConsolidatedDataReportResponse) GetConsolidatedDataReport() []*ConsolidatedDataReport {
+	if x != nil {
+		return x.ConsolidatedDataReport
+	}
+	return nil
+}
+
+func (x *QueryAllConsolidatedDataReportResponse) GetPagination() *v1beta1.PageResponse {
+	if x != nil {
+		return x.Pagination
+	}
+	return nil
+}
+
 var File_vesseloracle_vesseloracle_query_proto protoreflect.FileDescriptor
 
 var file_vesseloracle_vesseloracle_query_proto_rawDesc = []byte{
@@ -3042,86 +5109,154 @@ var file_vesseloracle_vesseloracle_query_proto_rawDesc = []byte{
 	0x2f, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x26, 0x76,
 	0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2f, 0x76, 0x65, 0x73, 0x73,
 	0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x2e,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x14, 0x0a, 0x12, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x61,
-	0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x5b, 0x0a, 0x13, 0x51,
-	0x75, 0x65, 0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x12, 0x44, 0x0a, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x0b, 0x32, 0x21, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c,
-	0x65, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x50,
-	0x61, 0x72, 0x61, 0x6d, 0x73, 0x42, 0x09, 0xc8, 0xde, 0x1f, 0x00, 0xa8, 0xe7, 0xb0, 0x2a, 0x01,
-	0x52, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x22, 0x51, 0x0a, 0x15, 0x51, 0x75, 0x65, 0x72,
-	0x79, 0x47, 0x65, 0x74, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x12, 0x10, 0x0a, 0x03, 0x69, 0x6d, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
-	0x69, 0x6d, 0x6f, 0x12, 0x0e, 0x0a, 0x02, 0x74, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x04, 0x52,
-	0x02, 0x74, 0x73, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x18, 0x03, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x22, 0x59, 0x0a, 0x16, 0x51,
-	0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3f, 0x0a, 0x06, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x21, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72,
-	0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c,
-	0x65, 0x2e, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x42, 0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52, 0x06,
-	0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x22, 0x5f, 0x0a, 0x15, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41,
-	0x6c, 0x6c, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
-	0x46, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x0b, 0x32, 0x26, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73,
-	0x65, 0x2e, 0x71, 0x75, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e,
-	0x50, 0x61, 0x67, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x52, 0x0a, 0x70, 0x61, 0x67,
-	0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0xa2, 0x01, 0x0a, 0x16, 0x51, 0x75, 0x65, 0x72,
-	0x79, 0x41, 0x6c, 0x6c, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x12, 0x3f, 0x0a, 0x06, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x18, 0x01, 0x20, 0x03,
-	0x28, 0x0b, 0x32, 0x21, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c,
-	0x65, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x56,
-	0x65, 0x73, 0x73, 0x65, 0x6c, 0x42, 0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52, 0x06, 0x76, 0x65, 0x73,
-	0x73, 0x65, 0x6c, 0x12, 0x47, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f,
-	0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x27, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73,
-	0x2e, 0x62, 0x61, 0x73, 0x65, 0x2e, 0x71, 0x75, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x62, 0x65,
-	0x74, 0x61, 0x31, 0x2e, 0x50, 0x61, 0x67, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x52, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x32, 0xe9, 0x03, 0x0a,
-	0x05, 0x51, 0x75, 0x65, 0x72, 0x79, 0x12, 0x92, 0x01, 0x0a, 0x06, 0x50, 0x61, 0x72, 0x61, 0x6d,
-	0x73, 0x12, 0x2d, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x38, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61,
+	0x63, 0x6c, 0x65, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65,
+	0x2f, 0x63, 0x6f, 0x6e, 0x73, 0x6f, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x64, 0x61,
+	0x74, 0x61, 0x5f, 0x72, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22,
+	0x14, 0x0a, 0x12, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x5b, 0x0a, 0x13, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x61,
+	0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x44, 0x0a, 0x06,
+	0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x21, 0x2e, 0x76,
+	0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76, 0x65, 0x73, 0x73,
+	0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x42,
+	0x09, 0xc8, 0xde, 0x1f, 0x00, 0xa8, 0xe7, 0xb0, 0x2a, 0x01, 0x52, 0x06, 0x70, 0x61, 0x72, 0x61,
+	0x6d, 0x73, 0x22, 0x51, 0x0a, 0x15, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x56, 0x65,
+	0x73, 0x73, 0x65, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x69,
+	0x6d, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x69, 0x6d, 0x6f, 0x12, 0x0e, 0x0a,
+	0x02, 0x74, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x74, 0x73, 0x12, 0x16, 0x0a,
+	0x06, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73,
+	0x6f, 0x75, 0x72, 0x63, 0x65, 0x22, 0x59, 0x0a, 0x16, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65,
+	0x74, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
+	0x3f, 0x0a, 0x06, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x21, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76,
+	0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x56, 0x65, 0x73, 0x73,
+	0x65, 0x6c, 0x42, 0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52, 0x06, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c,
+	0x22, 0x5f, 0x0a, 0x15, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x6c, 0x6c, 0x56, 0x65, 0x73, 0x73,
+	0x65, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x46, 0x0a, 0x0a, 0x70, 0x61, 0x67,
+	0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x26, 0x2e,
+	0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73, 0x65, 0x2e, 0x71, 0x75, 0x65, 0x72,
+	0x79, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x50, 0x61, 0x67, 0x65, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x52, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x22, 0xa2, 0x01, 0x0a, 0x16, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x6c, 0x6c, 0x56, 0x65,
+	0x73, 0x73, 0x65, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3f, 0x0a, 0x06,
+	0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x21, 0x2e, 0x76,
+	0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76, 0x65, 0x73, 0x73,
+	0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x42,
+	0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52, 0x06, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x12, 0x47, 0x0a,
+	0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x27, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73, 0x65, 0x2e,
+	0x71, 0x75, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x50, 0x61,
+	0x67, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x52, 0x0a, 0x70, 0x61, 0x67, 0x69,
+	0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x49, 0x0a, 0x25, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47,
+	0x65, 0x74, 0x43, 0x6f, 0x6e, 0x73, 0x6f, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x64, 0x44, 0x61,
+	0x74, 0x61, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
+	0x10, 0x0a, 0x03, 0x69, 0x6d, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x69, 0x6d,
+	0x6f, 0x12, 0x0e, 0x0a, 0x02, 0x74, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x74,
+	0x73, 0x22, 0x99, 0x01, 0x0a, 0x26, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x43, 0x6f,
+	0x6e, 0x73, 0x6f, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x64, 0x44, 0x61, 0x74, 0x61, 0x52, 0x65,
+	0x70, 0x6f, 0x72, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x6f, 0x0a, 0x16,
+	0x63, 0x6f, 0x6e, 0x73, 0x6f, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x64, 0x44, 0x61, 0x74, 0x61,
+	0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x31, 0x2e, 0x76,
+	0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76, 0x65, 0x73, 0x73,
+	0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x43, 0x6f, 0x6e, 0x73, 0x6f, 0x6c, 0x69,
+	0x64, 0x61, 0x74, 0x65, 0x64, 0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x42,
+	0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52, 0x16, 0x63, 0x6f, 0x6e, 0x73, 0x6f, 0x6c, 0x69, 0x64, 0x61,
+	0x74, 0x65, 0x64, 0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x22, 0x6f, 0x0a,
+	0x25, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x6c, 0x6c, 0x43, 0x6f, 0x6e, 0x73, 0x6f, 0x6c, 0x69,
+	0x64, 0x61, 0x74, 0x65, 0x64, 0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x46, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x26, 0x2e, 0x63, 0x6f, 0x73,
+	0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73, 0x65, 0x2e, 0x71, 0x75, 0x65, 0x72, 0x79, 0x2e, 0x76,
+	0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x50, 0x61, 0x67, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x52, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0xe2,
+	0x01, 0x0a, 0x26, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x6c, 0x6c, 0x43, 0x6f, 0x6e, 0x73, 0x6f,
+	0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x64, 0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x70, 0x6f, 0x72,
+	0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x6f, 0x0a, 0x16, 0x63, 0x6f, 0x6e,
+	0x73, 0x6f, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x64, 0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x70,
+	0x6f, 0x72, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x31, 0x2e, 0x76, 0x65, 0x73, 0x73,
+	0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f,
+	0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x43, 0x6f, 0x6e, 0x73, 0x6f, 0x6c, 0x69, 0x64, 0x61, 0x74,
+	0x65, 0x64, 0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x42, 0x04, 0xc8, 0xde,
+	0x1f, 0x00, 0x52, 0x16, 0x63, 0x6f, 0x6e, 0x73, 0x6f, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x64,
+	0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x12, 0x47, 0x0a, 0x0a, 0x70, 0x61,
+	0x67, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x27,
+	0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73, 0x65, 0x2e, 0x71, 0x75, 0x65,
+	0x72, 0x79, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x50, 0x61, 0x67, 0x65, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x52, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x32, 0xb1, 0x07, 0x0a, 0x05, 0x51, 0x75, 0x65, 0x72, 0x79, 0x12, 0x92, 0x01,
+	0x0a, 0x06, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x2d, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65,
+	0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72,
+	0x61, 0x63, 0x6c, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2e, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c,
+	0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61,
+	0x63, 0x6c, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x29, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x23, 0x12,
+	0x21, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2f, 0x76,
+	0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2f, 0x70, 0x61, 0x72, 0x61,
+	0x6d, 0x73, 0x12, 0xac, 0x01, 0x0a, 0x06, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x12, 0x30, 0x2e,
+	0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76, 0x65, 0x73,
+	0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47,
+	0x65, 0x74, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x31, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76,
+	0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72,
+	0x79, 0x47, 0x65, 0x74, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x22, 0x3d, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x37, 0x12, 0x35, 0x2f, 0x76, 0x65, 0x73,
+	0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c,
+	0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x2f, 0x7b, 0x69,
+	0x6d, 0x6f, 0x7d, 0x2f, 0x7b, 0x74, 0x73, 0x7d, 0x2f, 0x7b, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65,
+	0x7d, 0x12, 0x9b, 0x01, 0x0a, 0x09, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x41, 0x6c, 0x6c, 0x12,
+	0x30, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76,
+	0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72,
+	0x79, 0x41, 0x6c, 0x6c, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x1a, 0x31, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65,
 	0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x51, 0x75,
-	0x65, 0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x1a, 0x2e, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e,
-	0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x51, 0x75, 0x65,
-	0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x22, 0x29, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x23, 0x12, 0x21, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65,
-	0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72,
-	0x61, 0x63, 0x6c, 0x65, 0x2f, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0xac, 0x01, 0x0a, 0x06,
-	0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x12, 0x30, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f,
-	0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63,
-	0x6c, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x56, 0x65, 0x73, 0x73, 0x65,
-	0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x31, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65,
-	0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72,
-	0x61, 0x63, 0x6c, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x56, 0x65, 0x73,
-	0x73, 0x65, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x3d, 0x82, 0xd3, 0xe4,
-	0x93, 0x02, 0x37, 0x12, 0x35, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63,
-	0x6c, 0x65, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2f,
-	0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x2f, 0x7b, 0x69, 0x6d, 0x6f, 0x7d, 0x2f, 0x7b, 0x74, 0x73,
-	0x7d, 0x2f, 0x7b, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x7d, 0x12, 0x9b, 0x01, 0x0a, 0x09, 0x56,
-	0x65, 0x73, 0x73, 0x65, 0x6c, 0x41, 0x6c, 0x6c, 0x12, 0x30, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65,
-	0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72,
-	0x61, 0x63, 0x6c, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x6c, 0x6c, 0x56, 0x65, 0x73,
-	0x73, 0x65, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x31, 0x2e, 0x76, 0x65, 0x73,
+	0x65, 0x72, 0x79, 0x41, 0x6c, 0x6c, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x29, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x23, 0x12, 0x21, 0x2f, 0x76,
+	0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2f, 0x76, 0x65, 0x73, 0x73,
+	0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x12,
+	0xe5, 0x01, 0x0a, 0x16, 0x43, 0x6f, 0x6e, 0x73, 0x6f, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x64,
+	0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x12, 0x40, 0x2e, 0x76, 0x65, 0x73,
 	0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c,
-	0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x6c, 0x6c, 0x56,
-	0x65, 0x73, 0x73, 0x65, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x29, 0x82,
-	0xd3, 0xe4, 0x93, 0x02, 0x23, 0x12, 0x21, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72,
-	0x61, 0x63, 0x6c, 0x65, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c,
-	0x65, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x42, 0xdc, 0x01, 0x0a, 0x1d, 0x63, 0x6f, 0x6d,
-	0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76, 0x65,
-	0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x42, 0x0a, 0x51, 0x75, 0x65, 0x72,
-	0x79, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x2a, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c,
-	0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65,
-	0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72,
-	0x61, 0x63, 0x6c, 0x65, 0xa2, 0x02, 0x03, 0x56, 0x56, 0x58, 0xaa, 0x02, 0x19, 0x56, 0x65, 0x73,
-	0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c,
-	0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0xca, 0x02, 0x19, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f,
-	0x72, 0x61, 0x63, 0x6c, 0x65, 0x5c, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63,
-	0x6c, 0x65, 0xe2, 0x02, 0x25, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c,
-	0x65, 0x5c, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x5c, 0x47,
-	0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x1a, 0x56, 0x65, 0x73,
-	0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x3a, 0x3a, 0x56, 0x65, 0x73, 0x73, 0x65,
-	0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x43,
+	0x6f, 0x6e, 0x73, 0x6f, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x64, 0x44, 0x61, 0x74, 0x61, 0x52,
+	0x65, 0x70, 0x6f, 0x72, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x41, 0x2e, 0x76,
+	0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76, 0x65, 0x73, 0x73,
+	0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65,
+	0x74, 0x43, 0x6f, 0x6e, 0x73, 0x6f, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x64, 0x44, 0x61, 0x74,
+	0x61, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x46, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x40, 0x12, 0x3e, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c,
+	0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61,
+	0x63, 0x6c, 0x65, 0x2f, 0x63, 0x6f, 0x6e, 0x73, 0x6f, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x64,
+	0x5f, 0x64, 0x61, 0x74, 0x61, 0x5f, 0x72, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x2f, 0x7b, 0x69, 0x6d,
+	0x6f, 0x7d, 0x2f, 0x7b, 0x74, 0x73, 0x7d, 0x12, 0xdd, 0x01, 0x0a, 0x19, 0x43, 0x6f, 0x6e, 0x73,
+	0x6f, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x64, 0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x70, 0x6f,
+	0x72, 0x74, 0x41, 0x6c, 0x6c, 0x12, 0x40, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72,
+	0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c,
+	0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x6c, 0x6c, 0x43, 0x6f, 0x6e, 0x73, 0x6f, 0x6c,
+	0x69, 0x64, 0x61, 0x74, 0x65, 0x64, 0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x41, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c,
+	0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61,
+	0x63, 0x6c, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x6c, 0x6c, 0x43, 0x6f, 0x6e, 0x73,
+	0x6f, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x64, 0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x70, 0x6f,
+	0x72, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x3b, 0x82, 0xd3, 0xe4, 0x93,
+	0x02, 0x35, 0x12, 0x33, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c,
+	0x65, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2f, 0x63,
+	0x6f, 0x6e, 0x73, 0x6f, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x64, 0x61, 0x74, 0x61,
+	0x5f, 0x72, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x42, 0xdc, 0x01, 0x0a, 0x1d, 0x63, 0x6f, 0x6d, 0x2e,
+	0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x76, 0x65, 0x73,
+	0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x42, 0x0a, 0x51, 0x75, 0x65, 0x72, 0x79,
+	0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x2a, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f,
+	0x72, 0x61, 0x63, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c,
+	0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2f, 0x76, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61,
+	0x63, 0x6c, 0x65, 0xa2, 0x02, 0x03, 0x56, 0x56, 0x58, 0xaa, 0x02, 0x19, 0x56, 0x65, 0x73, 0x73,
+	0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x2e, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f,
+	0x72, 0x61, 0x63, 0x6c, 0x65, 0xca, 0x02, 0x19, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72,
+	0x61, 0x63, 0x6c, 0x65, 0x5c, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c,
+	0x65, 0xe2, 0x02, 0x25, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65,
+	0x5c, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x5c, 0x47, 0x50,
+	0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x1a, 0x56, 0x65, 0x73, 0x73,
+	0x65, 0x6c, 0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x3a, 0x3a, 0x56, 0x65, 0x73, 0x73, 0x65, 0x6c,
+	0x6f, 0x72, 0x61, 0x63, 0x6c, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -3136,36 +5271,49 @@ func file_vesseloracle_vesseloracle_query_proto_rawDescGZIP() []byte {
 	return file_vesseloracle_vesseloracle_query_proto_rawDescData
 }
 
-var file_vesseloracle_vesseloracle_query_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_vesseloracle_vesseloracle_query_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_vesseloracle_vesseloracle_query_proto_goTypes = []interface{}{
-	(*QueryParamsRequest)(nil),     // 0: vesseloracle.vesseloracle.QueryParamsRequest
-	(*QueryParamsResponse)(nil),    // 1: vesseloracle.vesseloracle.QueryParamsResponse
-	(*QueryGetVesselRequest)(nil),  // 2: vesseloracle.vesseloracle.QueryGetVesselRequest
-	(*QueryGetVesselResponse)(nil), // 3: vesseloracle.vesseloracle.QueryGetVesselResponse
-	(*QueryAllVesselRequest)(nil),  // 4: vesseloracle.vesseloracle.QueryAllVesselRequest
-	(*QueryAllVesselResponse)(nil), // 5: vesseloracle.vesseloracle.QueryAllVesselResponse
-	(*Params)(nil),                 // 6: vesseloracle.vesseloracle.Params
-	(*Vessel)(nil),                 // 7: vesseloracle.vesseloracle.Vessel
-	(*v1beta1.PageRequest)(nil),    // 8: cosmos.base.query.v1beta1.PageRequest
-	(*v1beta1.PageResponse)(nil),   // 9: cosmos.base.query.v1beta1.PageResponse
+	(*QueryParamsRequest)(nil),                     // 0: vesseloracle.vesseloracle.QueryParamsRequest
+	(*QueryParamsResponse)(nil),                    // 1: vesseloracle.vesseloracle.QueryParamsResponse
+	(*QueryGetVesselRequest)(nil),                  // 2: vesseloracle.vesseloracle.QueryGetVesselRequest
+	(*QueryGetVesselResponse)(nil),                 // 3: vesseloracle.vesseloracle.QueryGetVesselResponse
+	(*QueryAllVesselRequest)(nil),                  // 4: vesseloracle.vesseloracle.QueryAllVesselRequest
+	(*QueryAllVesselResponse)(nil),                 // 5: vesseloracle.vesseloracle.QueryAllVesselResponse
+	(*QueryGetConsolidatedDataReportRequest)(nil),  // 6: vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest
+	(*QueryGetConsolidatedDataReportResponse)(nil), // 7: vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse
+	(*QueryAllConsolidatedDataReportRequest)(nil),  // 8: vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest
+	(*QueryAllConsolidatedDataReportResponse)(nil), // 9: vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse
+	(*Params)(nil),                                 // 10: vesseloracle.vesseloracle.Params
+	(*Vessel)(nil),                                 // 11: vesseloracle.vesseloracle.Vessel
+	(*v1beta1.PageRequest)(nil),                    // 12: cosmos.base.query.v1beta1.PageRequest
+	(*v1beta1.PageResponse)(nil),                   // 13: cosmos.base.query.v1beta1.PageResponse
+	(*ConsolidatedDataReport)(nil),                 // 14: vesseloracle.vesseloracle.ConsolidatedDataReport
 }
 var file_vesseloracle_vesseloracle_query_proto_depIdxs = []int32{
-	6, // 0: vesseloracle.vesseloracle.QueryParamsResponse.params:type_name -> vesseloracle.vesseloracle.Params
-	7, // 1: vesseloracle.vesseloracle.QueryGetVesselResponse.vessel:type_name -> vesseloracle.vesseloracle.Vessel
-	8, // 2: vesseloracle.vesseloracle.QueryAllVesselRequest.pagination:type_name -> cosmos.base.query.v1beta1.PageRequest
-	7, // 3: vesseloracle.vesseloracle.QueryAllVesselResponse.vessel:type_name -> vesseloracle.vesseloracle.Vessel
-	9, // 4: vesseloracle.vesseloracle.QueryAllVesselResponse.pagination:type_name -> cosmos.base.query.v1beta1.PageResponse
-	0, // 5: vesseloracle.vesseloracle.Query.Params:input_type -> vesseloracle.vesseloracle.QueryParamsRequest
-	2, // 6: vesseloracle.vesseloracle.Query.Vessel:input_type -> vesseloracle.vesseloracle.QueryGetVesselRequest
-	4, // 7: vesseloracle.vesseloracle.Query.VesselAll:input_type -> vesseloracle.vesseloracle.QueryAllVesselRequest
-	1, // 8: vesseloracle.vesseloracle.Query.Params:output_type -> vesseloracle.vesseloracle.QueryParamsResponse
-	3, // 9: vesseloracle.vesseloracle.Query.Vessel:output_type -> vesseloracle.vesseloracle.QueryGetVesselResponse
-	5, // 10: vesseloracle.vesseloracle.Query.VesselAll:output_type -> vesseloracle.vesseloracle.QueryAllVesselResponse
-	8, // [8:11] is the sub-list for method output_type
-	5, // [5:8] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	10, // 0: vesseloracle.vesseloracle.QueryParamsResponse.params:type_name -> vesseloracle.vesseloracle.Params
+	11, // 1: vesseloracle.vesseloracle.QueryGetVesselResponse.vessel:type_name -> vesseloracle.vesseloracle.Vessel
+	12, // 2: vesseloracle.vesseloracle.QueryAllVesselRequest.pagination:type_name -> cosmos.base.query.v1beta1.PageRequest
+	11, // 3: vesseloracle.vesseloracle.QueryAllVesselResponse.vessel:type_name -> vesseloracle.vesseloracle.Vessel
+	13, // 4: vesseloracle.vesseloracle.QueryAllVesselResponse.pagination:type_name -> cosmos.base.query.v1beta1.PageResponse
+	14, // 5: vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse.consolidatedDataReport:type_name -> vesseloracle.vesseloracle.ConsolidatedDataReport
+	12, // 6: vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest.pagination:type_name -> cosmos.base.query.v1beta1.PageRequest
+	14, // 7: vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse.consolidatedDataReport:type_name -> vesseloracle.vesseloracle.ConsolidatedDataReport
+	13, // 8: vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse.pagination:type_name -> cosmos.base.query.v1beta1.PageResponse
+	0,  // 9: vesseloracle.vesseloracle.Query.Params:input_type -> vesseloracle.vesseloracle.QueryParamsRequest
+	2,  // 10: vesseloracle.vesseloracle.Query.Vessel:input_type -> vesseloracle.vesseloracle.QueryGetVesselRequest
+	4,  // 11: vesseloracle.vesseloracle.Query.VesselAll:input_type -> vesseloracle.vesseloracle.QueryAllVesselRequest
+	6,  // 12: vesseloracle.vesseloracle.Query.ConsolidatedDataReport:input_type -> vesseloracle.vesseloracle.QueryGetConsolidatedDataReportRequest
+	8,  // 13: vesseloracle.vesseloracle.Query.ConsolidatedDataReportAll:input_type -> vesseloracle.vesseloracle.QueryAllConsolidatedDataReportRequest
+	1,  // 14: vesseloracle.vesseloracle.Query.Params:output_type -> vesseloracle.vesseloracle.QueryParamsResponse
+	3,  // 15: vesseloracle.vesseloracle.Query.Vessel:output_type -> vesseloracle.vesseloracle.QueryGetVesselResponse
+	5,  // 16: vesseloracle.vesseloracle.Query.VesselAll:output_type -> vesseloracle.vesseloracle.QueryAllVesselResponse
+	7,  // 17: vesseloracle.vesseloracle.Query.ConsolidatedDataReport:output_type -> vesseloracle.vesseloracle.QueryGetConsolidatedDataReportResponse
+	9,  // 18: vesseloracle.vesseloracle.Query.ConsolidatedDataReportAll:output_type -> vesseloracle.vesseloracle.QueryAllConsolidatedDataReportResponse
+	14, // [14:19] is the sub-list for method output_type
+	9,  // [9:14] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_vesseloracle_vesseloracle_query_proto_init() }
@@ -3175,6 +5323,7 @@ func file_vesseloracle_vesseloracle_query_proto_init() {
 	}
 	file_vesseloracle_vesseloracle_params_proto_init()
 	file_vesseloracle_vesseloracle_vessel_proto_init()
+	file_vesseloracle_vesseloracle_consolidated_data_report_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_vesseloracle_vesseloracle_query_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*QueryParamsRequest); i {
@@ -3248,6 +5397,54 @@ func file_vesseloracle_vesseloracle_query_proto_init() {
 				return nil
 			}
 		}
+		file_vesseloracle_vesseloracle_query_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*QueryGetConsolidatedDataReportRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_vesseloracle_vesseloracle_query_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*QueryGetConsolidatedDataReportResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_vesseloracle_vesseloracle_query_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*QueryAllConsolidatedDataReportRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_vesseloracle_vesseloracle_query_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*QueryAllConsolidatedDataReportResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -3255,7 +5452,7 @@ func file_vesseloracle_vesseloracle_query_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_vesseloracle_vesseloracle_query_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

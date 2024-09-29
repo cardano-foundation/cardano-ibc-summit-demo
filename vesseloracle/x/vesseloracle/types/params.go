@@ -18,7 +18,11 @@ func NewParams() Params {
 
 // DefaultParams returns a default set of parameters
 func DefaultParams() Params {
-	return NewParams()
+	return Params{
+		ConsolidationWindowMinItemCount:  8,
+		ConsolidationWindowMaxItemCount:  16,
+		ConsolidationWindowIntervalWidth: 43200,
+	}
 }
 
 // ParamSetPairs get the params.ParamSet

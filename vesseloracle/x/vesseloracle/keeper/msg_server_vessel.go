@@ -2,7 +2,6 @@ package keeper
 
 import (
 	"context"
-
 	"vesseloracle/x/vesseloracle/types"
 
 	errorsmod "cosmossdk.io/errors"
@@ -42,10 +41,8 @@ func (k msgServer) CreateVessel(goCtx context.Context, msg *types.MsgCreateVesse
 		Mmsi:     msg.Mmsi,
 	}
 
-	k.SetVessel(
-		ctx,
-		vessel,
-	)
+	k.SetVessel(ctx, vessel)
+
 	return &types.MsgCreateVesselResponse{}, nil
 }
 

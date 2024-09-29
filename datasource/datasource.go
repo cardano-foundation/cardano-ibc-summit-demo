@@ -26,10 +26,6 @@ const EtaJitterIntervalWidthSeconds int64 = 4 * 60       // eta jitter interval 
 const EtaOutlierOffsetSeconds int64 = 6 * 60 * 60        // minimum outlier difference for eta is 6 hours
 const EtaOutlierIntervalWidthSeconds int64 = 4 * 60 * 60 // the outlier eta is in the interval of -[OutlierOffset, OutlierOffset+OutlierInterval)
 
-var (
-	vesselImo = flag.String("imo", DefaultVesselIMO, "The IMO identifier of the ship you want to fetch data for")
-)
-
 // data type returned by datalastic vessel_pro endpoint
 type DatalasticVesselPro struct {
 	Data struct {
@@ -72,7 +68,7 @@ type DatalasticVesselPro struct {
 }
 
 // fetch data from Datalastic API
-func fetchVesselDataFromDatalastic(apiURL string) (*DatalasticVesselPro, error) {
+func fetchVesselDataFromDatalastic(apiURL string, vesselImo string) (*DatalasticVesselPro, error) {
 	resp, err := http.Get(apiURL) // Making an API call
 	if err != nil {
 		return nil, err
@@ -83,7 +79,7 @@ func fetchVesselDataFromDatalastic(apiURL string) (*DatalasticVesselPro, error) 
 		if resp.StatusCode == http.StatusForbidden {
 			return nil, fmt.Errorf("No access to requested resource. Check the API keys. (%d)", resp.StatusCode)
 		} else if resp.StatusCode == http.StatusNotFound {
-			return nil, fmt.Errorf("Vessel with given IMO not found. (%s)", *vesselImo)
+			return nil, fmt.Errorf("Vessel with given IMO not found. (%s)", vesselImo)
 		} else {
 			return nil, fmt.Errorf("Unexpected status code: %d", resp.StatusCode)
 		}
@@ -147,11 +143,6 @@ func createAndSubmitDataReports(vesselDataSources []DatalasticVesselPro) ([]stri
 			return transactions, fmt.Errorf("Could not determine address for account: %v %v", dataSourceAccountName, err)
 		}
 
-		// BUG: the messages are indexed via IMO and TS. Indices need to be unique and are not "bucketed" by submitter.
-		// So I need a submitter id in there and also a separate submit timestamp (so that at least if not sent within the same
-		// second messages are accepted) ... now I have to dig out where the hack I have to make modifications to have this
-		// properly reflected....good exercise though
-
 		// Define a message to create a post
 		msg := &types.MsgCreateVessel{
 			Creator:  dataSourceAddress,
@@ -183,44 +174,97 @@ func createAndSubmitDataReports(vesselDataSources []DatalasticVesselPro) ([]stri
 	return transactions, nil
 }
 
-func main() {
-	flag.Parse()
+// submit a data consolidation request message
+func submitDataConsolidationRequest(imo string) (*string, error) {
+	ctx := context.Background()
 
-	apiKey := os.Getenv("VESSEL_DATALASTIC_API_KEY")
-	if apiKey == "" {
-		fmt.Println("You need to specify the VESSEL_DATALASTIC_API_KEY environment variable to run this application.")
-		return
-	}
-
-	fmt.Println("Fetching data for vessel with IMO " + *vesselImo)
-
-	apiURL := "https://api.datalastic.com/api/v0/vessel_pro?api-key=" + apiKey + "&imo=" + *vesselImo // Replace with the actual API URL
-	apiData, err := fetchVesselDataFromDatalastic(apiURL)
+	client, err := cosmosclient.New(ctx, cosmosclient.WithAddressPrefix(AddressPrefix))
 	if err != nil {
-		fmt.Println("Error fetching data: ", err)
-		return
+		return nil, fmt.Errorf("Could not create cosmos client: %v", err)
 	}
 
-	// 1. create data sets for vessels including outliers for ETA and departure port
-	vesselDataSources, err := generateVesselData(apiData)
-	for index, vesselData := range vesselDataSources {
-		str, err := json.MarshalIndent(vesselData, "", "  ")
-		if err != nil {
-			fmt.Println("Error while marshalling: ", err)
+	account, err := client.Account("bob")
+	if err != nil {
+		return nil, fmt.Errorf("Could not determine account bob: %v", err)
+	}
+
+	address, err := account.Address(AddressPrefix)
+	if err != nil {
+		return nil, fmt.Errorf("Could not determine address for account bob: %v", err)
+	}
+
+	msg := &types.MsgConsolidateReports{
+		Creator: address,
+		Imo:     imo,
+	}
+
+	fmt.Println("Submitting request for data consolidation from account bob, with address", address, "...")
+	txResp, err := client.BroadcastTx(ctx, account, msg)
+	if err != nil {
+		return nil, fmt.Errorf("Could not broadcast transaction for data consolidation request: %v", err)
+	}
+	fmt.Println(txResp)
+
+	return &txResp.TxHash, nil
+}
+
+func main() {
+	dataSourceCmd := flag.NewFlagSet("report", flag.ExitOnError)
+	vesselImo := dataSourceCmd.String("imo", DefaultVesselIMO, "The IMO identifier of the ship you want to fetch data for")
+	consolidateCmd := flag.NewFlagSet("consolidate", flag.ExitOnError)
+
+	if len(os.Args) < 2 {
+		fmt.Println("expected 'report' or 'consolidate' subcommands")
+		os.Exit(1)
+	}
+
+	switch os.Args[1] {
+	case "report", "r":
+		dataSourceCmd.Parse(os.Args[2:])
+
+		apiKey := os.Getenv("VESSEL_DATALASTIC_API_KEY")
+		if apiKey == "" {
+			fmt.Println("You need to specify the VESSEL_DATALASTIC_API_KEY environment variable to run this application.")
 			return
 		}
-		fmt.Printf("vessel data [%d]: %v\n", index, string(str))
-	}
 
-	// 2. create and submit transactions/data reports to the blockchain
-	transactions, err := createAndSubmitDataReports(vesselDataSources)
-	if err != nil {
-		fmt.Println("Error while creating and submitting transactions: ", err)
-		return
-	}
-	fmt.Println("Transactions: ", transactions)
+		fmt.Println("Fetching data for vessel with IMO " + *vesselImo)
 
-	// 3. wait until transactions got accepted
-	// 4. monitor the module that is doing the data fusion
-	// 5. monitor the transaction is processed
+		apiURL := "https://api.datalastic.com/api/v0/vessel_pro?api-key=" + apiKey + "&imo=" + *vesselImo // Replace with the actual API URL
+		apiData, err := fetchVesselDataFromDatalastic(apiURL, *vesselImo)
+		if err != nil {
+			fmt.Println("Error fetching data: ", err)
+			return
+		}
+
+		// 1. create data sets for vessels including outliers for ETA and departure port
+		vesselDataSources, err := generateVesselData(apiData)
+		for index, vesselData := range vesselDataSources {
+			str, err := json.MarshalIndent(vesselData, "", "  ")
+			if err != nil {
+				fmt.Println("Error while marshalling: ", err)
+				return
+			}
+			fmt.Printf("vessel data [%d]: %v\n", index, string(str))
+		}
+
+		// 2. create and submit transactions/data reports to the blockchain and wait for acceptance
+		transactions, err := createAndSubmitDataReports(vesselDataSources)
+		if err != nil {
+			fmt.Println("Error while creating and submitting transactions: ", err)
+			return
+		}
+		fmt.Println("Transactions: ", transactions)
+	case "consolidate", "c":
+		consolidateCmd.Parse(os.Args[2:])
+		transaction, err := submitDataConsolidationRequest(*vesselImo)
+		if err != nil {
+			fmt.Println("Error while requesting data consolidation: ", err)
+			return
+		}
+		fmt.Println("Transaction: ", transaction)
+	default:
+		fmt.Errorf("Invalid subcommand. Only supported subcommands are 'consolidate' and 'report' or 'c' and 'r'.")
+		os.Exit(1)
+	}
 }
