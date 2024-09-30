@@ -16,15 +16,56 @@ import (
 	"vesseloracle/x/vesseloracle/types"
 )
 
-const AddressPrefix = "vessel"                           // the address prefix of vessel oracle chain's addresses
-const DataSourceCount = 8                                // number of emulated data sources
-const DefaultVesselIMO = "9525338"                       // the default IMO of the vessel to fetch data for
-const OutlierDeparturePortUnLoCode = "DEBWE"             // outlier departure port UNLOCODE identifier
-const OutlierDeparturePortName = "BRAUNSCHWEIG"          // outlier departure port name
-const EtaJitterOffsetSeconds int64 = 2 * 60              // eta jitter offset (2 minutes)
-const EtaJitterIntervalWidthSeconds int64 = 4 * 60       // eta jitter interval (4 minutes)
-const EtaOutlierOffsetSeconds int64 = 6 * 60 * 60        // minimum outlier difference for eta is 6 hours
-const EtaOutlierIntervalWidthSeconds int64 = 4 * 60 * 60 // the outlier eta is in the interval of -[OutlierOffset, OutlierOffset+OutlierInterval)
+const AddressPrefix = "vessel"                                 // the address prefix of vessel oracle chain's addresses
+const DataSourceCount = 8                                      // number of emulated data sources
+const DefaultVesselIMO = "9525338"                             // the default IMO of the vessel to fetch data for
+const OutlierDeparturePortUnLoCode = "DEBWE"                   // outlier departure port UNLOCODE identifier
+const OutlierDeparturePortName = "BRAUNSCHWEIG"                // outlier departure port name
+const EtaJitterOffsetSeconds int64 = 2 * 60                    // eta jitter offset (2 minutes)
+const EtaJitterIntervalWidthSeconds int64 = 4 * 60             // eta jitter interval (4 minutes)
+const EtaOutlierOffsetSeconds int64 = 6 * 60 * 60              // minimum outlier difference for eta is 6 hours
+const EtaOutlierIntervalWidthSeconds int64 = 4 * 60 * 60       // the outlier eta is in the interval of -[OutlierOffset, OutlierOffset+OutlierInterval)
+const LastDataReportJitterOffsetSeconds int64 = 30 * 60        // data report timestamp jitter offset (2 minutes)
+const LastDataReportJitterIntervalWidthSeconds int64 = 60 * 60 // data report timestamp interval (4 minutes)
+const DatalasticSimulationData = `{
+  "data": {
+    "uuid": "b8625b67-7142-cfd1-7b85-595cebfe4191",
+    "name": "MAERSK CHENNAI",
+    "mmsi": "566093000",
+    "imo": "9525338",
+    "eni": null,
+    "country_iso": "SG",
+    "type": "Cargo - Hazard A (Major)",
+    "type_specific": "Container Ship",
+    "lat": 0.60566,
+    "lon": 55.61919,
+    "speed": 15.8,
+    "course": 219,
+    "heading": 208,
+    "current_draught": 14,
+    "navigation_status": null,
+    "destination": "INNSA\u003E\u003ECGPNR",
+    "dest_port_uuid": "11ccc7a1-cb91-bfd8-fefd-520b892be1da",
+    "dest_port": "POINTE NOIRE",
+    "dest_port_unlocode": "CGPNR",
+    "dep_port_uuid": "54a743e6-9bde-8200-f2e7-ac733637dbd4",
+    "dep_port": "NHAVA SHEVA",
+    "dep_port_unlocode": "INNSA",
+    "last_position_epoch": 1726625760,
+    "last_position_UTC": "2024-09-18T02:16:00Z",
+    "atd_epoch": 1726280520,
+    "atd_UTC": "2024-09-14T02:22:00Z",
+    "eta_epoch": 1727690400,
+    "eta_UTC": "2024-09-30T10:00:00Z",
+    "timezone_offset_sec": 14400,
+    "timezone": "+04"
+  },
+  "meta": {
+    "duration": 0.004499582,
+    "endpoint": "/api/v0/vessel_pro",
+    "success": true
+  }
+}`
 
 // data type returned by datalastic vessel_pro endpoint
 type DatalasticVesselPro struct {
@@ -51,7 +92,7 @@ type DatalasticVesselPro struct {
 		DepPortUUID       string    `json:"dep_port_uuid"`
 		DepPort           string    `json:"dep_port"`
 		DepPortUnlocode   string    `json:"dep_port_unlocode"`
-		LastPositionEpoch int       `json:"last_position_epoch"`
+		LastPositionEpoch int64     `json:"last_position_epoch"`
 		LastPositionUTC   time.Time `json:"last_position_UTC"`
 		AtdEpoch          int64     `json:"atd_epoch"`
 		AtdUTC            time.Time `json:"atd_UTC"`
@@ -106,6 +147,8 @@ func generateVesselData(apiData *DatalasticVesselPro) ([]DatalasticVesselPro, er
 		if vesselDataSourceIndex > 1 {
 			vesselDataSources[vesselDataSourceIndex].Data.EtaEpoch = vesselDataSources[vesselDataSourceIndex].Data.EtaEpoch - EtaJitterOffsetSeconds + rand.Int63n(EtaJitterIntervalWidthSeconds)
 			vesselDataSources[vesselDataSourceIndex].Data.EtaUTC = time.Unix(int64(vesselDataSources[vesselDataSourceIndex].Data.EtaEpoch), 0).UTC()
+			vesselDataSources[vesselDataSourceIndex].Data.LastPositionEpoch = vesselDataSources[vesselDataSourceIndex].Data.LastPositionEpoch - LastDataReportJitterOffsetSeconds + rand.Int63n(LastDataReportJitterIntervalWidthSeconds)
+			vesselDataSources[vesselDataSourceIndex].Data.LastPositionUTC = time.Unix(int64(vesselDataSources[vesselDataSourceIndex].Data.LastPositionEpoch), 0).UTC()
 		}
 
 		// create outliers: for index == 1 create the eta outlier, for index == 2 create the departure port outlier
@@ -210,7 +253,8 @@ func submitDataConsolidationRequest(imo string) (*string, error) {
 
 func main() {
 	dataSourceCmd := flag.NewFlagSet("report", flag.ExitOnError)
-	vesselImo := dataSourceCmd.String("imo", DefaultVesselIMO, "The IMO identifier of the ship you want to fetch data for")
+	vesselImo := dataSourceCmd.String("imo", DefaultVesselIMO, "The IMO identifier of the ship you want to fetch data for.")
+	simulate := dataSourceCmd.Bool("simulate", false, "Specify if the input shall be simulated (e.g. in case of bad connectivity or lack of API key.)")
 	consolidateCmd := flag.NewFlagSet("consolidate", flag.ExitOnError)
 
 	if len(os.Args) < 2 {
@@ -222,23 +266,30 @@ func main() {
 	case "report", "r":
 		dataSourceCmd.Parse(os.Args[2:])
 
-		apiKey := os.Getenv("VESSEL_DATALASTIC_API_KEY")
-		if apiKey == "" {
-			fmt.Println("You need to specify the VESSEL_DATALASTIC_API_KEY environment variable to run this application.")
-			return
-		}
+		var vesselApiData DatalasticVesselPro
+		if *simulate == false {
+			apiKey := os.Getenv("VESSEL_DATALASTIC_API_KEY")
+			if apiKey == "" {
+				fmt.Println("You need to specify the VESSEL_DATALASTIC_API_KEY environment variable to run this application.")
+				return
+			}
 
-		fmt.Println("Fetching data for vessel with IMO " + *vesselImo)
+			fmt.Println("Fetching data for vessel with IMO " + *vesselImo)
 
-		apiURL := "https://api.datalastic.com/api/v0/vessel_pro?api-key=" + apiKey + "&imo=" + *vesselImo // Replace with the actual API URL
-		apiData, err := fetchVesselDataFromDatalastic(apiURL, *vesselImo)
-		if err != nil {
-			fmt.Println("Error fetching data: ", err)
-			return
+			apiURL := "https://api.datalastic.com/api/v0/vessel_pro?api-key=" + apiKey + "&imo=" + *vesselImo // Replace with the actual API URL
+			apiData, err := fetchVesselDataFromDatalastic(apiURL, *vesselImo)
+			if err != nil {
+				fmt.Println("Error fetching data: ", err)
+				return
+			}
+			vesselApiData = *apiData
+		} else {
+			json.Unmarshal([]byte(DatalasticSimulationData), &vesselApiData)
+			fmt.Println("SIMULATED DATA", vesselApiData)
 		}
 
 		// 1. create data sets for vessels including outliers for ETA and departure port
-		vesselDataSources, err := generateVesselData(apiData)
+		vesselDataSources, err := generateVesselData(&vesselApiData)
 		for index, vesselData := range vesselDataSources {
 			str, err := json.MarshalIndent(vesselData, "", "  ")
 			if err != nil {

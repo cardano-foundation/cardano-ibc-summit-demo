@@ -12,6 +12,7 @@ import (
 // Adds a new entry to the vessel key imo index. If no entry with the given imo exists a new list is created.
 // Otherwise the new entry is appended to the existing list.
 func (k Keeper) AddVesselKeyToIndexImo(ctx context.Context, vesselIndexEntry types.VesselIndexImo_Key) {
+	k.Logger().Info("adding vessel key", "Imo", vesselIndexEntry.Imo, "Ts", vesselIndexEntry.Ts, "Source", vesselIndexEntry.Source)
 	storeAdapter := runtime.KVStoreAdapter(k.storeService.OpenKVStore(ctx))
 	store := prefix.NewStore(storeAdapter, types.KeyPrefix(types.VesselIndexImoKeyPrefix))
 
@@ -26,7 +27,10 @@ func (k Keeper) AddVesselKeyToIndexImo(ctx context.Context, vesselIndexEntry typ
 		k.cdc.MustUnmarshal(b, &vesselIndex)
 	}
 
+	k.Logger().Debug("old index length is", "indexLength", len(vesselIndex.Keys))
 	vesselIndex.Keys = append(vesselIndex.Keys, &vesselIndexEntry)
+	k.Logger().Debug("new index length is", "indexLength", len(vesselIndex.Keys))
+
 	newB := k.cdc.MustMarshal(&vesselIndex)
 	store.Set(types.VesselIndexImoKey(
 		vesselIndexEntry.Imo,
@@ -39,7 +43,7 @@ func (k Keeper) GetVesselKeysFromIndexImo(
 	imo string,
 ) (vesselIndexImo types.VesselIndexImo, found bool) {
 	storeAdapter := runtime.KVStoreAdapter(k.storeService.OpenKVStore(ctx))
-	store := prefix.NewStore(storeAdapter, types.KeyPrefix(types.VesselKeyPrefix))
+	store := prefix.NewStore(storeAdapter, types.KeyPrefix(types.VesselIndexImoKeyPrefix))
 
 	b := store.Get(types.VesselIndexImoKey(
 		imo,
@@ -58,7 +62,7 @@ func (k Keeper) RemoveVesselKeyFromIndexImo(
 	vesselIndexEntry types.VesselIndexImo_Key,
 ) {
 	storeAdapter := runtime.KVStoreAdapter(k.storeService.OpenKVStore(ctx))
-	store := prefix.NewStore(storeAdapter, types.KeyPrefix(types.VesselKeyPrefix))
+	store := prefix.NewStore(storeAdapter, types.KeyPrefix(types.VesselIndexImoKeyPrefix))
 	b := store.Get(types.VesselIndexImoKey(
 		vesselIndexEntry.Imo,
 	))
@@ -91,7 +95,7 @@ func (k Keeper) RemoveAllVesselKeysFromIndexImo(
 	imo string,
 ) {
 	storeAdapter := runtime.KVStoreAdapter(k.storeService.OpenKVStore(ctx))
-	store := prefix.NewStore(storeAdapter, types.KeyPrefix(types.VesselKeyPrefix))
+	store := prefix.NewStore(storeAdapter, types.KeyPrefix(types.VesselIndexImoKeyPrefix))
 	store.Delete(types.VesselIndexImoKey(
 		imo,
 	))
