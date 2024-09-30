@@ -35,7 +35,10 @@ import (
 	ibckeeper "github.com/cosmos/ibc-go/v8/modules/core/keeper"
 	solomachine "github.com/cosmos/ibc-go/v8/modules/light-clients/06-solomachine"
 	ibctm "github.com/cosmos/ibc-go/v8/modules/light-clients/07-tendermint"
+
 	// this line is used by starport scaffolding # ibc/app/import
+	vesseloraclemodule "vesseloracle/x/vesseloracle/module"
+	vesseloraclemoduletypes "vesseloracle/x/vesseloracle/types"
 )
 
 // registerIBCModules register IBC keepers and non dependency inject modules.
@@ -160,6 +163,8 @@ func (app *App) registerIBCModules(appOpts servertypes.AppOptions) error {
 		AddRoute(icacontrollertypes.SubModuleName, icaControllerIBCModule).
 		AddRoute(icahosttypes.SubModuleName, icaHostIBCModule)
 
+	vesseloracleIBCModule := ibcfee.NewIBCMiddleware(vesseloraclemodule.NewIBCModule(app.VesseloracleKeeper), app.IBCFeeKeeper)
+	ibcRouter.AddRoute(vesseloraclemoduletypes.ModuleName, vesseloracleIBCModule)
 	// this line is used by starport scaffolding # ibc/app/module
 
 	app.IBCKeeper.SetRouter(ibcRouter)

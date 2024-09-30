@@ -167,5 +167,8 @@ func (k msgServer) ConsolidateReports(goCtx context.Context, msg *types.MsgConso
 
 	k.SetConsolidatedDataReport(ctx, *consolidatedReport)
 
-	return &types.MsgConsolidateReportsResponse{}, nil
+	return &types.MsgConsolidateReportsResponse{
+		Imo: consolidatedReport.Imo,
+		Ts:  consolidatedReport.Ts,
+	}, nil
 }

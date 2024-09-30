@@ -8,6 +8,7 @@ package vesseloracle
 
 import (
 	context "context"
+
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -27,6 +28,7 @@ const (
 	Msg_CreateConsolidatedDataReport_FullMethodName = "/vesseloracle.vesseloracle.Msg/CreateConsolidatedDataReport"
 	Msg_UpdateConsolidatedDataReport_FullMethodName = "/vesseloracle.vesseloracle.Msg/UpdateConsolidatedDataReport"
 	Msg_DeleteConsolidatedDataReport_FullMethodName = "/vesseloracle.vesseloracle.Msg/DeleteConsolidatedDataReport"
+	Msg_TransmitReport_FullMethodName               = "/vesseloracle.vesseloracle.Msg/TransmitReport"
 )
 
 // MsgClient is the client API for Msg service.
@@ -43,6 +45,7 @@ type MsgClient interface {
 	CreateConsolidatedDataReport(ctx context.Context, in *MsgCreateConsolidatedDataReport, opts ...grpc.CallOption) (*MsgCreateConsolidatedDataReportResponse, error)
 	UpdateConsolidatedDataReport(ctx context.Context, in *MsgUpdateConsolidatedDataReport, opts ...grpc.CallOption) (*MsgUpdateConsolidatedDataReportResponse, error)
 	DeleteConsolidatedDataReport(ctx context.Context, in *MsgDeleteConsolidatedDataReport, opts ...grpc.CallOption) (*MsgDeleteConsolidatedDataReportResponse, error)
+	TransmitReport(ctx context.Context, in *MsgTransmitReport, opts ...grpc.CallOption) (*MsgTransmitReportResponse, error)
 }
 
 type msgClient struct {
@@ -125,6 +128,15 @@ func (c *msgClient) DeleteConsolidatedDataReport(ctx context.Context, in *MsgDel
 	return out, nil
 }
 
+func (c *msgClient) TransmitReport(ctx context.Context, in *MsgTransmitReport, opts ...grpc.CallOption) (*MsgTransmitReportResponse, error) {
+	out := new(MsgTransmitReportResponse)
+	err := c.cc.Invoke(ctx, Msg_TransmitReport_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 // All implementations must embed UnimplementedMsgServer
 // for forward compatibility
@@ -139,6 +151,7 @@ type MsgServer interface {
 	CreateConsolidatedDataReport(context.Context, *MsgCreateConsolidatedDataReport) (*MsgCreateConsolidatedDataReportResponse, error)
 	UpdateConsolidatedDataReport(context.Context, *MsgUpdateConsolidatedDataReport) (*MsgUpdateConsolidatedDataReportResponse, error)
 	DeleteConsolidatedDataReport(context.Context, *MsgDeleteConsolidatedDataReport) (*MsgDeleteConsolidatedDataReportResponse, error)
+	TransmitReport(context.Context, *MsgTransmitReport) (*MsgTransmitReportResponse, error)
 	mustEmbedUnimplementedMsgServer()
 }
 
@@ -169,6 +182,9 @@ func (UnimplementedMsgServer) UpdateConsolidatedDataReport(context.Context, *Msg
 }
 func (UnimplementedMsgServer) DeleteConsolidatedDataReport(context.Context, *MsgDeleteConsolidatedDataReport) (*MsgDeleteConsolidatedDataReportResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteConsolidatedDataReport not implemented")
+}
+func (UnimplementedMsgServer) TransmitReport(context.Context, *MsgTransmitReport) (*MsgTransmitReportResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TransmitReport not implemented")
 }
 func (UnimplementedMsgServer) mustEmbedUnimplementedMsgServer() {}
 
@@ -327,6 +343,24 @@ func _Msg_DeleteConsolidatedDataReport_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_TransmitReport_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgTransmitReport)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).TransmitReport(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_TransmitReport_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).TransmitReport(ctx, req.(*MsgTransmitReport))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Msg_ServiceDesc is the grpc.ServiceDesc for Msg service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -365,6 +399,10 @@ var Msg_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteConsolidatedDataReport",
 			Handler:    _Msg_DeleteConsolidatedDataReport_Handler,
+		},
+		{
+			MethodName: "TransmitReport",
+			Handler:    _Msg_TransmitReport_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

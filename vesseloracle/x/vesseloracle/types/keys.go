@@ -9,10 +9,21 @@ const (
 
 	// MemStoreKey defines the in-memory store key
 	MemStoreKey = "mem_vesseloracle"
+
+	// Version defines the current version the IBC module supports
+	Version = "vesseloracle-1"
+
+	// PortID is the default port id that module binds to
+	PortID = "vesseloracle"
 )
 
 var (
 	ParamsKey = []byte("p_vesseloracle")
+)
+
+var (
+	// PortKey defines the key to store the port ID in store
+	PortKey = KeyPrefix("vesseloracle-port-")
 )
 
 func KeyPrefix(p string) []byte {

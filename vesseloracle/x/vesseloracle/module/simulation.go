@@ -51,6 +51,10 @@ const (
 	// TODO: Determine the simulation weight value
 	defaultWeightMsgDeleteConsolidatedDataReport int = 100
 
+	opWeightMsgTransmitReport = "op_weight_msg_transmit_report"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgTransmitReport int = 100
+
 	// this line is used by starport scaffolding # simapp/module/const
 )
 
@@ -62,6 +66,7 @@ func (AppModule) GenerateGenesisState(simState *module.SimulationState) {
 	}
 	vesseloracleGenesis := types.GenesisState{
 		Params: types.DefaultParams(),
+		PortId: types.PortID,
 		VesselList: []types.Vessel{
 			{
 				Creator: sample.AccAddress(),
@@ -175,6 +180,17 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 		vesseloraclesimulation.SimulateMsgDeleteConsolidatedDataReport(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
+	var weightMsgTransmitReport int
+	simState.AppParams.GetOrGenerate(opWeightMsgTransmitReport, &weightMsgTransmitReport, nil,
+		func(_ *rand.Rand) {
+			weightMsgTransmitReport = defaultWeightMsgTransmitReport
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgTransmitReport,
+		vesseloraclesimulation.SimulateMsgTransmitReport(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
 	// this line is used by starport scaffolding # simapp/module/operation
 
 	return operations
@@ -236,6 +252,14 @@ func (am AppModule) ProposalMsgs(simState module.SimulationState) []simtypes.Wei
 			defaultWeightMsgDeleteConsolidatedDataReport,
 			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
 				vesseloraclesimulation.SimulateMsgDeleteConsolidatedDataReport(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgTransmitReport,
+			defaultWeightMsgTransmitReport,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				vesseloraclesimulation.SimulateMsgTransmitReport(am.accountKeeper, am.bankKeeper, am.keeper)
 				return nil
 			},
 		),
