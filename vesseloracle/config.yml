@@ -49,6 +49,9 @@ faucet:
   coins:
   - 5token
   - 100000stake
+  host: 0.0.0.0:4500
 validators:
 - name: alice
   bonded: 100000000stake
+genesis:
+  chain_id: vesseloracle

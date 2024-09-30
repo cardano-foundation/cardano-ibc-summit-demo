@@ -142,13 +142,15 @@ func (k msgServer) ConsolidateVesselData(ctx sdk.Context, imo string) (*types.Co
 
 		var consolidateDataReport = types.ConsolidatedDataReport{
 			Imo:            imo,
-			Depport:        *departurePort,
-			DepportScore:   int32(departurePortScore),
+			Ts:             uint64(time.Now().Unix()),
+			TotalSamples:   int32(len(vesselData)),
 			EtaOutliers:    numOutliers,
 			EtaMeanCleaned: etaMeanCleaned,
 			EtaStdCleaned:  etaStdCleaned,
 			EtaMeanAll:     etaMeanAll,
 			EtaStdAll:      etaStdAll,
+			Depport:        *departurePort,
+			DepportScore:   int32(departurePortScore),
 		}
 		k.Logger().Info("Consolidated Data Report generated", "report", consolidateDataReport)
 		return &consolidateDataReport, nil

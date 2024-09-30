@@ -157,6 +157,7 @@ message MsgTransmitReport {
   string creator = 1;
   string imo     = 2;
   uint64 ts      = 3;
+  string channel = 4;
 }
 
 message MsgTransmitReportResponse {
