@@ -37,6 +37,7 @@ import (
 	ibctm "github.com/cosmos/ibc-go/v8/modules/light-clients/07-tendermint"
 
 	// this line is used by starport scaffolding # ibc/app/import
+	ibccardano "vesseloracle/x/clients/cardano"
 	vesseloraclemodule "vesseloracle/x/vesseloracle/module"
 	vesseloraclemoduletypes "vesseloracle/x/vesseloracle/types"
 )
@@ -183,6 +184,7 @@ func (app *App) registerIBCModules(appOpts servertypes.AppOptions) error {
 		capability.NewAppModule(app.appCodec, *app.CapabilityKeeper, false),
 		ibctm.NewAppModule(),
 		solomachine.NewAppModule(),
+		ibccardano.NewAppModule(),
 	); err != nil {
 		return err
 	}
@@ -202,6 +204,7 @@ func RegisterIBC(registry cdctypes.InterfaceRegistry) map[string]appmodule.AppMo
 		capabilitytypes.ModuleName:  capability.AppModule{},
 		ibctm.ModuleName:            ibctm.AppModule{},
 		solomachine.ModuleName:      solomachine.AppModule{},
+		ibccardano.ModuleName:       ibccardano.AppModule{},
 	}
 
 	for name, m := range modules {
