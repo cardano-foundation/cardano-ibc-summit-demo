@@ -1,0 +1,15 @@
+# docker
+.dockerignore
+Dockerfile
+
+# git
+.git/
+.gitignore
+
+# ide
+.idea
+
+go/libcardano-ibc-helper.so
+
+#openapi
+sidechain/docs/static/openapi.yml
