@@ -2,7 +2,7 @@
   "type": "cosmos",
   "value": {
     "key": "cosmos-key",
-    "chain-id": "sidechain",
+    "chain-id": "vesseloracle",
     "rpc-addr": "http://localhost:26657",
     "grpc-addr": "",
     "account-prefix": "cosmos",

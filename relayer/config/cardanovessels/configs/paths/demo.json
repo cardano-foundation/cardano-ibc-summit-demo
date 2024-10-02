@@ -3,7 +3,7 @@
     "chain-id": "cardano"
   },
   "dst": {
-    "chain-id": "sidechain"
+    "chain-id": "vesseloracle"
   },
   "src-channel-filter": {
     "rule": null,
