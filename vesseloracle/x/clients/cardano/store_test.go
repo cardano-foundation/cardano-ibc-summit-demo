@@ -2,8 +2,8 @@ package cardano_test
 
 import (
 	"encoding/hex"
-	cardano "sidechain/x/clients/cardano"
 	"time"
+	cardano "vesseloracle/x/clients/cardano"
 
 	ibctesting "github.com/cosmos/ibc-go/v8/testing"
 	"github.com/fxamacker/cbor/v2"

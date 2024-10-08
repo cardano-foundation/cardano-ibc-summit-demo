@@ -2,10 +2,10 @@ package cardano_test
 
 import (
 	"encoding/json"
-	sidechainapp "sidechain/app"
-	"sidechain/x/clients/cardano"
 	"testing"
 	"time"
+	vesseloracleapp "vesseloracle/app"
+	"vesseloracle/x/clients/cardano"
 
 	"cosmossdk.io/log"
 	sdkmath "cosmossdk.io/math"
@@ -41,10 +41,10 @@ import (
 )
 
 const (
-	chainID                        = "sidechain"
-	chainIDRevision0               = "sidechain-revision-0"
-	chainIDRevision1               = "sidechain-revision-1"
-	clientID                       = "sidechainnet"
+	chainID                        = "vesseloracle"
+	chainIDRevision0               = "vesseloracle-revision-0"
+	chainIDRevision1               = "vesseloracle-revision-1"
+	clientID                       = "vesseloraclenet"
 	trustingPeriod   time.Duration = time.Hour * 24 * 7 * 2
 	ubdPeriod        time.Duration = time.Hour * 24 * 7 * 3
 	maxClockDrift    time.Duration = time.Second * 10
@@ -92,10 +92,10 @@ func SetupTestingApp() (ibctesting.TestingApp, map[string]json.RawMessage) {
 	db := dbm.NewMemDB()
 
 	appOptions := make(simtestutil.AppOptionsMap, 0)
-	appOptions[flags.FlagHome] = sidechainapp.DefaultNodeHome
+	appOptions[flags.FlagHome] = vesseloracleapp.DefaultNodeHome
 	appOptions[server.FlagInvCheckPeriod] = 5
 
-	app, _ := sidechainapp.New(log.NewNopLogger(), db, nil, true, appOptions)
+	app, _ := vesseloracleapp.New(log.NewNopLogger(), db, nil, true, appOptions)
 	return app, app.DefaultGenesis()
 }
 
@@ -350,25 +350,25 @@ func getBothSigners(suite *CardanoTestSuite, altVal *cmttypes.Validator, altPriv
 }
 
 // initSetup initializes a new SimApp. A Nop logger is set in SimApp.
-func initSetup(withGenesis bool, invCheckPeriod uint) (*sidechainapp.App, sidechainapp.GenesisState) {
+func initSetup(withGenesis bool, invCheckPeriod uint) (*vesseloracleapp.App, vesseloracleapp.GenesisState) {
 	db := dbm.NewMemDB()
 
 	appOptions := make(simtestutil.AppOptionsMap, 0)
-	appOptions[flags.FlagHome] = sidechainapp.DefaultNodeHome
+	appOptions[flags.FlagHome] = vesseloracleapp.DefaultNodeHome
 	appOptions[server.FlagInvCheckPeriod] = invCheckPeriod
 
-	app, error := sidechainapp.New(log.NewNopLogger(), db, nil, true, appOptions)
+	app, error := vesseloracleapp.New(log.NewNopLogger(), db, nil, true, appOptions)
 	if error != nil {
 		panic(error)
 	}
 	if withGenesis {
 		return app, app.DefaultGenesis()
 	}
-	return app, sidechainapp.GenesisState{}
+	return app, vesseloracleapp.GenesisState{}
 }
 
 // Setup initializes a new SimApp. A Nop logger is set in SimApp.
-func Setup(t *testing.T, isCheckTx bool) *sidechainapp.App {
+func Setup(t *testing.T, isCheckTx bool) *vesseloracleapp.App {
 	t.Helper()
 
 	privVal := mock.NewPV()
@@ -397,7 +397,7 @@ func Setup(t *testing.T, isCheckTx bool) *sidechainapp.App {
 // that also act as delegators. For simplicity, each validator is bonded with a delegation
 // of one consensus engine unit in the default token of the simapp from first genesis
 // account. A Nop logger is set in SimApp.
-func SetupWithGenesisValSet(t *testing.T, valSet *cmttypes.ValidatorSet, genAccs []authtypes.GenesisAccount, balances ...banktypes.Balance) *sidechainapp.App {
+func SetupWithGenesisValSet(t *testing.T, valSet *cmttypes.ValidatorSet, genAccs []authtypes.GenesisAccount, balances ...banktypes.Balance) *vesseloracleapp.App {
 	t.Helper()
 
 	app, genesisState := initSetup(true, 5)

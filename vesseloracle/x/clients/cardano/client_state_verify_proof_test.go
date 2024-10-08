@@ -2,9 +2,9 @@ package cardano_test
 
 import (
 	fmt "fmt"
-	cardano "sidechain/x/clients/cardano"
 	"strings"
 	"time"
+	cardano "vesseloracle/x/clients/cardano"
 
 	storetypes "cosmossdk.io/store/types"
 	"github.com/cosmos/cosmos-sdk/codec"

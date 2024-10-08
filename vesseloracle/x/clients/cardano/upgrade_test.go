@@ -7,7 +7,7 @@ package cardano_test
 // 	commitmenttypes "github.com/cosmos/ibc-go/v8/modules/core/23-commitment/types"
 // 	"github.com/cosmos/ibc-go/v8/modules/core/exported"
 // 	ibctm "github.com/cosmos/ibc-go/v8/modules/light-clients/07-tendermint"
-// 	ibctesting "sidechain/testing"
+// 	ibctesting "vesseloracle/testing"
 // )
 
 // func (suite *CardanoTestSuite) TestVerifyUpgrade() {

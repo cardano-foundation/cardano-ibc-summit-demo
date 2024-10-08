@@ -1,7 +1,7 @@
 package cardano_test
 
 import (
-	"sidechain/x/clients/cardano"
+	"vesseloracle/x/clients/cardano"
 )
 
 func (suite *CardanoTestSuite) TestMisbehaviour() {

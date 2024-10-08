@@ -38,6 +38,7 @@ import (
 
 	// this line is used by starport scaffolding # ibc/app/import
 	ibccardano "vesseloracle/x/clients/cardano"
+	ibcmithril "vesseloracle/x/clients/mithril"
 	vesseloraclemodule "vesseloracle/x/vesseloracle/module"
 	vesseloraclemoduletypes "vesseloracle/x/vesseloracle/types"
 )
@@ -185,6 +186,7 @@ func (app *App) registerIBCModules(appOpts servertypes.AppOptions) error {
 		ibctm.NewAppModule(),
 		solomachine.NewAppModule(),
 		ibccardano.NewAppModule(),
+		ibcmithril.NewAppModule(),
 	); err != nil {
 		return err
 	}
@@ -205,6 +207,7 @@ func RegisterIBC(registry cdctypes.InterfaceRegistry) map[string]appmodule.AppMo
 		ibctm.ModuleName:            ibctm.AppModule{},
 		solomachine.ModuleName:      solomachine.AppModule{},
 		ibccardano.ModuleName:       ibccardano.AppModule{},
+		ibcmithril.ModuleName:       ibcmithril.AppModule{},
 	}
 
 	for name, m := range modules {

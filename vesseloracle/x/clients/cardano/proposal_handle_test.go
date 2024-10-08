@@ -6,7 +6,7 @@ package cardano_test
 // 	clienttypes "github.com/cosmos/ibc-go/v8/modules/core/02-client/types"
 // 	"github.com/cosmos/ibc-go/v8/modules/core/exported"
 // 	ibctm "github.com/cosmos/ibc-go/v8/modules/light-clients/07-tendermint"
-// 	ibctesting "sidechain/testing"
+// 	ibctesting "vesseloracle/testing"
 // )
 
 // var frozenHeight = clienttypes.NewHeight(0, 1)

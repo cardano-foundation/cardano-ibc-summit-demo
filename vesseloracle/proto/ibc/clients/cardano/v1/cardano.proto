@@ -3,7 +3,7 @@ package ibc.clients.cardano.v1;
 
 import "gogoproto/gogo.proto";
 
-option go_package = "sidechain/x/clients/cardano";
+option go_package = "vesseloracle/x/clients/cardano";
 
 message Height {
   option (gogoproto.goproto_getters)  = false;

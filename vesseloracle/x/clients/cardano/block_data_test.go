@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	cardano "sidechain/x/clients/cardano"
+	cardano "vesseloracle/x/clients/cardano"
 )
 
 func TestBlockDataValidateBasic(t *testing.T) {

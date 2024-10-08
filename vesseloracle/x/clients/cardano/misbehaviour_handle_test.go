@@ -1,7 +1,7 @@
 package cardano_test
 
 import (
-	cardano "sidechain/x/clients/cardano"
+	cardano "vesseloracle/x/clients/cardano"
 
 	storetypes "cosmossdk.io/store/types"
 	"github.com/cosmos/ibc-go/v8/modules/core/exported"

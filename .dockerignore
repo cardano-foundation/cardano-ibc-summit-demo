@@ -12,4 +12,4 @@ Dockerfile
 go/libcardano-ibc-helper.so
 
 #openapi
-sidechain/docs/static/openapi.yml
+vesseloracle/docs/static/openapi.yml

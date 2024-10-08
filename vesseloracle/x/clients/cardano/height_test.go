@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"sidechain/x/clients/cardano"
+	"vesseloracle/x/clients/cardano"
 )
 
 func TestZeroHeight(t *testing.T) {

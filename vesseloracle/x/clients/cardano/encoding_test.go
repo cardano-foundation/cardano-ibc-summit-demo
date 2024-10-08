@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	cardano "sidechain/x/clients/cardano"
+	cardano "vesseloracle/x/clients/cardano"
 
 	"github.com/stretchr/testify/require"
 )

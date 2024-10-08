@@ -2,8 +2,8 @@ package cardano_test
 
 import (
 	fmt "fmt"
-	"sidechain/x/clients/cardano"
 	"time"
+	"vesseloracle/x/clients/cardano"
 
 	host "github.com/cosmos/ibc-go/v8/modules/core/24-host"
 	"github.com/fxamacker/cbor/v2"
