@@ -5,7 +5,7 @@
     "chain-id": "vesseloracle",
     "rpc-addr": "http://localhost:26657",
     "grpc-addr": "",
-    "account-prefix": "cosmos",
+    "account-prefix": "vessel",
     "keyring-backend": "test",
     "gas-adjustment": 1.2,
     "gas-prices": "0.0stake",
