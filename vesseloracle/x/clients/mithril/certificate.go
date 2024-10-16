@@ -6,9 +6,9 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"hash"
-	"sidechain/x/clients/mithril/common/entities"
-	"sidechain/x/clients/mithril/crypto"
 	"time"
+	"vesseloracle/x/clients/mithril/common/entities"
+	"vesseloracle/x/clients/mithril/crypto"
 
 	errorsmod "cosmossdk.io/errors"
 	"golang.org/x/crypto/blake2b"
