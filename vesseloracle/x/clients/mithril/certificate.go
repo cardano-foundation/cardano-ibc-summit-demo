@@ -6,14 +6,15 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"hash"
+	"sidechain/x/clients/mithril/common/entities"
+	"sidechain/x/clients/mithril/crypto"
 	"time"
-	"vesseloracle/x/clients/mithril/common/entities"
-	"vesseloracle/x/clients/mithril/crypto"
 
 	errorsmod "cosmossdk.io/errors"
 	"golang.org/x/crypto/blake2b"
 )
 
+const LayoutMicros = "2006-01-02T15:04:05.000000Z"
 const Layout = "2006-01-02T15:04:05.000000000Z"
 
 type FeedHasher interface {
@@ -149,7 +150,7 @@ func FromCertificateMetadataProto(metadata *CertificateMetadata) (*entities.Cert
 		return nil, err
 	}
 
-	initiatedAt, err := time.Parse(Layout, metadata.InitiatedAt)
+	initiatedAt, err := time.Parse(LayoutMicros, metadata.InitiatedAt)
 	if err != nil {
 		return nil, err
 	}
