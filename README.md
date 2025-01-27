@@ -60,5 +60,6 @@ TODO ... use Caribic to setup the Cardano chain and other IBC infrastructure
 Execute the Go process by opening a new terminal and going into the root directory of the cloned repository and then
 ```bash
 cd datasource
-go run datasource
+go run . report -simulate
+go run . consolidate
 ```
