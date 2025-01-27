@@ -62,4 +62,6 @@ Execute the Go process by opening a new terminal and going into the root directo
 cd datasource
 go run . report -simulate
 go run . consolidate
+go run . transmit -ts $CONSOLIDATION_TIMESTAMP
 ```
+The `CONSOLIDATEN_TIMESTAMP` is part of a log message in the main process of the sidechain after successfully submitting the consolidated data using the `go run . consolidate` command.
