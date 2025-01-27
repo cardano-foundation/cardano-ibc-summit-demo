@@ -18,7 +18,7 @@ RUN bash -c "echo export GOFLAGS='-buildvcs=false' >> $HOME/.bashrc"
 RUN bash -c "source $HOME/.bashrc"
 
 RUN bash -c "mkdir -p /root/vesseloracle/workspace/vesseloracle"
-COPY "./vesseloracle" "/root/vesseloracle/workspace/vesseloracle"
+COPY . "/root/vesseloracle/workspace"
 WORKDIR "/root/vesseloracle/workspace/vesseloracle"
 
 COPY "./entrypoint.sh" "/entrypoint.sh"
