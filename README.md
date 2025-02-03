@@ -63,6 +63,6 @@ cd datasource
 go mod tidy
 go run . report -simulate
 go run . consolidate
-go run . transmit -ts $CONSOLIDATION_TIMESTAMP
+go run . transmit -channelid $CHANNEL_ID -ts $CONSOLIDATION_TIMESTAMP
 ```
-The `CONSOLIDATEN_TIMESTAMP` is part of a log message in the main process of the sidechain after successfully submitting the consolidated data using the `go run . consolidate` command.
+The `CONSOLIDATEN_TIMESTAMP` is part of a log message in the main process of the sidechain after successfully submitting the consolidated data using the `go run . consolidate` command, while the `CHANNEL_ID` is part of the log messages of the relayer, after the channel has been successfully esthablished.
