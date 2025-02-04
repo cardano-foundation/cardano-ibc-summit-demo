@@ -196,7 +196,7 @@ func (cs ClientState) Initialize(ctx sdk.Context, cdc codec.BinaryCodec, clientS
 
 // GetLatestHeight returns latest block height.
 func (cs ClientState) GetLatestHeight() exported.Height {
-	return cs.LatestHeight
+	return clienttypes.NewHeight(cs.LatestHeight.RevisionNumber, cs.LatestHeight.RevisionHeight)
 }
 
 // VerifyMembership is a generic proof verification method which verifies a proof of the existence of a value at a given CommitmentPath at the specified height.
