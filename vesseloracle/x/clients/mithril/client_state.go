@@ -31,8 +31,8 @@ func NewClientState(
 	zeroHeight := ZeroHeight()
 	return &ClientState{
 		ChainId:            chainID,
-		LatestHeight:       latestHeight,
-		FrozenHeight:       &zeroHeight,
+		LatestHeight:       *latestHeight,
+		FrozenHeight:       zeroHeight,
 		CurrentEpoch:       currentEpoch,
 		TrustingPeriod:     trustingPeriod,
 		ProtocolParameters: protocolParameters,

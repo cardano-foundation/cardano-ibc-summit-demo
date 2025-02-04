@@ -121,9 +121,9 @@ type ClientState struct {
 	// Chain id
 	ChainId string `protobuf:"bytes,1,opt,name=chain_id,json=chainId,proto3" json:"chain_id,omitempty"`
 	// Latest height the client was updated to
-	LatestHeight *Height `protobuf:"bytes,2,opt,name=latest_height,json=latestHeight,proto3" json:"latest_height,omitempty"`
+	LatestHeight Height `protobuf:"bytes,2,opt,name=latest_height,json=latestHeight,proto3" json:"latest_height,omitempty"`
 	// Block height when the client was frozen due to a misbehaviour
-	FrozenHeight *Height `protobuf:"bytes,3,opt,name=frozen_height,json=frozenHeight,proto3" json:"frozen_height,omitempty"`
+	FrozenHeight Height `protobuf:"bytes,3,opt,name=frozen_height,json=frozenHeight,proto3" json:"frozen_height,omitempty"`
 	// Epoch number of current chain state
 	CurrentEpoch       uint64                     `protobuf:"varint,4,opt,name=current_epoch,json=currentEpoch,proto3" json:"current_epoch,omitempty"`
 	TrustingPeriod     time.Duration              `protobuf:"bytes,5,opt,name=trusting_period,json=trustingPeriod,proto3,stdduration" json:"trusting_period"`
@@ -1272,7 +1272,7 @@ func (m *ClientState) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x20
 	}
-	if m.FrozenHeight != nil {
+
 		{
 			size, err := m.FrozenHeight.MarshalToSizedBuffer(dAtA[:i])
 			if err != nil {
@@ -1283,8 +1283,8 @@ func (m *ClientState) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		}
 		i--
 		dAtA[i] = 0x1a
-	}
-	if m.LatestHeight != nil {
+	
+
 		{
 			size, err := m.LatestHeight.MarshalToSizedBuffer(dAtA[:i])
 			if err != nil {
@@ -1295,7 +1295,7 @@ func (m *ClientState) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		}
 		i--
 		dAtA[i] = 0x12
-	}
+	
 	if len(m.ChainId) > 0 {
 		i -= len(m.ChainId)
 		copy(dAtA[i:], m.ChainId)
@@ -2296,14 +2296,14 @@ func (m *ClientState) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovMithril(uint64(l))
 	}
-	if m.LatestHeight != nil {
+	
 		l = m.LatestHeight.Size()
 		n += 1 + l + sovMithril(uint64(l))
-	}
-	if m.FrozenHeight != nil {
+	
+
 		l = m.FrozenHeight.Size()
 		n += 1 + l + sovMithril(uint64(l))
-	}
+	
 	if m.CurrentEpoch != 0 {
 		n += 1 + sovMithril(uint64(m.CurrentEpoch))
 	}
@@ -2930,9 +2930,9 @@ func (m *ClientState) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			if m.LatestHeight == nil {
-				m.LatestHeight = &Height{}
-			}
+
+				m.LatestHeight = Height{}
+			
 			if err := m.LatestHeight.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
@@ -2966,9 +2966,9 @@ func (m *ClientState) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			if m.FrozenHeight == nil {
-				m.FrozenHeight = &Height{}
-			}
+	
+				m.FrozenHeight = Height{}
+			
 			if err := m.FrozenHeight.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
