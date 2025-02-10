@@ -1,8 +1,8 @@
 package keeper
 
 import (
+	"encoding/json"
 	"errors"
-
 	"vesseloracle/x/vesseloracle/types"
 
 	errorsmod "cosmossdk.io/errors"
@@ -22,12 +22,12 @@ func (k Keeper) TransmitConsolidatedDataReportPacketPacket(
 	timeoutHeight clienttypes.Height,
 	timeoutTimestamp uint64,
 ) (uint64, error) {
+	packetBytes, err := json.Marshal(packetData)
+
 	channelCap, ok := k.ScopedKeeper().GetCapability(ctx, host.ChannelCapabilityPath(sourcePort, sourceChannel))
 	if !ok {
 		return 0, errorsmod.Wrap(channeltypes.ErrChannelCapabilityNotFound, "module does not own channel capability")
 	}
-
-	packetBytes, err := packetData.GetBytes()
 	if err != nil {
 		return 0, errorsmod.Wrapf(sdkerrors.ErrJSONMarshal, "cannot marshal the packet: %s", err)
 	}
