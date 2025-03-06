@@ -3,7 +3,7 @@ package keeper
 import (
 	"context"
 	"fmt"
-
+	"time"
 	"vesseloracle/x/vesseloracle/types"
 
 	errorsmod "cosmossdk.io/errors"
@@ -36,8 +36,8 @@ func (k msgServer) TransmitReport(goCtx context.Context, msg *types.MsgTransmitR
 		types.PortID,
 		msg.Channel,
 		clienttypes.NewHeight(1, uint64(ctx.BlockHeight()+1000)),
-		0)
-
+		uint64(ctx.BlockTime().UnixNano()+int64(5*time.Minute)),
+	)
 	return &types.MsgTransmitReportResponse{
 		Imo: msg.Imo,
 		Ts:  msg.Ts,
