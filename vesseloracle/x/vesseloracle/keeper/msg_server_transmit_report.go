@@ -36,7 +36,7 @@ func (k msgServer) TransmitReport(goCtx context.Context, msg *types.MsgTransmitR
 		types.PortID,
 		msg.Channel,
 		clienttypes.NewHeight(1, uint64(ctx.BlockHeight()+1000)),
-		uint64(ctx.BlockTime().UnixNano()+int64(5*time.Minute)),
+		uint64(ctx.BlockTime().UnixNano()+int64(10*time.Minute)),
 	)
 	return &types.MsgTransmitReportResponse{
 		Imo: msg.Imo,
